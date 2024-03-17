@@ -117,7 +117,7 @@ public class Login extends javax.swing.JFrame {
        pwd=txtContraseña.getText();
        if(user.equals("admin")&&pwd.equals("123")){
            MenuPrincipal mp = new MenuPrincipal();
-          mp.setVisible(true);
+            mp.setVisible(true);
             mp.setLocationRelativeTo(null);
       
            this.setVisible(false);
