@@ -97,7 +97,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir)
                     .addComponent(btnEntrar))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -116,8 +116,10 @@ public class Login extends javax.swing.JFrame {
        user= txtUsuario.getText();
        pwd=txtContraseña.getText();
        if(user.equals("admin")&&pwd.equals("123")){
-           MenuPrincipal accesso = new MenuPrincipal();
-           accesso.setVisible(true);
+           MenuPrincipal mp = new MenuPrincipal();
+          mp.setVisible(true);
+            mp.setLocationRelativeTo(null);
+      
            this.setVisible(false);
        }else{
            JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrecto");
