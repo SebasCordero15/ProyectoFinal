@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyectofinal;
+import Perro.Dueño;
 
 import Hotel.InformacioH;
+import Perro.FormularioPerro;
 import javax.swing.JOptionPane;
 
 /**
@@ -82,6 +84,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Clientes");
 
         mitCrearExpediente.setText("Crear expediente");
+        mitCrearExpediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitCrearExpedienteActionPerformed(evt);
+            }
+        });
         jMenu2.add(mitCrearExpediente);
 
         mitVerLista.setText("Lista Clientes");
@@ -175,6 +182,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void mitCrearExpedienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitCrearExpedienteActionPerformed
+      FormularioPerro fp= new FormularioPerro(); 
+        
+    }//GEN-LAST:event_mitCrearExpedienteActionPerformed
 
     /**
      * @param args the command line arguments
