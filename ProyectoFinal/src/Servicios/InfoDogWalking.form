@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -34,7 +34,7 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnInformacion" max="32767" attributes="0"/>
                           <Component id="btnPrecio" max="32767" attributes="0"/>
-                          <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtGaleria" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -71,7 +71,7 @@
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btnPrecio" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtGaleria" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -128,10 +128,13 @@
         <Property name="text" type="java.lang.String" value=" Tu mascota explorar&#xe1; nuevos lugares y har&#xe1; nuevos amigos peludos."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="txtGaleria">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Imagenes"/>
+        <Property name="text" type="java.lang.String" value="Galeria"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtGaleriaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

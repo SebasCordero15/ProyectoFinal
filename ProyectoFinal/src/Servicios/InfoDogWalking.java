@@ -5,6 +5,7 @@
 package Servicios;
 
 import javax.swing.JOptionPane;
+import proyectofinal.MenuPrincipal;
 
 /**
  *
@@ -36,9 +37,9 @@ public class InfoDogWalking extends javax.swing.JFrame {
         btnInformacion = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        txtGaleria = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Microsoft Tai Le", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 204));
@@ -64,7 +65,12 @@ public class InfoDogWalking extends javax.swing.JFrame {
 
         jLabel4.setText(" Tu mascota explorará nuevos lugares y hará nuevos amigos peludos.");
 
-        jButton1.setText("Imagenes");
+        txtGaleria.setText("Galeria");
+        txtGaleria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGaleriaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,7 +87,7 @@ public class InfoDogWalking extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnInformacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(txtGaleria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 13, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +115,7 @@ public class InfoDogWalking extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addComponent(btnPrecio)
                         .addGap(34, 34, 34)
-                        .addComponent(jButton1))
+                        .addComponent(txtGaleria))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -131,6 +137,14 @@ public class InfoDogWalking extends javax.swing.JFrame {
                                             
                                             Dificultad: Paseo ligero apto para todas las edades y niveles de pelaje.""");
     }//GEN-LAST:event_btnInformacionActionPerformed
+
+    private void txtGaleriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGaleriaActionPerformed
+         Galeria g = new  Galeria();
+            g.setVisible(true);
+            g.setLocationRelativeTo(null);
+      
+           this.setVisible(false);
+    }//GEN-LAST:event_txtGaleriaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,10 +185,10 @@ public class InfoDogWalking extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInformacion;
     private javax.swing.JButton btnPrecio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton txtGaleria;
     // End of variables declaration//GEN-END:variables
 }
