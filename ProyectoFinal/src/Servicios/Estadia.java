@@ -8,6 +8,6 @@ package Servicios;
  *
  * @author indir
  */
-public class Grooming {
+public class Estadia {
     
 }

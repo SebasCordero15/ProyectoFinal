@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyectofinal;
-import Perro.Dueño;
-
+import Servicios.InfoDogWalking;
+import Agenda.*;
 import Hotel.InformacioH;
 import Perro.FormularioPerro;
 import javax.swing.JOptionPane;
@@ -43,8 +43,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mitActualizarDatos = new javax.swing.JMenuItem();
         mitEliminarClientes = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        mitAgendar = new javax.swing.JMenuItem();
+        mitDispo = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         mitEstadia = new javax.swing.JMenuItem();
         mitDogWalking = new javax.swing.JMenuItem();
@@ -104,16 +104,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu5.setText("Agenda");
 
-        jMenuItem2.setText("Agendar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        mitAgendar.setText("Agendar");
+        mitAgendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                mitAgendarActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem2);
+        jMenu5.add(mitAgendar);
 
-        jMenuItem3.setText("Disponibilidad");
-        jMenu5.add(jMenuItem3);
+        mitDispo.setText("Disponibilidad");
+        mitDispo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitDispoActionPerformed(evt);
+            }
+        });
+        jMenu5.add(mitDispo);
 
         jMenuBar1.add(jMenu5);
 
@@ -123,6 +128,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.add(mitEstadia);
 
         mitDogWalking.setText("DogWalking");
+        mitDogWalking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitDogWalkingActionPerformed(evt);
+            }
+        });
         jMenu3.add(mitDogWalking);
 
         mitGrooming.setText("Grooming");
@@ -179,14 +189,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void mitAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitAgendarActionPerformed
+       Agenda dias= new Agenda();
+    }//GEN-LAST:event_mitAgendarActionPerformed
 
     private void mitCrearExpedienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitCrearExpedienteActionPerformed
       FormularioPerro fp= new FormularioPerro(); 
         
     }//GEN-LAST:event_mitCrearExpedienteActionPerformed
+
+    private void mitDogWalkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitDogWalkingActionPerformed
+       InfoDogWalking info = new InfoDogWalking();
+    }//GEN-LAST:event_mitDogWalkingActionPerformed
+
+    private void mitDispoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitDispoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mitDispoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,10 +253,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem mitActualizarDatos;
+    private javax.swing.JMenuItem mitAgendar;
     private javax.swing.JMenuItem mitCrearExpediente;
+    private javax.swing.JMenuItem mitDispo;
     private javax.swing.JMenuItem mitDogWalking;
     private javax.swing.JMenuItem mitEliminarClientes;
     private javax.swing.JMenuItem mitEstadia;
