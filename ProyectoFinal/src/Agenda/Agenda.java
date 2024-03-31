@@ -248,6 +248,7 @@ public class Agenda extends javax.swing.JFrame {
         //chbDogWalking.setSelected(false);
         //txtCantidadDW.setText("");
         //chbGrooming.setSelected(false);
+        Estadia est = new Estadia();
          Habitacion dtHabitacion = new Habitacion();
          
        /**
