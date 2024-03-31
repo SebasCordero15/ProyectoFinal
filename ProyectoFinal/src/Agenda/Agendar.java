@@ -25,12 +25,12 @@ public class Agendar {
         this.telefono = "";
         this.nombreP = "";
         this.CantidaN = 0;
-        this.dogWalking = "";
-        this.catidadDw = 0;
-        this.Grooming = "";
+        //this.dogWalking = "";
+        //this.catidadDw = 0;
+        //this.Grooming = "";
         
     }
-
+    /**
     public Agendar(String nombre, String telefono, String nombreP, int CantidaN, String dogWalking, int catidadDw, String Grooming) {
         this.nombre = nombre;
         this.telefono = telefono;
@@ -39,6 +39,14 @@ public class Agendar {
         this.dogWalking = dogWalking;
         this.catidadDw = catidadDw;
         this.Grooming = Grooming;
+    }
+    */
+    public Agendar(String nombre, String telefono, String nombreP, int CantidaN) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.nombreP = nombreP;
+        this.CantidaN = CantidaN;
+       
     }
    
    
