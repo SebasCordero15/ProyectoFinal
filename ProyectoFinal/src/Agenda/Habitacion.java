@@ -9,8 +9,11 @@ package Agenda;
  * @author indir
  */
 public class Habitacion {
-    private String Nombre;
-    private String NombreP;
+
+    public Habitacion(String string, String string1, String string2, String string3, String string4, String string5, String string6) {
+    }
+   // private String nombre;
+    //private String nombreP;
     private String Lunes;
     private String Martes;
     private String Miercoles;
@@ -19,9 +22,10 @@ public class Habitacion {
     private String Sabado;
     private String Domingo;
 
-    public Habitacion(String Nombre, String NombreP, String Lunes, String Martes, String Miercoles, String Jueves, String Viernes, String Sabado, String Domingo) {
-        this.Nombre = Nombre;
-        this.NombreP = NombreP;
+    /**
+    public Habitacion(String nombre, String nombreP, String Lunes, String Martes, String Miercoles, String Jueves, String Viernes, String Sabado, String Domingo) {
+        this.nombre = nombre;
+        this.nombreP = nombreP;
         this.Lunes = Lunes;
         this.Martes = Martes;
         this.Miercoles = Miercoles;
@@ -31,8 +35,8 @@ public class Habitacion {
         this.Domingo = Domingo;
     }
       public Habitacion( ) {
-        this.Nombre = "";
-        this.NombreP =  "";
+        this.nombre = "";
+        this.nombreP =  "";
         this.Lunes =  "";
         this.Martes =  "";
         this.Miercoles =  "";
@@ -41,7 +45,7 @@ public class Habitacion {
         this.Sabado =  "";
         this.Domingo =  "";
     }
-
+*/
 
    
 
@@ -100,22 +104,22 @@ public class Habitacion {
     public void setDomingo(String Domingo) {
         this.Domingo = Domingo;
     }
-
+/**
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+        this.nombre = Nombre;
     }
 
     public String getNombreP() {
-        return NombreP;
+        return nombreP;
     }
 
     public void setNombreP(String NombreP) {
-        this.NombreP = NombreP;
+        this.nombreP = NombreP;
     }
     
-    
+    */
 }
