@@ -115,6 +115,7 @@ public class Agenda extends javax.swing.JFrame {
                 "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"
             }
         ));
+        jtSemana.setCellSelectionEnabled(true);
         jtSemana.setGridColor(new java.awt.Color(0, 0, 0));
         jtSemana.setShowHorizontalLines(true);
         jtSemana.setShowVerticalLines(true);
