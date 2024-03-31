@@ -10,10 +10,6 @@ package Agenda;
  */
 public class Habitacion {
 
-    public Habitacion(String string, String string1, String string2, String string3, String string4, String string5, String string6) {
-    }
-   // private String nombre;
-    //private String nombreP;
     private String Lunes;
     private String Martes;
     private String Miercoles;
@@ -22,10 +18,7 @@ public class Habitacion {
     private String Sabado;
     private String Domingo;
 
-    /**
-    public Habitacion(String nombre, String nombreP, String Lunes, String Martes, String Miercoles, String Jueves, String Viernes, String Sabado, String Domingo) {
-        this.nombre = nombre;
-        this.nombreP = nombreP;
+    public Habitacion(String Lunes, String Martes, String Miercoles, String Jueves, String Viernes, String Sabado, String Domingo) {
         this.Lunes = Lunes;
         this.Martes = Martes;
         this.Miercoles = Miercoles;
@@ -34,20 +27,16 @@ public class Habitacion {
         this.Sabado = Sabado;
         this.Domingo = Domingo;
     }
-      public Habitacion( ) {
-        this.nombre = "";
-        this.nombreP =  "";
-        this.Lunes =  "";
-        this.Martes =  "";
-        this.Miercoles =  "";
-        this.Jueves =  "";
-        this.Viernes =  "";
-        this.Sabado =  "";
-        this.Domingo =  "";
-    }
-*/
 
-   
+    public Habitacion() {
+        this.Lunes = "";
+        this.Martes = "";
+        this.Miercoles = "";
+        this.Jueves = "";
+        this.Viernes = "";
+        this.Sabado = "";
+        this.Domingo = "";
+    }
 
     public String getLunes() {
         return Lunes;
@@ -104,22 +93,5 @@ public class Habitacion {
     public void setDomingo(String Domingo) {
         this.Domingo = Domingo;
     }
-/**
-    public String getNombre() {
-        return nombre;
-    }
 
-    public void setNombre(String Nombre) {
-        this.nombre = Nombre;
-    }
-
-    public String getNombreP() {
-        return nombreP;
-    }
-
-    public void setNombreP(String NombreP) {
-        this.nombreP = NombreP;
-    }
-    
-    */
 }

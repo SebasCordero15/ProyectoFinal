@@ -3,6 +3,7 @@ package Agenda;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,54 +11,83 @@ import java.util.logging.*;
  */
 public class DatosEstadia {
 
-    public void insertarEstadia(Habitacion habi) {
-        try {
-            //1- crear la conexion con la bd
-            Conexion con = new Conexion();
-            //2-creamos el statement
-            PreparedStatement misql = con.crearPrepareStatement("INSERT INTO articulo VALUES(?,?,?)");
-            misql.setString(0, habi.getLunes());
-            misql.setString(1, habi.getMartes());
-            misql.setString(2, habi.getMiercoles());
-            misql.setString(3, habi.getJueves());
-            misql.setString(4, habi.getViernes());
-            misql.setString(5, habi.getSabado());
-            misql.setString(6, habi.getDomingo());
-            //3-ejecutar el comando sql
-            misql.executeUpdate();
-            con.cerrarConexion();
-        } catch (SQLException e) {
-            Logger.getLogger(DatosEstadia.class.getName()).log(Level.SEVERE, null, e);
+ 
+public void insertarEstadia(Habitacion habitacion) {
+    try {
+        // 1. Conexión a la base de datos
+        Conexion con = new Conexion();
+
+        // 2. Preparar la consulta SQL con marcadores de posición
+        String sql = "INSERT INTO reserva (nombre, martes, miercoles, jueves, viernes, sabado, domingo) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement misql = con.crearPrepareStatement(sql);
+
+        // 3. Asignar valores booleanos a los marcadores de posición
+        misql.setString(1, habitacion.getLunes());
+        misql.setString(2, habitacion.getMartes());
+        misql.setString(3, habitacion.getMiercoles());
+        misql.setString(4, habitacion.getJueves());
+        misql.setString(5, habitacion.getViernes());
+        misql.setString(6, habitacion.getSabado());
+        misql.setString(7, habitacion.getDomingo());
+
+        // 4. Ejecutar la actualización
+        misql.executeUpdate();
+
+        // 5. Cerrar la conexión (asumiendo que se maneja en la clase Conexion)
+        // con.cerrarConexion(); // Si es necesario, descomenta esta línea
+
+        // 6. Opcional: Actualizar la visualización de la tabla (considerar usar un método separado para mayor claridad)
+        // cargarDatos(); // Asumiendo que este método actualiza jtSemana
+
+        JOptionPane.showMessageDialog(null, "Estancia agregada exitosamente!");
+
+    } catch (SQLException e) {
+        // Manejar errores potenciales de la base de datos de forma elegante
+        Logger.getLogger(Agenda.class.getName()).log(Level.SEVERE, null, e);
+        JOptionPane.showMessageDialog(null, "Error al agregar la estancia: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+
+ public ArrayList<Habitacion> todosArticulos() {
+    ArrayList<Habitacion> habitaciones = new ArrayList<>();
+    try {
+        // 1. Conectar a la base de datos
+        Conexion con = new Conexion();
+
+        // 2. Crear consulta SQL
+        String sql = "SELECT lunes, martes, miercoles, jueves, viernes, sabado, domingo FROM habitacion";
+        Statement st = con.crearStatement();
+
+        // 3. Ejecutar la consulta
+        ResultSet rs = st.executeQuery(sql);
+
+        // 4. Recorrer resultados y crear objetos Habitacion con booleanos
+        while (rs.next()) {
+            Habitacion habitacion = new Habitacion(
+                rs.getString("lunes"),
+                rs.getString("martes"),
+                rs.getString("miercoles"),
+                rs.getString("jueves"),
+                rs.getString("viernes"),
+                rs.getString("sabado"),
+                rs.getString("domingo")
+            );
+            habitaciones.add(habitacion);
         }
+
+        // 5. Cerrar recursos (ResultSet y conexión)
+        rs.close();
+        con.cerrarConexion();
+
+    } catch (SQLException e) {
+        Logger.getLogger(DatosEstadia.class.getName()).log(Level.SEVERE, null, e);
+        // Manejar errores de la base de datos de forma adecuada
     }
 
-    public ArrayList<Habitacion> todosArticulo() {
-        ArrayList<Habitacion> Semana = new ArrayList<>();
-        try {
-            //1- crear la conexion con la bd
-            Conexion con = new Conexion();
-            //2-creamos el statement
-            Statement st = con.crearStatement();
-            //3-ejecutar la sentencia
-            ResultSet rs = st.executeQuery("SELECT * FROM habitacion");
-            while (rs.next()) {
-                Habitacion habi = new Habitacion(
-                        rs.getString("lunes"),
-                        rs.getString("martes"),
-                        rs.getString("miercoles"),
-                        rs.getString("jueves"),
-                        rs.getString("viernes"),
-                        rs.getString("sabado"),
-                        rs.getString("domingo"));
-                Semana.add(habi);
-            }
-            rs.close();
-            con.cerrarConexion();
-        } catch (SQLException e) {
-            Logger.getLogger(DatosEstadia.class.getName()).log(Level.SEVERE, null, e);
-        }
-        return Semana;
-    }
+    return habitaciones;
+}
+
 
     
    

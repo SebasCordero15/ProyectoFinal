@@ -4,6 +4,7 @@
  */
 package Agenda;
 
+import java.util.Date;
 import java.util.logging.Logger;
 
 /**
@@ -11,43 +12,35 @@ import java.util.logging.Logger;
  * @author indir
  */
 public class Agendar {
- String nombre;
- String telefono;
- String nombreP;
-  int CantidaN;
- String dogWalking;
-  int catidadDw;
- String Grooming;
+    String nombre;
+    String nombreP; 
+    String telefono;
+    int CantidaN;
+    private String Habitacion;
+    private Date FechaIngreso;
+    private Date FechaSalida;
 
-
-    public Agendar() {
-        this.nombre = "";
-        this.telefono = "";
-        this.nombreP = "";
+    public Agendar(String nombre, String nombreP, String telefono, int CantidaN, String Habitacion, Date FechaIngreso, Date FechaSalida) {
+        this.nombre = nombre;
+        this.nombreP = nombreP;
+        this.telefono = telefono;
+        this.CantidaN = CantidaN;
+        this.Habitacion = Habitacion;
+        this.FechaIngreso = FechaIngreso;
+        this.FechaSalida = FechaSalida;
+    }
+    
+       public Agendar() {
+        this.nombre ="" ;
+        this.nombreP ="" ;
+        this.telefono ="" ;
         this.CantidaN = 0;
-        //this.dogWalking = "";
-        //this.catidadDw = 0;
-        //this.Grooming = "";
-        
+        this.Habitacion ="";
+        this.FechaIngreso =new Date();
+        this.FechaSalida = new Date();
     }
-    /**
-    public Agendar(String nombre, String telefono, String nombreP, int CantidaN, String dogWalking, int catidadDw, String Grooming) {
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.nombreP = nombreP;
-        this.CantidaN = CantidaN;
-        this.dogWalking = dogWalking;
-        this.catidadDw = catidadDw;
-        this.Grooming = Grooming;
-    }
-    */
-    public Agendar(String nombre, String telefono, String nombreP, int CantidaN) {
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.nombreP = nombreP;
-        this.CantidaN = CantidaN;
-       
-    }
+   
+   
    
    
     public String getNombre() {
@@ -82,39 +75,28 @@ public class Agendar {
         this.CantidaN = CantidaN;
     }
 
-    public String getDogWalking() {
-        return dogWalking;
+    public String getHabitacion() {
+        return Habitacion;
     }
 
-    public void setDogWalking(String dogWalking) {
-        this.dogWalking = dogWalking;
+    public void setHabitacion(String Habitacion) {
+        this.Habitacion = Habitacion;
     }
 
-    public String getGrooming() {
-        return Grooming;
+    public Date getFechaIngreso() {
+        return FechaIngreso;
     }
 
-    public void setGrooming(String Grooming) {
-        this.Grooming = Grooming;
+    public void setFechaIngreso(Date FechaIngreso) {
+        this.FechaIngreso = FechaIngreso;
     }
 
-    public int getCatidadDw() {
-        return catidadDw;
+    public Date getFechaSalida() {
+        return FechaSalida;
     }
 
-    public void setCatidadDw(int catidadDw) {
-        this.catidadDw = catidadDw;
-    }
-
-    @Override
-    public String toString() {
-        return "-------Estadia--------" + 
-                "\nNombre del encargado= " + nombre + 
-                "\nTelefono= " + telefono + 
-                "\nNombre del Perro= " + nombreP + 
-                "\nCantida de Noches= " + CantidaN + 
-                "\nDogWalking= " + dogWalking + "por " + catidadDw+" dias"+
-                "\nGrooming= " + Grooming ;
+    public void setFechaSalida(Date FechaSalida) {
+        this.FechaSalida = FechaSalida;
     }
     
     
