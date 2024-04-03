@@ -12,51 +12,62 @@ import java.util.logging.Logger;
  * @author indir
  */
 public class Agendar {
-    String nombre;
-    String nombreP; 
-    String telefono;
-    int CantidaN;
-    private String Habitacion;
-    private Date FechaIngreso;
-    private Date FechaSalida;
 
-    public Agendar(String nombre, String nombreP, String telefono, int CantidaN, String Habitacion, Date FechaIngreso, Date FechaSalida) {
+    private String nombre;
+    private String nombreP;
+    private String cedula;
+    private int cantidadN;
+    private String Habitacion;
+    private java.sql.Date fechaIngreso;
+    private java.sql.Date fechaSalida;
+
+    public Agendar(String nombre, String nombreP, String cedula, int cantidadN, String Habitacion, java.sql.Date fechaIngreso, java.sql.Date fechaSalida) {
         this.nombre = nombre;
         this.nombreP = nombreP;
-        this.telefono = telefono;
-        this.CantidaN = CantidaN;
+        this.cedula = cedula;
+        this.cantidadN = cantidadN;
         this.Habitacion = Habitacion;
-        this.FechaIngreso = FechaIngreso;
-        this.FechaSalida = FechaSalida;
+        this.fechaIngreso = fechaIngreso;
+        this.fechaSalida = fechaSalida;
     }
+
+   
+    public Agendar() {
+        this.nombre = "";
+        this.nombreP = "";
+        this.cedula = "";
+        this.cantidadN = 0;
+        this.Habitacion = "";
+        this.fechaIngreso = null;
+        this.fechaSalida = null;
+    }
+
     
-       public Agendar() {
-        this.nombre ="" ;
-        this.nombreP ="" ;
-        this.telefono ="" ;
-        this.CantidaN = 0;
-        this.Habitacion ="";
-        this.FechaIngreso =new Date();
-        this.FechaSalida = new Date();
+    
+    public String getHabitacion() {
+        return Habitacion;
     }
-   
-   
-   
-   
+
+    public void setHabitacion(String Habitacion) {
+        this.Habitacion = Habitacion;
+    }
+
+  
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
     }
 
     public String getNombreP() {
@@ -67,42 +78,28 @@ public class Agendar {
         this.nombreP = nombreP;
     }
 
-    public int getCantidaN() {
-        return CantidaN;
+    public int getCantidadN() {
+        return cantidadN;
     }
 
-    public void setCantidaN(int CantidaN) {
-        this.CantidaN = CantidaN;
+    public void setCantidadN(int cantidadN) {
+        this.cantidadN = cantidadN;
     }
 
-    public String getHabitacion() {
-        return Habitacion;
+    public java.sql.Date getFechaIngreso() {
+        return fechaIngreso;
     }
 
-    public void setHabitacion(String Habitacion) {
-        this.Habitacion = Habitacion;
+    public void setFechaIngreso(java.sql.Date fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
     }
 
-    public Date getFechaIngreso() {
-        return FechaIngreso;
+    public java.sql.Date getFechaSalida() {
+        return fechaSalida;
     }
 
-    public void setFechaIngreso(Date FechaIngreso) {
-        this.FechaIngreso = FechaIngreso;
+    public void setFechaSalida(java.sql.Date fechaSalida) {
+        this.fechaSalida = fechaSalida;
     }
 
-    public Date getFechaSalida() {
-        return FechaSalida;
-    }
-
-    public void setFechaSalida(Date FechaSalida) {
-        this.FechaSalida = FechaSalida;
-    }
-    
-    
-
-  
- 
- 
-         
 }

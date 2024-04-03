@@ -5,7 +5,9 @@
 package Agenda;
 
 import Agenda.Agendar;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -17,8 +19,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Agenda extends javax.swing.JFrame {
 
-    private Agendar estadia;
-
     /**
      * Creates new form Agenda
      */
@@ -26,9 +26,31 @@ public class Agenda extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        cargarDatos();
 
-        estadia = new Agendar();
+    }
 
+    public void cargarDatos() {
+        DefaultTableModel model = (DefaultTableModel) jtSemana.getModel();
+        model.setNumRows(0); // Limpiar filas existentes
+
+        DatosEstadia estad = new DatosEstadia();
+        ArrayList<Agendar> reservaciones = estad.todosArticulo(); // Obtener datos
+
+        String datos[] = new String[7];
+        int i = 0;
+        for (Agendar agend : reservaciones) {
+            datos[0] = reservaciones.get(i).getNombre();
+            datos[1] = reservaciones.get(i).getNombreP();
+            datos[2] = reservaciones.get(i).getCedula();
+            datos[3] = String.valueOf(reservaciones.get(i).getCantidadN());
+            datos[4] = reservaciones.get(i).getHabitacion();
+            datos[5] = String.valueOf(reservaciones.get(i).getFechaIngreso());
+            datos[6] = String.valueOf(reservaciones.get(i).getFechaSalida());
+            i++;
+            model.addRow(datos);
+        }
+        jtSemana.setModel(model);
     }
 
     /**
@@ -49,22 +71,23 @@ public class Agenda extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtCantidadN = new javax.swing.JTextField();
-        txtDueño = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
-        btnGuardar = new javax.swing.JButton();
+        txtCliente = new javax.swing.JTextField();
+        txtCedula = new javax.swing.JTextField();
+        btnAgregar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtPerro = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jCFechaIngreso = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jCFechaSalida = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtSemana = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtHabitacion = new javax.swing.JTextField();
+        btnEditar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -82,28 +105,28 @@ public class Agenda extends javax.swing.JFrame {
         jLabel2.setText("Nombre del Perro:");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setText("Numero Telefono:");
+        jLabel3.setText("Cedula:");
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Cantidad de noches:");
 
-        txtDueño.addActionListener(new java.awt.event.ActionListener() {
+        txtCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDueñoActionPerformed(evt);
+                txtClienteActionPerformed(evt);
             }
         });
 
-        btnGuardar.setText("Agregar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 24)); // NOI18N
         jLabel9.setText("Agendar");
 
-        jLabel10.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setText("Complete la informacion solicitada:");
 
         txtPerro.addActionListener(new java.awt.event.ActionListener() {
@@ -127,20 +150,42 @@ public class Agenda extends javax.swing.JFrame {
                 "Cliente", "Nombre Perro", "Telefono", "Cantida Noches", "Habitacion", "Fecha Ingreso", "Fecha Salida"
             }
         ));
+        jtSemana.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtSemanaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtSemana);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Habitacion");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtHabitacionActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Editar");
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Eliminar");
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,60 +196,59 @@ public class Agenda extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(176, 176, 176))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(132, 132, 132)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtDueño))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtPerro))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(66, 66, 66)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtCantidadN, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel8)
-                                                .addGap(93, 93, 93)
-                                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtCliente))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtPerro))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jCFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(66, 66, 66)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtCantidadN, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addGap(93, 93, 93)
+                                        .addComponent(txtHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(210, 210, 210)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(274, 274, 274)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -216,9 +260,9 @@ public class Agenda extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtDueño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -227,85 +271,197 @@ public class Agenda extends javax.swing.JFrame {
                     .addComponent(txtPerro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAgregar)
+                    .addComponent(btnEditar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnLimpiar))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
 
-        String nombre = txtDueño.getText();
-        String telefono = txtTelefono.getText();
-        String nombreP = txtPerro.getText();
-        int CantidaN = Integer.parseInt(txtCantidadN.getText());
-       
+        java.sql.Date fechaIngreso = new java.sql.Date(jCFechaIngreso.getDate().getTime());
+        java.sql.Date fechaSalida = new java.sql.Date(jCFechaSalida.getDate().getTime());
+
+        DatosEstadia dtEstadia = new DatosEstadia();
+        Agendar agend = new Agendar(txtCliente.getText(), txtPerro.getText(), txtCedula.getText(), Integer.parseInt(txtCantidadN.getText()),
+                txtHabitacion.getText(), fechaIngreso, fechaSalida);
+        dtEstadia.insertarReserva(agend);
+        cargarDatos();
+
         JOptionPane.showMessageDialog(null, "Estadia agendada");
-        txtDueño.setText("");
-        txtDueño.requestFocus();
-        txtTelefono.setText("");
-        txtPerro.setText("");
-        txtCantidadN.setText("");
 
-        //------------------------------------------------------------------------------------------
-       
-    }//GEN-LAST:event_btnGuardarActionPerformed
-
-    public void cargarDatos() {
-        DefaultTableModel model = (DefaultTableModel) jtSemana.getModel();
-        model.setNumRows(0); // Limpiar filas existentes
-
-        DatosEstadia estad = new DatosEstadia();
-        ArrayList<Habitacion> habitaciones = estad.todosArticulos(); // Obtener datos
-
-        String datos[] = new String[3];
-        int i = 0;
-        for (Habitacion habitacion : habitaciones) {
-            datos[0] = habitaciones.get(i).getLunes();
-            datos[1] = habitaciones.get(i).getMartes();
-            datos[2] = habitaciones.get(i).getMiercoles();
-            datos[3] = habitaciones.get(i).getJueves();
-            datos[4] = habitaciones.get(i).getViernes();
-            datos[5] = habitaciones.get(i).getSabado();
-            datos[6] = habitaciones.get(i).getDomingo();
-            
-            i++;
-            model.addRow(datos);
-        }
-        jtSemana.setModel(model);
-    }
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
 
     private void txtPerroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPerroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPerroActionPerformed
 
-    private void txtDueñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDueñoActionPerformed
+    private void txtClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDueñoActionPerformed
+    }//GEN-LAST:event_txtClienteActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHabitacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtHabitacionActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        Limpiar();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    public void Limpiar() {
+        txtCliente.setText(null);
+        txtPerro.setText(null);
+        txtCedula.setText(null);
+        txtCantidadN.setText(null);
+        txtHabitacion.setText(null);
+        jCFechaIngreso.setDate(null);
+        jCFechaSalida.setDate(null);
+        txtCliente.requestFocus();
+    }
+
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        int Seleccionada;
+        Seleccionada = jtSemana.getSelectedRow();
+
+        if (Seleccionada == -1) {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila (No row selected)");
+            return;
+        }
+
+        String nombre = (String) jtSemana.getValueAt(Seleccionada, 0);
+        String nombreP = (String) jtSemana.getValueAt(Seleccionada, 1);
+        String cedula = (String) jtSemana.getValueAt(Seleccionada, 2);
+        String cantidadN = (String) jtSemana.getValueAt(Seleccionada, 3);
+        String habitacion = (String) jtSemana.getValueAt(Seleccionada, 4);
+        String fechaIngreso = (String) jtSemana.getValueAt(Seleccionada, 5); ///creamos la variable tipo String , columna 5 de la tabla
+        String fechaSalida = (String) jtSemana.getValueAt(Seleccionada, 6);
+
+        //creamos nuevas variables
+        String nuevonombreP = txtPerro.getText();
+        String nuevacedula = txtCedula.getText();
+        int nuevocantidadN = Integer.parseInt(txtCantidadN.getText());
+        String nuevohabitacion = txtHabitacion.getText();
+
+        // 2.damos el formato a la fecha
+        java.sql.Date fechaIngresoN = new java.sql.Date(jCFechaIngreso.getDate().getTime());
+        java.sql.Date fechaSalidaN = new java.sql.Date(jCFechaSalida.getDate().getTime());
+
+        //3. creamos variables fechas
+        DatosEstadia dtEstadia = new DatosEstadia();
+        try {
+            dtEstadia.modificarReserva(nombre, nuevonombreP, nuevacedula, nuevocantidadN, nuevohabitacion,
+                    fechaIngresoN, fechaSalidaN);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+        cargarDatos();
+
+
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void jtSemanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtSemanaMouseClicked
+
+        int filaSeleccionada;
+        try {
+            filaSeleccionada = jtSemana.getSelectedRow();
+            if (filaSeleccionada == -1) {
+                JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+                return;
+            }
+
+            SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
+
+            // 1. Obtener valores de la fila seleccionada
+            String nombre = (String) jtSemana.getValueAt(filaSeleccionada, 0);
+            String nombreP = (String) jtSemana.getValueAt(filaSeleccionada, 1);
+            String cedula = (String) jtSemana.getValueAt(filaSeleccionada, 2);
+            String cantidadNString = (String) jtSemana.getValueAt(filaSeleccionada, 3);
+            String habitacion = (String) jtSemana.getValueAt(filaSeleccionada, 4);
+            String fechaIngreso = (String) jtSemana.getValueAt(filaSeleccionada, 5); ///creamos la variable tipo String , columna 5 de la tabla
+            String fechaSalida = (String) jtSemana.getValueAt(filaSeleccionada, 6);
+
+            // 2.damos el formato
+            SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+
+            //3. creamos variables
+            java.util.Date fecha;
+            java.util.Date fechaS;
+            //4.convertimos
+            try {
+                fecha = (java.util.Date) s.parse(fechaIngreso);
+                fechaS = (java.util.Date) s.parse(fechaSalida);
+                jCFechaIngreso.setDate(fecha);
+                jCFechaSalida.setDate(fechaS);
+
+            } catch (Exception e) {
+            }
+
+            // Llenar campos con la fila seleccionada
+            txtCliente.setText(nombre);
+            txtPerro.setText(nombreP);
+            txtCedula.setText(cedula);
+            txtCantidadN.setText(cantidadNString);
+            txtHabitacion.setText(habitacion);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+
+        }
+    }//GEN-LAST:event_jtSemanaMouseClicked
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int filaseleccionada;
+        filaseleccionada = jtSemana.getSelectedRow();
+
+        if (filaseleccionada == -1) {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila ");
+            return;
+        }
+
+        
+        String cedula = (String) jtSemana.getValueAt(filaseleccionada, 2);
+        int confirmation = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar  la reserva de " + cedula + JOptionPane.YES_NO_OPTION);
+        if (confirmation == JOptionPane.YES_OPTION) {
+            DatosEstadia dtEstadia = new DatosEstadia();
+            try {
+                // Llamar al método eliminarArticulo de DatosArticulo 
+                dtEstadia.eliminarReserva(cedula);
+
+                // Recargar los datos de la tabla
+                cargarDatos();
+                JOptionPane.showMessageDialog(null, "Artículo eliminado exitosamente");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+            }
+        }
+        //limpiamos los espacios
+        Limpiar();
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,16 +477,24 @@ public class Agenda extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Agenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agenda.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Agenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agenda.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Agenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agenda.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Agenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agenda.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -343,13 +507,14 @@ public class Agenda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnLimpiar;
+    private com.toedter.calendar.JDateChooser jCFechaIngreso;
+    private com.toedter.calendar.JDateChooser jCFechaSalida;
     private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -362,11 +527,11 @@ public class Agenda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTable jtSemana;
     private javax.swing.JTextField txtCantidadN;
-    private javax.swing.JTextField txtDueño;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCliente;
+    private javax.swing.JTextField txtHabitacion;
     private javax.swing.JTextField txtPerro;
-    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

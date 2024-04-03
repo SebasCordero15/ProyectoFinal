@@ -41,16 +41,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Lista Clientes"/>
               </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mitActualizarDatos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Actualizar Datos"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mitEliminarClientes">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Eliminar Clientes"/>
-              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitVerListaActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

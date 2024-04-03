@@ -5,8 +5,8 @@
 package proyectofinal;
 import Servicios.InfoDogWalking;
 import Agenda.*;
-import Hotel.InformacioH;
 import Perro.FormularioPerro;
+import Perro.VerLista;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,8 +40,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         mitCrearExpediente = new javax.swing.JMenuItem();
         mitVerLista = new javax.swing.JMenuItem();
-        mitActualizarDatos = new javax.swing.JMenuItem();
-        mitEliminarClientes = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         mitAgendar = new javax.swing.JMenuItem();
         mitDispo = new javax.swing.JMenuItem();
@@ -92,13 +90,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu2.add(mitCrearExpediente);
 
         mitVerLista.setText("Lista Clientes");
+        mitVerLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitVerListaActionPerformed(evt);
+            }
+        });
         jMenu2.add(mitVerLista);
-
-        mitActualizarDatos.setText("Actualizar Datos");
-        jMenu2.add(mitActualizarDatos);
-
-        mitEliminarClientes.setText("Eliminar Clientes");
-        jMenu2.add(mitEliminarClientes);
 
         jMenuBar1.add(jMenu2);
 
@@ -206,6 +203,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mitDispoActionPerformed
 
+    private void mitVerListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitVerListaActionPerformed
+        VerLista vl= new VerLista();
+    }//GEN-LAST:event_mitVerListaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -253,12 +254,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem mitActualizarDatos;
     private javax.swing.JMenuItem mitAgendar;
     private javax.swing.JMenuItem mitCrearExpediente;
     private javax.swing.JMenuItem mitDispo;
     private javax.swing.JMenuItem mitDogWalking;
-    private javax.swing.JMenuItem mitEliminarClientes;
     private javax.swing.JMenuItem mitEstadia;
     private javax.swing.JMenuItem mitGrooming;
     private javax.swing.JMenuItem mitRegistroFactura;
