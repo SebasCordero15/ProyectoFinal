@@ -45,11 +45,12 @@ public class DatosCliente {
         }
 
     }
+
     public ArrayList<Perro> BuscarCliente(String cedula) {
         ArrayList<Perro> Listclientes = new ArrayList<>();
         try {
             //1- crear la conexion con la bd
-           Conexion con = new Conexion();
+            Conexion con = new Conexion();
             //2- crear statement
             PreparedStatement st = con.crearPrepareStatement("SELECT * FROM cliente WHERE cedula like ?");
             cedula = '%' + cedula + '%';
@@ -92,6 +93,48 @@ public class DatosCliente {
             Logger.getLogger(DatosCliente.class.getName()).log(Level.SEVERE, null, e);
         }
         return Listclientes;
+    }
+
+    public void editarCliente(String nombre, String apellido, String cedula, String telefono, String direccion, String correo, String nombreP, int edadP, String raza,
+            String tamaño, String genero, String observaciones) {
+        try {
+            Conexion con = new Conexion();
+            String sql = "UPDATE cliente SET nombre = ?, apellido = ?, telefono = ?, direccion = ?, correo = ?, nombreP = ?,  edadP = ?, raza = ?, tamaño = ?, genero = ?, observaciones = ? WHERE cedula = ?";
+
+            try (PreparedStatement statement = con.crearPrepareStatement(sql)) {
+
+                statement.setString(1, nombre);
+                statement.setString(2, apellido);
+                statement.setString(12, cedula);
+                statement.setString(3, telefono);
+                statement.setString(4, direccion);
+                statement.setString(5, correo);
+                statement.setString(6, nombreP);
+                statement.setInt(7, edadP);
+                statement.setString(8, raza);
+                statement.setString(9, tamaño);
+                statement.setString(10, genero);
+                statement.setString(11, observaciones);
+
+                statement.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            Logger.getLogger(DatosCliente.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    public void eliminarCliente(String cedula) {
+        try {
+            Conexion con = new Conexion();
+            String sql = " DELETE FROM cliente  WHERE cedula = ?";
+            try (PreparedStatement statement = con.crearPrepareStatement(sql)) {
+                statement.setString(1, cedula);
+                statement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(DatosCliente.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
 }
