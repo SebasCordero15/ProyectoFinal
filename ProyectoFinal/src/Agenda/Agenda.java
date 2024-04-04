@@ -155,8 +155,15 @@ public class Agenda extends javax.swing.JFrame {
             new String [] {
                 "Cliente", "Nombre Perro", "Telefono", "Cantida Noches", "Habitacion", "Fecha Ingreso", "Fecha Salida"
             }
-        ));
-        jtSemana.setEnabled(false);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jtSemana.setSelectionBackground(new java.awt.Color(255, 255, 204));
         jtSemana.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

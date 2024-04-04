@@ -231,7 +231,6 @@ public class frmEditar extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jtClientes.setEnabled(false);
         jtClientes.setSelectionBackground(new java.awt.Color(255, 255, 204));
         jtClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

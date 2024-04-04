@@ -229,8 +229,15 @@ public class FormularioPerro extends javax.swing.JFrame {
             new String [] {
                 "Nombre", "Apellido", "Cedula", "Telefono", "Direccion", "Correo", "Perro", "Edad", "Raza", "Tamaño", "Genero", "Notas"
             }
-        ));
-        jtClientes.setEnabled(false);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jtClientes);
 
         jLabel16.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N

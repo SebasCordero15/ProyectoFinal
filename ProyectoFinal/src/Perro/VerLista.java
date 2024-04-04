@@ -80,7 +80,7 @@ public class VerLista extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -137,14 +137,13 @@ public class VerLista extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jtClientes.setEnabled(false);
         jtClientes.setSelectionBackground(new java.awt.Color(255, 255, 204));
         jScrollPane2.setViewportView(jtClientes);
 
