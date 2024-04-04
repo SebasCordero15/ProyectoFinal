@@ -37,16 +37,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         Hotel = new javax.swing.JMenu();
         itemHotel = new javax.swing.JMenuItem();
+        mitEstadia = new javax.swing.JMenuItem();
+        mitDogWalking = new javax.swing.JMenuItem();
+        mitGrooming = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mitCrearExpediente = new javax.swing.JMenuItem();
         mitVerLista = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         mitAgendar = new javax.swing.JMenuItem();
-        mitDispo = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        mitEstadia = new javax.swing.JMenuItem();
-        mitDogWalking = new javax.swing.JMenuItem();
-        mitGrooming = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         mitRegistroFactura = new javax.swing.JMenuItem();
         mitVerReporte = new javax.swing.JMenu();
@@ -55,10 +55,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jLabel2.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 36)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
-        jLabel2.setText("Hotel ");
+        jLabel2.setText("HOTEL ROOF");
 
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +77,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         Hotel.add(itemHotel);
+
+        mitEstadia.setText("Estadia");
+        Hotel.add(mitEstadia);
+
+        mitDogWalking.setText("DogWalking");
+        mitDogWalking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitDogWalkingActionPerformed(evt);
+            }
+        });
+        Hotel.add(mitDogWalking);
+
+        mitGrooming.setText("Grooming");
+        Hotel.add(mitGrooming);
 
         jMenuBar1.add(Hotel);
 
@@ -109,37 +124,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu5.add(mitAgendar);
 
-        mitDispo.setText("Disponibilidad");
-        mitDispo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mitDispoActionPerformed(evt);
-            }
-        });
-        jMenu5.add(mitDispo);
-
         jMenuBar1.add(jMenu5);
 
-        jMenu3.setText("Servicios");
+        jMenu3.setText("Añadir Servicio");
 
-        mitEstadia.setText("Estadia");
-        jMenu3.add(mitEstadia);
-
-        mitDogWalking.setText("DogWalking");
-        mitDogWalking.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mitDogWalkingActionPerformed(evt);
-            }
-        });
-        jMenu3.add(mitDogWalking);
-
-        mitGrooming.setText("Grooming");
-        jMenu3.add(mitGrooming);
+        jMenuItem2.setText("Servicio");
+        jMenu3.add(jMenuItem2);
 
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Factura");
 
-        mitRegistroFactura.setText("Registro Factura");
+        mitRegistroFactura.setText("Crear Factura");
         jMenu4.add(mitRegistroFactura);
 
         jMenuBar1.add(jMenu4);
@@ -158,21 +154,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 130, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(274, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addGap(33, 33, 33)
                 .addComponent(jButton1)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,10 +194,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void mitDogWalkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitDogWalkingActionPerformed
        InfoDogWalking info = new InfoDogWalking();
     }//GEN-LAST:event_mitDogWalkingActionPerformed
-
-    private void mitDispoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitDispoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mitDispoActionPerformed
 
     private void mitVerListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitVerListaActionPerformed
         VerLista vl= new VerLista();
@@ -254,9 +246,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem mitAgendar;
     private javax.swing.JMenuItem mitCrearExpediente;
-    private javax.swing.JMenuItem mitDispo;
     private javax.swing.JMenuItem mitDogWalking;
     private javax.swing.JMenuItem mitEstadia;
     private javax.swing.JMenuItem mitGrooming;
