@@ -15,7 +15,7 @@ import java.sql.Statement;
  * @author indir
  */
 public class Conexion {
-     public static final String url = "jdbc:mysql://localhost:3306/hotel";
+     public static final String url = "jdbc:mysql://localhost:3307/hotel";
     public static final String user = "root";
     public static final String pass = "";
     public Connection conexion = null;

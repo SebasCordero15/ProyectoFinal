@@ -5,6 +5,7 @@
 package proyectofinal;
 import Servicios.InfoDogWalking;
 import Agenda.*;
+import Factura.Facturacion;
 import Perro.FormularioPerro;
 import Perro.VerLista;
 import javax.swing.JOptionPane;
@@ -136,6 +137,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu4.setText("Factura");
 
         mitRegistroFactura.setText("Crear Factura");
+        mitRegistroFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitRegistroFacturaActionPerformed(evt);
+            }
+        });
         jMenu4.add(mitRegistroFactura);
 
         jMenuBar1.add(jMenu4);
@@ -198,6 +204,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void mitVerListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitVerListaActionPerformed
         VerLista vl= new VerLista();
     }//GEN-LAST:event_mitVerListaActionPerformed
+
+    private void mitRegistroFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitRegistroFacturaActionPerformed
+        // TODO add your handling code here:
+        Facturacion f= new Facturacion();
+    }//GEN-LAST:event_mitRegistroFacturaActionPerformed
 
     /**
      * @param args the command line arguments
