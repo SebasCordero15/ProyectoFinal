@@ -19,9 +19,6 @@ public class Perro extends Dueño {
     public Perro() {
         this.nombreP = "";
         this.edadP = 0;
-        this.raza = "";
-        this.tamaño = "";
-        this.genero = "";
         this.observaciones = "";
     }
 

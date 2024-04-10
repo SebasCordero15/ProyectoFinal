@@ -4,11 +4,8 @@
  */
 package Agenda;
 
-import Agenda.Agendar;
-import java.sql.Date;
-import java.sql.PreparedStatement;
 import java.text.SimpleDateFormat;
-import javax.swing.JOptionPane;
+
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -89,6 +86,8 @@ public class Agenda extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        bntRestar = new javax.swing.JButton();
+        bntSumar = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -110,6 +109,9 @@ public class Agenda extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("Cantidad de noches:");
+
+        txtCantidadN.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCantidadN.setText("1");
 
         txtCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,6 +215,20 @@ public class Agenda extends javax.swing.JFrame {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Login.png"))); // NOI18N
         jLabel15.setText("HOTEL ROOF");
 
+        bntRestar.setText("-");
+        bntRestar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntRestarActionPerformed(evt);
+            }
+        });
+
+        bntSumar.setText("+");
+        bntSumar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bntSumarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -264,21 +280,27 @@ public class Agenda extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
-                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addGap(32, 32, 32)
-                            .addComponent(txtCantidadN, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(46, 46, 46))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel8)
+                        .addGap(97, 97, 97)
+                        .addComponent(txtHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bntSumar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCantidadN, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(bntRestar))
+                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,7 +333,9 @@ public class Agenda extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtCantidadN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPerro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(bntRestar)
+                    .addComponent(bntSumar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -482,7 +506,6 @@ public class Agenda extends javax.swing.JFrame {
             return;
         }
 
-        
         String cedula = (String) jtSemana.getValueAt(filaseleccionada, 2);
         int confirmation = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar  la reserva de " + cedula + JOptionPane.YES_NO_OPTION);
         if (confirmation == JOptionPane.YES_OPTION) {
@@ -502,6 +525,40 @@ public class Agenda extends javax.swing.JFrame {
         Limpiar();
 
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void bntRestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRestarActionPerformed
+        int cantidad = 0;
+
+        try {
+            cantidad = Integer.parseInt(txtCantidadN.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+        if (cantidad > 1) {
+            cantidad--;
+            txtCantidadN.setText(String.valueOf(cantidad));
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe reservar almenos un dia");
+        }
+
+    }//GEN-LAST:event_bntRestarActionPerformed
+
+    private void bntSumarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntSumarMouseClicked
+        int cantidad = 1;
+
+        try {
+            cantidad = Integer.parseInt(txtCantidadN.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+        if (cantidad < 7) {
+            cantidad++;
+            txtCantidadN.setText(String.valueOf(cantidad));
+        } else {
+            JOptionPane.showMessageDialog(null, "El días de estadia  maximo son 7");
+        }
+
+    }//GEN-LAST:event_bntSumarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -547,6 +604,8 @@ public class Agenda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntRestar;
+    private javax.swing.JButton bntSumar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;

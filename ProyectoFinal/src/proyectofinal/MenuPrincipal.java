@@ -3,9 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyectofinal;
+import Agenda.Facturacion;
 import Servicios.InfoDogWalking;
 import Agenda.*;
-import Factura.Facturacion;
+
 import Perro.FormularioPerro;
 import Perro.VerLista;
 import javax.swing.JOptionPane;
@@ -130,6 +131,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.setText("Añadir Servicio");
 
         jMenuItem2.setText("Servicio");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem2);
 
         jMenuBar1.add(jMenu3);
@@ -209,6 +215,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         Facturacion f= new Facturacion();
     }//GEN-LAST:event_mitRegistroFacturaActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+      ServiciosFJ  servicioss= new ServiciosFJ();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments

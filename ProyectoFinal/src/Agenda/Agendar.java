@@ -102,4 +102,18 @@ public class Agendar {
         this.fechaSalida = fechaSalida;
     }
 
+    @Override
+    public String toString() {
+        return "---------Estadia-------------" +
+                "\nNombre=" + nombre + 
+                "\nNombre del Perro=" + nombreP +
+                "\nNumero de cedula=" + cedula +
+                "\ncantidad de noches=" + cantidadN +
+                "\nHabitacion=" + Habitacion +
+                "\nFecha ded Ingreso=" + fechaIngreso +
+                "\nFechaSalida=" + fechaSalida +"\n";
+    }
+    
+    
+
 }
