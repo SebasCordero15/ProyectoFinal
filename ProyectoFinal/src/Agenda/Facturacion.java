@@ -288,15 +288,23 @@ public class Facturacion extends javax.swing.JFrame {
         jLabel21.setText("Monto a pagar");
 
         jTextField2.setEditable(false);
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.setText("5000");
 
+        txtTotalEstadia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         jTextField5.setEditable(false);
+        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField5.setText("5000");
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
             }
         });
+
+        txtTotalGrooming.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        txtTotalDW.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel13.setText("Factura");
@@ -652,13 +660,15 @@ public class Facturacion extends javax.swing.JFrame {
             txtCantidadDW.setText(dogWalking);
             txtCantidadDW1.setText(dogWalking);
             
+            ///Se calcula el monto total
             int totalEstadia = Integer.parseInt(txtTotalEstadia.getText());
             int totalDW = Integer.parseInt(txtTotalDW.getText());
             int totalGrooming = Integer.parseInt(txtTotalGrooming.getText());
             int montoTotal = totalEstadia + totalDW + totalGrooming;
-
             txtMontoTotal.setText(String.valueOf(montoTotal));
-
+        
+            
+            
             if (grooming.equals("SI")) {
                 rbSI.setSelected(true);
             } else if (grooming.equals("NO")) {
