@@ -9,6 +9,7 @@ import Agenda.*;
 
 import Perro.FormularioPerro;
 import Perro.VerLista;
+import Reportes.Reporte;
 import javax.swing.JOptionPane;
 
 /**
@@ -227,6 +228,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
+        Reporte r=new Reporte();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     /**

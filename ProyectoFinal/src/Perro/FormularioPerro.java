@@ -4,7 +4,6 @@
  */
 package Perro;
 
-
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
  * @author indir
  */
 public class FormularioPerro extends javax.swing.JFrame {
-
+    
     private Perro dog;
 
     /**
@@ -23,14 +22,14 @@ public class FormularioPerro extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-
+        
         dog = new Perro();
     }
     
     public void cargarDatos() {
         DefaultTableModel model = (DefaultTableModel) jtClientes.getModel();
         model.setNumRows(0);
-
+        
         DatosCliente datosC = new DatosCliente();
         ArrayList<Perro> Listclientes = datosC.todosClientes();//trae todo los articulos de la bd
         String datos[] = new String[12];
@@ -39,13 +38,13 @@ public class FormularioPerro extends javax.swing.JFrame {
             datos[0] = Listclientes.get(i).getNombre();
             datos[1] = Listclientes.get(i).getApellido();
             datos[2] = Listclientes.get(i).getCedula();
-             datos[3] = Listclientes.get(i).getTelefono();
+            datos[3] = Listclientes.get(i).getTelefono();
             datos[4] = Listclientes.get(i).getDireccion();
             datos[5] = Listclientes.get(i).getCorreo();
-             datos[6] = Listclientes.get(i).getNombreP();
+            datos[6] = Listclientes.get(i).getNombreP();
             datos[7] = String.valueOf(Listclientes.get(i).getEdadP());
             datos[8] = Listclientes.get(i).getRaza();
-             datos[9] = Listclientes.get(i).getTamaño();
+            datos[9] = Listclientes.get(i).getTamaño();
             datos[10] = Listclientes.get(i).getGenero();
             datos[11] = Listclientes.get(i).getObservaciones();
             i++;
@@ -53,8 +52,6 @@ public class FormularioPerro extends javax.swing.JFrame {
         }
         jtClientes.setModel(model);
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -399,9 +396,10 @@ public class FormularioPerro extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
+        Perro p = new Perro();
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
-         String telefono = txtNumero.getText();
+        String telefono = txtNumero.getText();
         String cedula = txtCedula.getText();
         String direccion = txtDireccion.getText();
         String correo = txtCorreo.getText();
@@ -412,13 +410,15 @@ public class FormularioPerro extends javax.swing.JFrame {
         String tamaño = txtTamaño.getText();
         String genero = (rbMacho.isSelected() ? "M" : "H");
         String observaciones = txtObservaciones.getText();
-       Perro dog = new Perro(nombre, apellido,cedula,telefono,direccion,correo, nombreP,edadP,raza, tamaño,genero,observaciones);
+        Perro dog = new Perro(nombre, apellido, cedula, telefono, direccion, correo, nombreP, edadP, raza, tamaño, genero, observaciones);
         //System.out.println(dog.toString());
-        
+
         //BD
-        DatosCliente  datosC = new DatosCliente();
+        DatosCliente datosC = new DatosCliente();
         datosC.agregarCliente(dog);
         cargarDatos();
+        
+        p.realizarConteo(genero);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void txtTamañoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTamañoActionPerformed
