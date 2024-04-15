@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyectofinal;
+import Tienda.InformacioH;
 import Agenda.Facturacion;
-import Servicios.InfoDogWalking;
+import Tienda.InfoDogWalking;
 import Agenda.*;
 
 import Perro.FormularioPerro;
@@ -48,6 +49,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mitVerLista = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         mitAgendar = new javax.swing.JMenuItem();
+        mitEstadias = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -127,6 +129,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu5.add(mitAgendar);
 
+        mitEstadias.setText("Ver registro de estadias");
+        mitEstadias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitEstadiasActionPerformed(evt);
+            }
+        });
+        jMenu5.add(mitEstadias);
+
         jMenuBar1.add(jMenu5);
 
         jMenu3.setText("Añadir Servicio");
@@ -192,10 +202,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itemHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHotelActionPerformed
-         InformacioH s=new InformacioH();
-    }//GEN-LAST:event_itemHotelActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -208,10 +214,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
       FormularioPerro fp= new FormularioPerro(); 
         
     }//GEN-LAST:event_mitCrearExpedienteActionPerformed
-
-    private void mitDogWalkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitDogWalkingActionPerformed
-       InfoDogWalking info = new InfoDogWalking();
-    }//GEN-LAST:event_mitDogWalkingActionPerformed
 
     private void mitVerListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitVerListaActionPerformed
         VerLista vl= new VerLista();
@@ -230,6 +232,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         Reporte r=new Reporte();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void mitEstadiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitEstadiasActionPerformed
+       jfmEstadias ver= new jfmEstadias();
+    }//GEN-LAST:event_mitEstadiasActionPerformed
+
+    private void mitDogWalkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitDogWalkingActionPerformed
+        InfoDogWalking info = new InfoDogWalking();
+    }//GEN-LAST:event_mitDogWalkingActionPerformed
+
+    private void itemHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHotelActionPerformed
+        InformacioH s=new InformacioH();
+    }//GEN-LAST:event_itemHotelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,6 +297,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mitCrearExpediente;
     private javax.swing.JMenuItem mitDogWalking;
     private javax.swing.JMenuItem mitEstadia;
+    private javax.swing.JMenuItem mitEstadias;
     private javax.swing.JMenuItem mitGrooming;
     private javax.swing.JMenuItem mitRegistroFactura;
     private javax.swing.JMenuItem mitVerLista;

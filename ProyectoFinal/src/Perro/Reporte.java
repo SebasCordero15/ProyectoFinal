@@ -6,7 +6,6 @@ package Perro;
 
 import Agenda.DatosFactura;
 import Agenda.Factura;
-import Perro.FormularioPerro;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 

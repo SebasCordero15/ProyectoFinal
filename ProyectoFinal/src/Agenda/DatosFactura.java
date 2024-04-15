@@ -19,14 +19,14 @@ import java.util.logging.Logger;
  * @author indir
  */
 public class DatosFactura {
-    
+
     public void insertarFactura(Factura fact) {
-        
+
         try {
             Conexion con = new Conexion();
             // //2-creamos el statement\n" +
             PreparedStatement misql = con.crearPrepareStatement("INSERT INTO factura VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            
+
             misql.setString(1, fact.getNombre());
             misql.setString(2, fact.getNombreP());
             misql.setString(3, fact.getCedula());
@@ -46,9 +46,9 @@ public class DatosFactura {
         } catch (Exception e) {
             Logger.getLogger(DatosFactura.class.getName()).log(Level.SEVERE, null, e);
         }
-        
+
     }
-    
+
     public ArrayList<Factura> todasFacturas() {
         ArrayList<Factura> ListaDfacturas = new ArrayList<>();
         try {
@@ -83,11 +83,11 @@ public class DatosFactura {
         }
         return ListaDfacturas;
     }
-    
+
     public void ConteoGrooming(Factura f) {
         try {
             Conexion con = new Conexion();
-            Statement st = con.crearStatement();///consultamos a la base de datos
+            Statement st = con.crearStatement(); //para consultar en la base de datos
             ResultSet rs = st.executeQuery("SELECT grooming FROM factura");
             while (rs.next()) {
                 String g = rs.getString("grooming");
@@ -97,11 +97,11 @@ public class DatosFactura {
             Logger.getLogger(DatosFactura.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-    
+
     public void ConteoDog(Factura f) {
         try {
             Conexion con = new Conexion();
-            Statement st = con.crearStatement();///consultamos a la base de datos
+            Statement st = con.crearStatement(); //para consultar en la base de datos
             ResultSet rs = st.executeQuery("SELECT dogWalking FROM factura");
             while (rs.next()) {
                 int dw = rs.getInt("dogWalking");
@@ -111,19 +111,18 @@ public class DatosFactura {
             Logger.getLogger(DatosFactura.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-    
+
     public void ConteoGanancias(Factura f) {
         try {
             Conexion con = new Conexion();
-            Statement st = con.crearStatement();///consultamos a la base de datos
+            Statement st = con.crearStatement(); //para consultar en la base de datos
             ResultSet rs = st.executeQuery("SELECT MontTotal FROM factura");
             while (rs.next()) {
-                int mt = rs.getInt("MontTotal");
-                f.realizarConteoGanancias(mt);
+                int dw = rs.getInt("MontTotal");
+                f.realizarConteoGanancias(dw);
             }
         } catch (SQLException e) {
             Logger.getLogger(DatosFactura.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-    
 }

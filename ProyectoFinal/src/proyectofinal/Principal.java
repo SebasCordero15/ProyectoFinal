@@ -14,9 +14,9 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Login l=new Login();
-        l.setLocationRelativeTo(null);
-        l.setVisible(true);
+        Inicio inicio=new Inicio();
+        inicio.setLocationRelativeTo(null);
+        inicio.setVisible(true);
         
                 
     }

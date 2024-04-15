@@ -5,13 +5,9 @@
 package Perro;
 
 import Agenda.Conexion;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 /**
  *
@@ -123,11 +119,10 @@ public class DatosCliente {
     public void eliminarCliente(String cedula) {
         try {
             Conexion con = new Conexion();
-            String sql = " DELETE FROM cliente  WHERE cedula = ?";
-            try (PreparedStatement statement = con.crearPrepareStatement(sql)) {
-                statement.setString(1, cedula);
-                statement.executeUpdate();
-            }
+
+            PreparedStatement misql = con.crearPrepareStatement(" DELETE FROM cliente  WHERE cedula = ?");
+            misql.setString(1, cedula);
+            misql.executeUpdate();
         } catch (SQLException e) {
             Logger.getLogger(DatosCliente.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -136,7 +131,7 @@ public class DatosCliente {
     public void ConteoGenero(Perro p) {
         try {
             Conexion con = new Conexion();
-            Statement st = con.crearStatement();///consultamos a la base de datos
+            Statement st = con.crearStatement(); //para consultar en la base de datos
             ResultSet rs = st.executeQuery("SELECT genero FROM cliente");
             while (rs.next()) {
                 String genero = rs.getString("genero");
@@ -150,7 +145,7 @@ public class DatosCliente {
     public void ConteoTamaño(Perro p) {
         try {
             Conexion con = new Conexion();
-            Statement st = con.crearStatement();///consultamos a la base de datos
+            Statement st = con.crearStatement(); //para consultar en la base de datos
             ResultSet rs = st.executeQuery("SELECT tamaño FROM cliente");
             while (rs.next()) {
                 String tamaño = rs.getString("tamaño");
@@ -160,5 +155,4 @@ public class DatosCliente {
             Logger.getLogger(DatosCliente.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-
 }

@@ -1,13 +1,14 @@
 package Agenda;
 
+import Perro.DatosCliente;
+import Perro.Perro;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.*;
-import javax.swing.JOptionPane;
 
 /**
  *
- * @author Usuario
+ * @author Indira
  */
 public class DatosEstadia {
 
@@ -16,7 +17,6 @@ public class DatosEstadia {
         try {
             Conexion con = new Conexion();
 
-            // //2-creamos el statement\n" +
             PreparedStatement misql = con.crearPrepareStatement("INSERT INTO reserva VALUES(?,?,?,?,?,?,?)");
 
             misql.setString(1, agend.getNombre());
@@ -31,10 +31,9 @@ public class DatosEstadia {
         } catch (Exception e) {
             Logger.getLogger(DatosEstadia.class.getName()).log(Level.SEVERE, null, e);
         }
-
     }
 
-    public ArrayList<Agendar> todosArticulo() {
+    public ArrayList<Agendar> todasEstadias() {
         ArrayList<Agendar> reservaciones = new ArrayList<>();
         try {
             //1- crear la conexion con la bd
@@ -59,44 +58,56 @@ public class DatosEstadia {
     public void modificarReserva(String nombre, String nombreP, String cedula, int cantidadN, String Habitacion, java.sql.Date fechaIngreso, java.sql.Date fechaSalida) throws SQLException {
         try {
             Conexion connection = new Conexion();
-            // Prepare a SQL statement to update the article
-            String sql = "UPDATE reserva SET nombre = ?, nombreP = ?, cantidadN = ?, habitacion = ?,  fechaIngreso = ?, fechaSalida = ? WHERE cedula = ?";
-            try (PreparedStatement statement = connection.crearPrepareStatement(sql)) {
-                // Set the values for the prepared statement
 
-                statement.setString(1, nombre);
-                statement.setString(2, nombreP);
-                statement.setString(7, cedula);
-                statement.setInt(3, cantidadN);
-                statement.setString(4, Habitacion);
-                statement.setDate(5, new java.sql.Date(fechaIngreso.getTime()));
-                statement.setDate(6, new java.sql.Date(fechaSalida.getTime()));
+            PreparedStatement misql = connection.crearPrepareStatement("UPDATE reserva SET nombre = ?, nombreP = ?, cantidadN = ?, habitacion = ?,  fechaIngreso = ?, fechaSalida = ? WHERE cedula = ?");
 
-                // Execute the update statement
-                statement.executeUpdate();
-            }
+            misql.setString(1, nombre);
+            misql.setString(2, nombreP);
+            misql.setString(7, cedula);
+            misql.setInt(3, cantidadN);
+            misql.setString(4, Habitacion);
+            misql.setDate(5, new java.sql.Date(fechaIngreso.getTime()));
+            misql.setDate(6, new java.sql.Date(fechaSalida.getTime()));
+
+            misql.executeUpdate();
+
         } catch (SQLException e) {
-            // Handle the exception appropriately
             Logger.getLogger(DatosEstadia.class.getName()).log(Level.SEVERE, null, e);
-
         }
+    }
+      public ArrayList<Agendar> BuscarReserva(String cedula) {
+        ArrayList<Agendar> ListaReservas = new ArrayList<>();
+        try {
+            //1- crear la conexion con la bd
+            Conexion con = new Conexion();
+            //2- crear statement
+            PreparedStatement st = con.crearPrepareStatement("SELECT * FROM reserva WHERE cedula like ?");
+            cedula = '%' + cedula + '%';
+            st.setString(1, cedula);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Agendar agend = new Agendar(rs.getString("nombre"), rs.getString("nombreP"), rs.getString("cedula"), rs.getInt("cantidadN"),
+                        rs.getString("habitacion"), rs.getDate("FechaIngreso"), rs.getDate("FechaSalida"));
+               
+                ListaReservas.add(agend);
+            }
+            rs.close();
+            con.cerrarConexion();
+        } catch (SQLException e) {
+            Logger.getLogger(DatosCliente.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return ListaReservas;
     }
 
     public void eliminarReserva(String cedula) throws SQLException {
-
         try {
             Conexion con = new Conexion();
-            String sql ="DELETE FROM reserva WHERE cedula = ?";
+            PreparedStatement misql = con.crearPrepareStatement("DELETE FROM reserva WHERE cedula = ?");
+            misql.setString(1, cedula);
+            misql.executeUpdate();
 
-            try (PreparedStatement statement = con.crearPrepareStatement(sql)) {
-                statement.setString(1, cedula);
-                statement.executeUpdate();
-            }
         } catch (SQLException e) {
             Logger.getLogger(DatosEstadia.class.getName()).log(Level.SEVERE, null, e);
-            throw new SQLException("Error al eliminar la reserva", e);
         }
     }
 }
-
-
