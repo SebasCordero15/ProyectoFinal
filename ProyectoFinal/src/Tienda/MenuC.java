@@ -15,6 +15,9 @@ public class MenuC extends javax.swing.JFrame {
      */
     public MenuC() {
         initComponents();
+        this.setVisible(true);
+        
+        this.setLocationRelativeTo(null);//coloca la ventana en el centro de la pantalla
     }
 
     /**

@@ -24,6 +24,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
+        this.setVisible(true);//hace visible el formulario
+        this.setLocationRelativeTo(null);//coloca la ventana en el centro de la pantalla
     }
 
     /**
