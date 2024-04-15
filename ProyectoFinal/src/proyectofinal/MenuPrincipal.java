@@ -9,7 +9,7 @@ import Agenda.*;
 
 import Perro.FormularioPerro;
 import Perro.VerLista;
-import Reportes.Reporte;
+import Perro.Reporte;
 import javax.swing.JOptionPane;
 
 /**

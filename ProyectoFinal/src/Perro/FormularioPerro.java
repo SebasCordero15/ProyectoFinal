@@ -5,6 +5,7 @@
 package Perro;
 
 import java.util.ArrayList;
+
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  * @author indir
  */
 public class FormularioPerro extends javax.swing.JFrame {
-    
+
     private Perro dog;
 
     /**
@@ -22,14 +23,15 @@ public class FormularioPerro extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        
+        cargarDatos();
         dog = new Perro();
+
     }
-    
+
     public void cargarDatos() {
         DefaultTableModel model = (DefaultTableModel) jtClientes.getModel();
         model.setNumRows(0);
-        
+
         DatosCliente datosC = new DatosCliente();
         ArrayList<Perro> Listclientes = datosC.todosClientes();//trae todo los articulos de la bd
         String datos[] = new String[12];
@@ -76,7 +78,6 @@ public class FormularioPerro extends javax.swing.JFrame {
         txtObservaciones = new javax.swing.JTextField();
         rbMacho = new javax.swing.JRadioButton();
         rbHembra = new javax.swing.JRadioButton();
-        txtTamaño = new javax.swing.JTextField();
         txtNumero = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -94,6 +95,8 @@ public class FormularioPerro extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtClientes = new javax.swing.JTable();
         jLabel16 = new javax.swing.JLabel();
+        Limpiar = new javax.swing.JButton();
+        txtTamaño1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -150,13 +153,6 @@ public class FormularioPerro extends javax.swing.JFrame {
 
         rbHembra.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         rbHembra.setText("Hembra");
-
-        txtTamaño.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtTamaño.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTamañoActionPerformed(evt);
-            }
-        });
 
         txtNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,6 +238,17 @@ public class FormularioPerro extends javax.swing.JFrame {
         jLabel16.setText("Formulario Clientes");
         jLabel16.setToolTipText("");
 
+        Limpiar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/borrar.png"))); // NOI18N
+        Limpiar.setText("Limpiar");
+        Limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimpiarActionPerformed(evt);
+            }
+        });
+
+        txtTamaño1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el tamaño:", "Pequeño", "Mediano", "Grande" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -253,7 +260,7 @@ public class FormularioPerro extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -267,28 +274,25 @@ public class FormularioPerro extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(txtRaza, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jLabel5))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(txtNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(111, 111, 111)
-                                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                                .addGap(31, 31, 31))
-                                            .addGroup(layout.createSequentialGroup()
                                                 .addComponent(rbMacho)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(rbHembra)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(76, 76, 76)))))
+                                                .addGap(77, 77, 77))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtRaza, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel5))
+                                                .addGap(31, 31, 31)))))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtObservaciones)
                                     .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTamaño, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txtTamaño1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -314,7 +318,9 @@ public class FormularioPerro extends javax.swing.JFrame {
                             .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(30, 30, 30)
-                .addComponent(btnAgregar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAgregar)
+                    .addComponent(Limpiar))
                 .addGap(14, 14, 14))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
@@ -328,8 +334,10 @@ public class FormularioPerro extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel16))
-                    .addComponent(jLabel15))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel15)
+                        .addComponent(Limpiar)))
+                .addGap(15, 15, 15)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -371,20 +379,16 @@ public class FormularioPerro extends javax.swing.JFrame {
                         .addComponent(jLabel4)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(rbMacho)
-                                    .addComponent(rbHembra)
-                                    .addComponent(jLabel7)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txtTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(rbMacho)
+                            .addComponent(rbHembra)
+                            .addComponent(txtTamaño1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(14, 42, Short.MAX_VALUE)
                         .addComponent(btnAgregar)
                         .addGap(11, 11, 11)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -403,11 +407,11 @@ public class FormularioPerro extends javax.swing.JFrame {
         String cedula = txtCedula.getText();
         String direccion = txtDireccion.getText();
         String correo = txtCorreo.getText();
-        
+
         String nombreP = txtNombreP.getText();
         int edadP = Integer.parseInt(txtEdad.getText());
         String raza = txtRaza.getText();
-        String tamaño = txtTamaño.getText();
+        String tamaño = txtTamaño1.getSelectedItem().toString();
         String genero = (rbMacho.isSelected() ? "M" : "H");
         String observaciones = txtObservaciones.getText();
         Perro dog = new Perro(nombre, apellido, cedula, telefono, direccion, correo, nombreP, edadP, raza, tamaño, genero, observaciones);
@@ -416,14 +420,12 @@ public class FormularioPerro extends javax.swing.JFrame {
         //BD
         DatosCliente datosC = new DatosCliente();
         datosC.agregarCliente(dog);
+        datosC.ConteoGenero(dog);
+        datosC.ConteoTamaño(dog);
         cargarDatos();
-        
-        p.realizarConteo(genero);
-    }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void txtTamañoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTamañoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTamañoActionPerformed
+
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void txtNombrePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombrePActionPerformed
 
@@ -461,6 +463,24 @@ public class FormularioPerro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbMachoActionPerformed
 
+    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
+        txtNombre.setText(null);
+        txtApellido.setText(null);
+        txtDireccion.setText(null);
+        txtCedula.setText(null);
+        txtNumero.setText(null);
+        txtCorreo.setText(null);
+
+        txtNombreP.setText(null);
+        txtRaza.setText(null);
+        txtEdad.setText(null);
+        txtObservaciones.setText(null);
+        txtTamaño1.setSelectedItem(null);
+        rbMacho.setSelected(false);
+        rbHembra.setSelected(false);
+        txtNombre.requestFocus();
+    }//GEN-LAST:event_LimpiarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -497,6 +517,7 @@ public class FormularioPerro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Limpiar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -528,6 +549,6 @@ public class FormularioPerro extends javax.swing.JFrame {
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtObservaciones;
     private javax.swing.JTextField txtRaza;
-    private javax.swing.JTextField txtTamaño;
+    private javax.swing.JComboBox<String> txtTamaño1;
     // End of variables declaration//GEN-END:variables
 }

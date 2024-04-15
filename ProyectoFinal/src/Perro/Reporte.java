@@ -2,9 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Reportes;
+package Perro;
 
-import Perro.Perro;
+import Agenda.DatosFactura;
+import Agenda.Factura;
+import Perro.FormularioPerro;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +16,9 @@ import javax.swing.JOptionPane;
  */
 public class Reporte extends javax.swing.JFrame {
 
+    private Perro dog;
+    private Factura f;
+
     /**
      * Creates new form Reporte
      */
@@ -20,17 +26,19 @@ public class Reporte extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        dog = new Perro();
+        f = new Factura();
+        DatosCliente datosC = new DatosCliente();
+
+        datosC.ConteoGenero(dog);
+        datosC.ConteoTamaño(dog);
+        DatosFactura datosf = new DatosFactura();
+
+        datosf.ConteoGrooming(f);
+        datosf.ConteoDog(f);
+        datosf.ConteoGanancias(f);
     }
 
-    public String verEstadistica(){
-        Perro p=new Perro();
-       return "Cantidad de hembras: " + p.getCantHembras()
-                + "\nCantidad de machos: " + p.getCantHembras();
-                //+ "\nCantidad total de estadias: " + this.getCantEstadias()
-                //+ "\nCantidad total DogWalking: " + this.getCantDogWalking()
-                //+ "\nCantidad total de Grooming: " + this.getCantGrooming()
-                //+ "\nGanancias totales: " + this.getGananciaTotal();
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,13 +49,33 @@ public class Reporte extends javax.swing.JFrame {
     private void initComponents() {
 
         btnGenerarRepote = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        btnReporteEmpresa = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Reportes");
+        setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
 
-        btnGenerarRepote.setText("Generar Reporte");
+        btnGenerarRepote.setBackground(new java.awt.Color(153, 204, 255));
+        btnGenerarRepote.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnGenerarRepote.setText("Reportes clientes");
         btnGenerarRepote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarRepoteActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel15.setFont(new java.awt.Font("Franklin Gothic Heavy", 1, 36)); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Login.png"))); // NOI18N
+        jLabel15.setText("HOTEL ROOF");
+
+        btnReporteEmpresa.setBackground(new java.awt.Color(153, 204, 255));
+        btnReporteEmpresa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnReporteEmpresa.setText("Reportes empresa");
+        btnReporteEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteEmpresaActionPerformed(evt);
             }
         });
 
@@ -56,25 +84,42 @@ public class Reporte extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(btnGenerarRepote)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnReporteEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGenerarRepote, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
+                .addContainerGap()
+                .addComponent(jLabel15)
+                .addGap(39, 39, 39)
                 .addComponent(btnGenerarRepote)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(btnReporteEmpresa)
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGenerarRepoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarRepoteActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, verEstadistica());
+
+        JOptionPane.showMessageDialog(null, dog.verEstadistica(), "Reporte ", JOptionPane.PLAIN_MESSAGE,
+                new ImageIcon("src/img/logo.png"));
     }//GEN-LAST:event_btnGenerarRepoteActionPerformed
+
+    private void btnReporteEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteEmpresaActionPerformed
+
+        JOptionPane.showMessageDialog(null, f.verEstadistica(), "Reporte ", JOptionPane.PLAIN_MESSAGE,
+                new ImageIcon("src/img/logo.png"));
+    }//GEN-LAST:event_btnReporteEmpresaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,5 +158,8 @@ public class Reporte extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerarRepote;
+    private javax.swing.JButton btnReporteEmpresa;
+    private javax.swing.JLabel jLabel15;
     // End of variables declaration//GEN-END:variables
+
 }

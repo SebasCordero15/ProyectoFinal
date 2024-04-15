@@ -16,29 +16,26 @@ public class Dueño {
     private String cedula;
     private String direccion;
     private String correo;
-    
-    
-    public Dueño(){
-        this. nombre="";
-        this.apellido="";
-        this.cedula="";
-        this.telefono="";
-        this.direccion="";
-        this.correo="";
+
+    public Dueño() {
+        this.nombre = "";
+        this.apellido = "";
+        this.cedula = "";
+        this.telefono = "";
+        this.direccion = "";
+        this.correo = "";
 
     }
 
-    public Dueño(String nombre, String apellido, String cedula, String telefono, String direccion,String correo) {
+    public Dueño(String nombre, String apellido, String cedula, String telefono, String direccion, String correo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.telefono = telefono;
         this.direccion = direccion;
-        this.correo= correo;
+        this.correo = correo;
     }
 
-    
-    
     public String getDireccion() {
         return direccion;
     }
@@ -79,8 +76,6 @@ public class Dueño {
         this.telefono = telefono;
     }
 
-  
-
     public String getCorreo() {
         return correo;
     }
@@ -88,17 +83,18 @@ public class Dueño {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-      @Override
+
+    @Override
     public String toString() {
         return """
                \n**********************\n
                Informacion del Dueño
-               Nombre=""" + this.getNombre()+ 
-                "\nApellido=" + this.getApellido() + 
-                "\nTelefono=" + this.getTelefono()+ 
-                "\nCedula=" + this.getCedula() + 
-                "\nDireccion=" + this.getDireccion() +
-                "\nCorreo= "+ this.getCorreo();
+               Nombre=""" + this.getNombre()
+                + "\nApellido=" + this.getApellido()
+                + "\nTelefono=" + this.getTelefono()
+                + "\nCedula=" + this.getCedula()
+                + "\nDireccion=" + this.getDireccion()
+                + "\nCorreo= " + this.getCorreo();
     }
-    
+
 }

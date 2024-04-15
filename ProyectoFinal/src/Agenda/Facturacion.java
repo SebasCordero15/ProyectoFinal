@@ -23,7 +23,6 @@ public class Facturacion extends javax.swing.JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         cargarDatos();
-    factura();
 
     }
 
@@ -57,17 +56,6 @@ public class Facturacion extends javax.swing.JFrame {
         jtServicios.setModel(model);
 
     }
-   public void factura() {
-  if (txtNumeroF.getText().isEmpty()) {
-      int numFactura = 0;
-    numFactura++;
-    txtNumeroF.setText(String.valueOf(numFactura));
-  }
-}
-
-   
-
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -122,7 +110,6 @@ public class Facturacion extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         txtNumeroF = new javax.swing.JTextField();
-        bntSuma = new javax.swing.JButton();
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel9.setText("Seleccione el tipo de servicio que le interesa");
@@ -130,6 +117,7 @@ public class Facturacion extends javax.swing.JFrame {
         jLabel6.setText("jLabel6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 102, 255));
 
         btnCrearF.setText("Crear factura");
         btnCrearF.addActionListener(new java.awt.event.ActionListener() {
@@ -162,8 +150,10 @@ public class Facturacion extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtServicios);
 
+        txtCantidadDW.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtCantidadDW.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCantidadDW.setText("1");
+        txtCantidadDW.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         txtCantidadDW.setEnabled(false);
 
         jCFechaIngreso.setEnabled(false);
@@ -204,6 +194,7 @@ public class Facturacion extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Cantidad de noches:");
 
+        txtCantidadN.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         txtCantidadN.setEnabled(false);
         txtCantidadN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,6 +202,9 @@ public class Facturacion extends javax.swing.JFrame {
             }
         });
 
+        txtCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCliente.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         txtCliente.setEnabled(false);
         txtCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,11 +212,17 @@ public class Facturacion extends javax.swing.JFrame {
             }
         });
 
+        txtCedula.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtCedula.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCedula.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         txtCedula.setEnabled(false);
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Habitacion");
 
+        txtHabitacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtHabitacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtHabitacion.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         txtHabitacion.setEnabled(false);
         txtHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,6 +233,9 @@ public class Facturacion extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel10.setText("Cantidad");
 
+        txtPerro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtPerro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPerro.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         txtPerro.setEnabled(false);
         txtPerro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,14 +246,19 @@ public class Facturacion extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText("Fecha de ingreso");
 
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Servicio Estadia");
 
+        jLabel16.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
         jLabel16.setText("Precio por noche");
 
-        jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
         jLabel17.setText("Cantidad ");
 
+        txtCantidadN1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCantidadN1.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         txtCantidadN1.setEnabled(false);
         txtCantidadN1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,6 +266,7 @@ public class Facturacion extends javax.swing.JFrame {
             }
         });
 
+        jLabel18.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
         jLabel18.setText("Total:");
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -265,26 +274,33 @@ public class Facturacion extends javax.swing.JFrame {
 
         txtCantidadDW1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCantidadDW1.setText("1");
+        txtCantidadDW1.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         txtCantidadDW1.setEnabled(false);
 
-        jLabel20.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
         jLabel20.setText("Cantidad");
 
+        jLabel22.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
         jLabel22.setText("Precio  dog walking");
 
+        jLabel23.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
         jLabel23.setText("Total:");
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel24.setText("Servicio Grooming");
 
+        jLabel25.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
         jLabel25.setText("Total:");
 
+        txtMontoTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMontoTotal.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         txtMontoTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMontoTotalActionPerformed(evt);
             }
         });
 
+        jLabel21.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
         jLabel21.setText("Monto a pagar");
 
         jTextField2.setEditable(false);
@@ -292,6 +308,7 @@ public class Facturacion extends javax.swing.JFrame {
         jTextField2.setText("5000");
 
         txtTotalEstadia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTotalEstadia.setDisabledTextColor(new java.awt.Color(51, 51, 51));
 
         jTextField5.setEditable(false);
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -303,26 +320,19 @@ public class Facturacion extends javax.swing.JFrame {
         });
 
         txtTotalGrooming.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTotalGrooming.setDisabledTextColor(new java.awt.Color(51, 51, 51));
 
         txtTotalDW.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTotalDW.setDisabledTextColor(new java.awt.Color(51, 51, 51));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel13.setText("Factura");
 
         jLabel26.setText("#");
 
-        txtNumeroF.setText("1");
-        txtNumeroF.setToolTipText("");
-
-        bntSuma.setText("+");
-        bntSuma.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bntSumaMouseClicked(evt);
-            }
-        });
-        bntSuma.addActionListener(new java.awt.event.ActionListener() {
+        txtNumeroF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntSumaActionPerformed(evt);
+                txtNumeroFActionPerformed(evt);
             }
         });
 
@@ -333,66 +343,62 @@ public class Facturacion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(1, 1, 1)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 0, Short.MAX_VALUE)))
-                                    .addGap(98, 98, 98)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(95, 95, 95))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(14, 14, 14)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jLabel26)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(txtNumeroF, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(bntSuma))
-                                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtTotalGrooming, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txtCantidadDW1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtTotalDW, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtTotalEstadia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel24)
-                                                .addComponent(jLabel19)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addGap(96, 96, 96)
-                                                    .addComponent(txtCantidadN1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGap(0, 0, Short.MAX_VALUE)))
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel22)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(31, 31, 31))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(13, 13, 13)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(45, 45, 45)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(53, 53, 53)
+                                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(95, 95, 95))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel26)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtNumeroF, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(49, 49, 49))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(txtCantidadN1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtTotalGrooming, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtCantidadDW1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtTotalDW, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtTotalEstadia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel24)
+                                            .addComponent(jLabel19))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(31, 31, 31))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel14))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -411,8 +417,7 @@ public class Facturacion extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
                             .addComponent(jLabel26)
-                            .addComponent(txtNumeroF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bntSuma))
+                            .addComponent(txtNumeroF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -454,10 +459,6 @@ public class Facturacion extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCrearF)
-                .addGap(30, 30, 30))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -508,6 +509,10 @@ public class Facturacion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCrearF)
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -555,11 +560,11 @@ public class Facturacion extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(btnCrearF)
-                .addGap(16, 16, 16))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -567,29 +572,26 @@ public class Facturacion extends javax.swing.JFrame {
 
     private void btnCrearFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearFActionPerformed
         // TODO add your handling code here:
-       
-     
+
         //-----------------------------------------------------------------------------------
         java.sql.Date fechaIngreso = new java.sql.Date(jCFechaIngreso.getDate().getTime());
         java.sql.Date fechaSalida = new java.sql.Date(jCFechaSalida.getDate().getTime());
         String grooming = (rbSI.isSelected() ? "SI" : "NO");
 
         DatosFactura dtFactura = new DatosFactura();
-         Factura f = new Factura(txtCliente.getText(), txtPerro.getText(), txtCedula.getText(), Integer.parseInt(txtCantidadN.getText()),
+        Factura f = new Factura(txtCliente.getText(), txtPerro.getText(), txtCedula.getText(), Integer.parseInt(txtCantidadN.getText()),
                 txtHabitacion.getText(), fechaIngreso, fechaSalida,
-                 Integer.parseInt(txtCantidadDW.getText()), grooming, Integer.parseInt(txtNumeroF.getText()),
+                Integer.parseInt(txtCantidadDW.getText()), grooming, Integer.parseInt(txtNumeroF.getText()),
                 Integer.parseInt(txtTotalEstadia.getText()),
                 Integer.parseInt(txtTotalDW.getText()),
                 Integer.parseInt(txtTotalGrooming.getText()),
                 Integer.parseInt(txtMontoTotal.getText()));
 
         dtFactura.insertarFactura(f);
-        //informacion();
 
         JOptionPane.showMessageDialog(null, "Factura Creada");
         ////////-----------------------------------------------------------------------------------
-         JOptionPane.showMessageDialog(null, "\n\nFACTURA"
-              
+        JOptionPane.showMessageDialog(null, "\n\nFACTURA"
                 + "\nCliente: " + txtCliente.getText()
                 + "\nPerro: " + txtPerro.getText()
                 + "\nCedula: " + txtCedula.getText()
@@ -599,6 +601,14 @@ public class Facturacion extends javax.swing.JFrame {
                 + "\n Subtotal Gromming: " + txtTotalGrooming.getText()
                 + "\n Monto Total: " + txtMontoTotal.getText());
 
+        int cantidad = 1;
+        cantidad = Integer.parseInt(txtNumeroF.getText());
+        if (cantidad > 0) {
+            cantidad++;
+            txtNumeroF.setText(String.valueOf(cantidad));
+        }
+
+        limpiar();
 
 
     }//GEN-LAST:event_btnCrearFActionPerformed
@@ -625,10 +635,6 @@ public class Facturacion extends javax.swing.JFrame {
             String dogWalking = (String) jtServicios.getValueAt(filaSeleccionada, 7);
             String grooming = (String) jtServicios.getValueAt(filaSeleccionada, 8);
 
-//          CALCULAMOS EL PRECIO DEL DOGWALKING
-//            int precioDW=5000;
-//            int totalDogWalking=Integer.parseInt(dogWalking)* precioDW;
-//         txtTotalDW.setText(String.valueOf(totalDogWalking));
             calcularPrecioEstadia(Integer.parseInt(cantidadN));
             calcularPrecioDW(Integer.parseInt(dogWalking));
             calcularGromming(grooming);
@@ -659,16 +665,14 @@ public class Facturacion extends javax.swing.JFrame {
             txtHabitacion.setText(habitacion);
             txtCantidadDW.setText(dogWalking);
             txtCantidadDW1.setText(dogWalking);
-            
+
             ///Se calcula el monto total
             int totalEstadia = Integer.parseInt(txtTotalEstadia.getText());
             int totalDW = Integer.parseInt(txtTotalDW.getText());
             int totalGrooming = Integer.parseInt(txtTotalGrooming.getText());
             int montoTotal = totalEstadia + totalDW + totalGrooming;
             txtMontoTotal.setText(String.valueOf(montoTotal));
-        
-            
-            
+
             if (grooming.equals("SI")) {
                 rbSI.setSelected(true);
             } else if (grooming.equals("NO")) {
@@ -679,9 +683,23 @@ public class Facturacion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
 
         }
-        
+
 
     }//GEN-LAST:event_jtServiciosMouseClicked
+    public void limpiar() {
+        txtCliente.setText(null);
+        txtPerro.setText(null);
+        txtCedula.setText(null);
+        txtCantidadN.setText(null);
+        txtCantidadN1.setText(null);
+        txtHabitacion.setText(null);
+        txtCantidadDW.setText(null);
+        txtCantidadDW1.setText(null);
+        txtTotalEstadia.setText(null);
+        txtTotalDW.setText(null);
+        txtTotalGrooming.setText(null);
+
+    }
 
     private void calcularPrecioEstadia(int cantidadN) {
         int precioEstadia = 5000;
@@ -705,8 +723,7 @@ public class Facturacion extends javax.swing.JFrame {
             txtTotalGrooming.setText(String.valueOf(0));
         }
     }
-   
-    
+
 
     private void rbSIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSIActionPerformed
         // TODO add your handling code here:
@@ -737,22 +754,13 @@ public class Facturacion extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCantidadNActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        
-        
+
+
     }//GEN-LAST:event_jTextField5ActionPerformed
 
-    private void bntSumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSumaActionPerformed
-      
-    }//GEN-LAST:event_bntSumaActionPerformed
-
-    private void bntSumaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntSumaMouseClicked
-         int cantidad = 1;
-        cantidad = Integer.parseInt(txtNumeroF.getText());
-        if (cantidad >0) {
-            cantidad++;
-            txtNumeroF.setText(String.valueOf(cantidad));
-        } 
-    }//GEN-LAST:event_bntSumaMouseClicked
+    private void txtNumeroFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -790,7 +798,6 @@ public class Facturacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntSuma;
     private javax.swing.JButton btnCrearF;
     private com.toedter.calendar.JDateChooser jCFechaIngreso;
     private com.toedter.calendar.JDateChooser jCFechaSalida;
@@ -835,7 +842,7 @@ public class Facturacion extends javax.swing.JFrame {
     private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtHabitacion;
     private javax.swing.JTextField txtMontoTotal;
-    private javax.swing.JTextField txtNumeroF;
+    public javax.swing.JTextField txtNumeroF;
     private javax.swing.JTextField txtPerro;
     private javax.swing.JTextField txtTotalDW;
     private javax.swing.JTextField txtTotalEstadia;

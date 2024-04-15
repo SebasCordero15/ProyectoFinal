@@ -99,26 +99,22 @@ public class DatosCliente {
             String tamaño, String genero, String observaciones) {
         try {
             Conexion con = new Conexion();
-            String sql = "UPDATE cliente SET nombre = ?, apellido = ?, telefono = ?, direccion = ?, correo = ?, nombreP = ?,  edadP = ?, raza = ?, tamaño = ?, genero = ?, observaciones = ? WHERE cedula = ?";
 
-            try (PreparedStatement statement = con.crearPrepareStatement(sql)) {
+            PreparedStatement misql = con.crearPrepareStatement("UPDATE cliente SET nombre = ?, apellido = ?, telefono = ?, direccion = ?, correo = ?, nombreP = ?,  edadP = ?, raza = ?, tamaño = ?, genero = ?, observaciones = ? WHERE cedula = ?");
 
-                statement.setString(1, nombre);
-                statement.setString(2, apellido);
-                statement.setString(12, cedula);
-                statement.setString(3, telefono);
-                statement.setString(4, direccion);
-                statement.setString(5, correo);
-                statement.setString(6, nombreP);
-                statement.setInt(7, edadP);
-                statement.setString(8, raza);
-                statement.setString(9, tamaño);
-                statement.setString(10, genero);
-                statement.setString(11, observaciones);
-
-                statement.executeUpdate();
-            }
-
+            misql.setString(1, nombre);
+            misql.setString(2, apellido);
+            misql.setString(12, cedula);
+            misql.setString(3, telefono);
+            misql.setString(4, direccion);
+            misql.setString(5, correo);
+            misql.setString(6, nombreP);
+            misql.setInt(7, edadP);
+            misql.setString(8, raza);
+            misql.setString(9, tamaño);
+            misql.setString(10, genero);
+            misql.setString(11, observaciones);
+            misql.executeUpdate();
         } catch (SQLException e) {
             Logger.getLogger(DatosCliente.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -131,6 +127,34 @@ public class DatosCliente {
             try (PreparedStatement statement = con.crearPrepareStatement(sql)) {
                 statement.setString(1, cedula);
                 statement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(DatosCliente.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    public void ConteoGenero(Perro p) {
+        try {
+            Conexion con = new Conexion();
+            Statement st = con.crearStatement();///consultamos a la base de datos
+            ResultSet rs = st.executeQuery("SELECT genero FROM cliente");
+            while (rs.next()) {
+                String genero = rs.getString("genero");
+                p.realizarConteo(genero);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(DatosCliente.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    public void ConteoTamaño(Perro p) {
+        try {
+            Conexion con = new Conexion();
+            Statement st = con.crearStatement();///consultamos a la base de datos
+            ResultSet rs = st.executeQuery("SELECT tamaño FROM cliente");
+            while (rs.next()) {
+                String tamaño = rs.getString("tamaño");
+                p.ConteoTamaño(tamaño);
             }
         } catch (SQLException e) {
             Logger.getLogger(DatosCliente.class.getName()).log(Level.SEVERE, null, e);

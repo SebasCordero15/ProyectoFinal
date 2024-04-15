@@ -4,6 +4,8 @@
  */
 package Agenda;
 
+import Perro.DatosCliente;
+import Perro.Perro;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,15 +19,15 @@ import java.util.logging.Logger;
  * @author indir
  */
 public class DatosFactura {
-
+    
     public void insertarFactura(Factura fact) {
-
+        
         try {
             Conexion con = new Conexion();
             // //2-creamos el statement\n" +
             PreparedStatement misql = con.crearPrepareStatement("INSERT INTO factura VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-           
-             misql.setString(1, fact.getNombre());
+            
+            misql.setString(1, fact.getNombre());
             misql.setString(2, fact.getNombreP());
             misql.setString(3, fact.getCedula());
             misql.setInt(4, fact.getCantidadN());
@@ -34,7 +36,7 @@ public class DatosFactura {
             misql.setDate(7, fact.getFechaSalida());
             misql.setInt(8, fact.getDogWalking());
             misql.setString(9, fact.getGrooming());
-             misql.setInt(10, fact.getNumfactura());
+            misql.setInt(10, fact.getNumfactura());
             misql.setInt(11, fact.getTotalEstadia());
             misql.setInt(12, fact.getTotalDogWalking());
             misql.setInt(13, fact.getTotalGromming());
@@ -44,9 +46,10 @@ public class DatosFactura {
         } catch (Exception e) {
             Logger.getLogger(DatosFactura.class.getName()).log(Level.SEVERE, null, e);
         }
-
+        
     }
-      public ArrayList<Factura> todasFacturas() {
+    
+    public ArrayList<Factura> todasFacturas() {
         ArrayList<Factura> ListaDfacturas = new ArrayList<>();
         try {
             //1- crear la conexion con la bd
@@ -56,8 +59,8 @@ public class DatosFactura {
             //3-ejecutar la sentencia
             ResultSet rs = st.executeQuery("SELECT * FROM factura");
             while (rs.next()) {
-                Factura fac=new Factura(
-                        rs.getString("nombre"), 
+                Factura fac = new Factura(
+                        rs.getString("nombre"),
                         rs.getString("nombreP"),
                         rs.getString("cedula"),
                         rs.getInt("cantidadN"),
@@ -80,5 +83,47 @@ public class DatosFactura {
         }
         return ListaDfacturas;
     }
-      
+    
+    public void ConteoGrooming(Factura f) {
+        try {
+            Conexion con = new Conexion();
+            Statement st = con.crearStatement();///consultamos a la base de datos
+            ResultSet rs = st.executeQuery("SELECT grooming FROM factura");
+            while (rs.next()) {
+                String g = rs.getString("grooming");
+                f.realizarConteo(g);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(DatosFactura.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+    
+    public void ConteoDog(Factura f) {
+        try {
+            Conexion con = new Conexion();
+            Statement st = con.crearStatement();///consultamos a la base de datos
+            ResultSet rs = st.executeQuery("SELECT dogWalking FROM factura");
+            while (rs.next()) {
+                int dw = rs.getInt("dogWalking");
+                f.realizarConteoD(dw);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(DatosFactura.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+    
+    public void ConteoGanancias(Factura f) {
+        try {
+            Conexion con = new Conexion();
+            Statement st = con.crearStatement();///consultamos a la base de datos
+            ResultSet rs = st.executeQuery("SELECT MontTotal FROM factura");
+            while (rs.next()) {
+                int mt = rs.getInt("MontTotal");
+                f.realizarConteoGanancias(mt);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(DatosFactura.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+    
 }

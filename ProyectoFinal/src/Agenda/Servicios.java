@@ -31,7 +31,7 @@ public class Servicios extends Agendar {
         return dogWalking;
     }
 
-    public void setDogWalking(int dogWalking) {
+    public void setDogWalking() {
         this.dogWalking = dogWalking;
     }
 

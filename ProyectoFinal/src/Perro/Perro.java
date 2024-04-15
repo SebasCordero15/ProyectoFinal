@@ -18,13 +18,19 @@ public class Perro extends Dueño {
     private String observaciones;
     private int cantHembras;
     private int cantMachos;
+    private int cantidadClientes;
+    private int cantPequeño;
+    private int cantMediano;
+    private int cantGrande;
 
     public Perro() {
         this.nombreP = "";
         this.edadP = 0;
+        this.raza = "";
         this.observaciones = "";
         this.cantHembras = 0;
         this.cantMachos = 0;
+        this.cantidadClientes = 0;
     }
 
     public Perro(String nombre, String apellido, String cedula, String telefono, String direccion, String correo, String nombreP, int edadP, String raza, String tamaño, String genero, String observaciones) {
@@ -37,6 +43,7 @@ public class Perro extends Dueño {
         this.observaciones = observaciones;
         this.cantHembras = cantHembras;
         this.cantMachos = cantMachos;
+        this.cantidadClientes = cantidadClientes;
     }
 
     public String getObservaciones() {
@@ -103,6 +110,14 @@ public class Perro extends Dueño {
         this.cantMachos++;
     }
 
+    public int getCantidadClientes() {
+        return cantidadClientes;
+    }
+
+    public void setCantidadClientes(int cantidadClientes) {
+        this.cantidadClientes++;
+    }
+
     @Override
     public String toString() {
         return super.toString() + "\n"
@@ -116,16 +131,61 @@ public class Perro extends Dueño {
                 + "\nObservaciones=" + observaciones;
     }
 
-     public String verEstadistica(){
-        Perro p=new Perro();
-       return "Cantidad de hembras: " + this.getCantHembras()
-                + "\nCantidad de machos: " + this.getCantMachos();
-     }
-    public void realizarConteo(String sexo) {
-        if (sexo.contentEquals("M")) {
-            this.setCantMachos();
+    public String verEstadistica() {
+        return "\nCantidad Clientes: " + this.cantidadClientes+"\n"
+                +"\nCantidad de hembras: " + this.cantHembras  
+                +"\nCantidad de machos: " + this.cantMachos+"\n"
+                + "\nCantidad perros pequeños: " + this.cantPequeño
+                + "\nCantidad perros medianos: " + this.cantMediano
+                + "\nCantidad perros grandes: " + this.cantGrande;
+    }
+
+    public void realizarConteo(String genero) {
+        if (genero.equalsIgnoreCase("M")) {
+            this.cantMachos++;
         } else {
-            this.setCantHembras();
+            this.cantHembras++;
+        }
+        this.cantidadClientes++;
+    }
+
+    public void ConteoTamaño(String tamaño) {
+        switch (tamaño) {
+            case "Pequeño":
+                setCantPequeño();
+                break;
+            case "Mediano":
+                setCantMediano();
+                break;
+            case "Grande":
+                setCantGrande();
+                break;
+
         }
     }
+
+    public int getCantPequeño() {
+        return cantPequeño;
+    }
+
+    public void setCantPequeño() {
+        this.cantPequeño++;
+    }
+
+    public int getCantMediano() {
+        return cantMediano;
+    }
+
+    public void setCantMediano() {
+        this.cantMediano++;
+    }
+
+    public int getCantGrande() {
+        return cantGrande;
+    }
+
+    public void setCantGrande() {
+        this.cantGrande++;
+    }
+
 }
