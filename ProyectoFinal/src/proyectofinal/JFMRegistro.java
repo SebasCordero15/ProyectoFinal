@@ -53,7 +53,7 @@ public class JFMRegistro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jPanel4.setBackground(new java.awt.Color(217, 235, 253));
+        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Franklin Gothic Heavy", 1, 36)); // NOI18N
@@ -111,7 +111,7 @@ public class JFMRegistro extends javax.swing.JFrame {
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addGap(22, 22, 22))
+                .addGap(25, 25, 25))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
