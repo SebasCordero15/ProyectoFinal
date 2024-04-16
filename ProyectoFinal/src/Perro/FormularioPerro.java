@@ -4,7 +4,10 @@
  */
 package Perro;
 
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -426,7 +429,26 @@ public class FormularioPerro extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnAgregarActionPerformed
+    
+    public void crearExp() {
+        Perro p = new Perro();
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String telefono = txtNumero.getText();
+        String cedula = txtCedula.getText();
+        String direccion = txtDireccion.getText();
+        String correo = txtCorreo.getText();
 
+        String nombreP = txtNombreP.getText();
+        int edadP = Integer.parseInt(txtEdad.getText());
+        String raza = txtRaza.getText();
+        String tamaño = txtTamaño1.getSelectedItem().toString();
+        String genero = (rbMacho.isSelected() ? "M" : "H");
+        String observaciones = txtObservaciones.getText();
+        Perro dog = new Perro(nombre, apellido, cedula, telefono, direccion, correo, nombreP, edadP, raza, tamaño, genero, observaciones);
+        
+        
+    }
     private void txtNombrePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombrePActionPerformed
 
     }//GEN-LAST:event_txtNombrePActionPerformed
