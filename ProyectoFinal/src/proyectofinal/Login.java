@@ -4,6 +4,8 @@
  */
 package proyectofinal;
 
+import Tienda.DatosUsuarios;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,10 +14,9 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    
     public Login() {
         initComponents();
-         this.setVisible(true);
+        this.setVisible(true);
         this.setLocationRelativeTo(null);
     }
 
@@ -32,8 +33,7 @@ public class Login extends javax.swing.JFrame {
         Contraseña = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         btnEntrar = new javax.swing.JButton();
-        txtContraseña = new javax.swing.JPasswordField();
-        btnSalir = new javax.swing.JButton();
+        txtContra = new javax.swing.JPasswordField();
         jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,14 +60,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
         jLabel16.setFont(new java.awt.Font("Franklin Gothic Heavy", 1, 36)); // NOI18N
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Login.png"))); // NOI18N
@@ -80,9 +72,6 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Contraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
@@ -90,15 +79,17 @@ public class Login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14))
+                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,11 +103,9 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Contraseña)
-                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEntrar)
-                    .addComponent(btnSalir))
+                .addComponent(btnEntrar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -127,26 +116,37 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnSalirActionPerformed
+    public void cargarDatos() {
+
+        DatosUsuarios dUsuarios = new DatosUsuarios();
+        ArrayList<Registro> ListaUsuarios = dUsuarios.todosUsuarios();//trae todo los articulos de la bd
+
+        String datos[] = new String[4];
+        int i = 0;
+        for (Registro regis : ListaUsuarios) {
+            datos[0] = ListaUsuarios.get(i).getCorreoE();
+            datos[1] = ListaUsuarios.get(i).getNombre();
+            datos[2] = ListaUsuarios.get(i).getUsuario();
+            datos[3] = ListaUsuarios.get(i).getContraseña();
+            i++;
+        }
+
+        String usuario = txtUsuario.getText();
+        String contraseña = txtContra.getText();
+
+        if (dUsuarios.Verificar(usuario, contraseña)) { //es true
+            MenuPrincipal mp = new MenuPrincipal();
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto");
+            Login l = new Login();
+        }
+
+    }
+
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-       String user,pwd;
-       user= txtUsuario.getText();
-       pwd=txtContraseña.getText();
-       if(user.equals("admin")&&pwd.equals("123")){
-           MenuPrincipal mp = new MenuPrincipal();
-            mp.setVisible(true);
-            mp.setLocationRelativeTo(null);
-      
-           this.setVisible(false);
-       }else{
-           JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrecto");
-            txtUsuario.setText("");
-        txtUsuario.requestFocus();
-        txtContraseña.setText("");
-       }
+        cargarDatos();
+        this.setVisible(false);
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**
@@ -188,9 +188,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Contraseña;
     private javax.swing.JLabel Usuario;
     private javax.swing.JButton btnEntrar;
-    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JPasswordField txtContraseña;
+    private javax.swing.JPasswordField txtContra;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

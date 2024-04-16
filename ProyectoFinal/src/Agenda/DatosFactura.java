@@ -118,8 +118,8 @@ public class DatosFactura {
             Statement st = con.crearStatement(); //para consultar en la base de datos
             ResultSet rs = st.executeQuery("SELECT MontTotal FROM factura");
             while (rs.next()) {
-                int dw = rs.getInt("MontTotal");
-                f.realizarConteoGanancias(dw);
+                int mt = rs.getInt("MontTotal");
+                f.realizarConteoGanancias(mt);
             }
         } catch (SQLException e) {
             Logger.getLogger(DatosFactura.class.getName()).log(Level.SEVERE, null, e);

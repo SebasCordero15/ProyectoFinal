@@ -11,6 +11,9 @@ import Agenda.*;
 import Perro.FormularioPerro;
 import Perro.VerLista;
 import Perro.Reporte;
+import Tienda.InfoEstadia;
+import Tienda.InfoGrooming;
+import Tienda.JFMProductos;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,8 +47,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Hotel = new javax.swing.JMenu();
         itemHotel = new javax.swing.JMenuItem();
         mitEstadia = new javax.swing.JMenuItem();
-        mitDogWalking = new javax.swing.JMenuItem();
         mitGrooming = new javax.swing.JMenuItem();
+        mitDogWalking = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mitCrearExpediente = new javax.swing.JMenuItem();
         mitVerLista = new javax.swing.JMenuItem();
@@ -58,6 +61,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mitRegistroFactura = new javax.swing.JMenuItem();
         mitVerReporte = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -85,9 +90,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         Hotel.add(itemHotel);
 
+        mitEstadia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/casa-de-mascotas.png"))); // NOI18N
         mitEstadia.setText("Estadia");
+        mitEstadia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitEstadiaActionPerformed(evt);
+            }
+        });
         Hotel.add(mitEstadia);
 
+        mitGrooming.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/banera.png"))); // NOI18N
+        mitGrooming.setText("Grooming");
+        mitGrooming.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitGroomingActionPerformed(evt);
+            }
+        });
+        Hotel.add(mitGrooming);
+
+        mitDogWalking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/competencia-de-perros.png"))); // NOI18N
         mitDogWalking.setText("DogWalking");
         mitDogWalking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,9 +116,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         Hotel.add(mitDogWalking);
-
-        mitGrooming.setText("Grooming");
-        Hotel.add(mitGrooming);
 
         jMenuBar1.add(Hotel);
 
@@ -177,6 +195,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(mitVerReporte);
 
+        jMenu6.setText("Tienda");
+
+        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/carro-de-la-carretilla (1).png"))); // NOI18N
+        jMenuItem3.setText("Productos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu6);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -186,7 +218,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(274, Short.MAX_VALUE)
+                        .addContainerGap(350, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -239,13 +271,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
        jfmEstadias ver= new jfmEstadias();
     }//GEN-LAST:event_mitEstadiasActionPerformed
 
-    private void mitDogWalkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitDogWalkingActionPerformed
-        InfoDogWalking info = new InfoDogWalking();
-    }//GEN-LAST:event_mitDogWalkingActionPerformed
-
     private void itemHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHotelActionPerformed
         InformacioH s=new InformacioH();
     }//GEN-LAST:event_itemHotelActionPerformed
+
+    private void mitEstadiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitEstadiaActionPerformed
+        InfoEstadia  Ie= new InfoEstadia();
+    }//GEN-LAST:event_mitEstadiaActionPerformed
+
+    private void mitGroomingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitGroomingActionPerformed
+        InfoGrooming ig = new InfoGrooming();
+    }//GEN-LAST:event_mitGroomingActionPerformed
+
+    private void mitDogWalkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitDogWalkingActionPerformed
+        InfoDogWalking info = new InfoDogWalking();
+
+    }//GEN-LAST:event_mitDogWalkingActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+       JFMProductos productos = new JFMProductos();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,10 +336,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem mitAgendar;
     private javax.swing.JMenuItem mitCrearExpediente;
     private javax.swing.JMenuItem mitDogWalking;

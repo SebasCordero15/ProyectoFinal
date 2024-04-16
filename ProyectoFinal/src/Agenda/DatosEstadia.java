@@ -28,7 +28,7 @@ public class DatosEstadia {
             misql.setDate(7, agend.getFechaSalida());
             misql.executeUpdate();
             con.cerrarConexion();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             Logger.getLogger(DatosEstadia.class.getName()).log(Level.SEVERE, null, e);
         }
     }
