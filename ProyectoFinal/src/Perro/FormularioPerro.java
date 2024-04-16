@@ -426,7 +426,7 @@ public class FormularioPerro extends javax.swing.JFrame {
         datosC.ConteoGenero(dog);
         datosC.ConteoTamaño(dog);
         cargarDatos();
-
+        crearExp();
 
     }//GEN-LAST:event_btnAgregarActionPerformed
     
@@ -447,8 +447,25 @@ public class FormularioPerro extends javax.swing.JFrame {
         String observaciones = txtObservaciones.getText();
         Perro dog = new Perro(nombre, apellido, cedula, telefono, direccion, correo, nombreP, edadP, raza, tamaño, genero, observaciones);
         
-        
-    }
+        try {
+            //creamos el archivo 
+            DataOutputStream archivo = new DataOutputStream(new FileOutputStream(nombre + " " + apellido+ " " + nombreP +".txt", true));
+            
+            
+                
+                archivo.writeUTF(dog.toString());
+                
+                JOptionPane.showMessageDialog(null, "Expediente creado correctamente", "Crear Archivo",
+                        JOptionPane.OK_OPTION);
+               
+                archivo.close();
+            
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al agregar" + e.getMessage(), "Error al agregar datos",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+}    
+    
     private void txtNombrePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombrePActionPerformed
 
     }//GEN-LAST:event_txtNombrePActionPerformed

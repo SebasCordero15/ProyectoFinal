@@ -1,0 +1,17 @@
+
+**********************
+
+Informacion del Dueno
+Nombre=Alberto
+Apellido=Benavides
+Telefono=83274743
+Cedula=122345355
+Direccion=Tibas
+Correo= dfgcfgnb
+**Informacion del Perro**
+NombreP=Rintintin
+EdadP=7
+Raza=Pastor Aleman
+Tamannio=Grande
+Genero=M
+Observaciones=sano

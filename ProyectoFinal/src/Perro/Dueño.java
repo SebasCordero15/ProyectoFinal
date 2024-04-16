@@ -88,7 +88,7 @@ public class Dueño {
     public String toString() {
         return """
                \n**********************\n
-               Informacion del Dueño
+               Informacion del Dueno
                Nombre=""" + this.getNombre()
                 + "\nApellido=" + this.getApellido()
                 + "\nTelefono=" + this.getTelefono()

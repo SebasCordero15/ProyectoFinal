@@ -4,6 +4,7 @@
  */
 package Agenda;
 
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -608,10 +609,43 @@ public class Facturacion extends javax.swing.JFrame {
         }
 
         limpiar();
-
-
+    
     }//GEN-LAST:event_btnCrearFActionPerformed
-
+    public void insertExp() {
+        String nombre = txtCliente.getText();
+        String nombreP = txtPerro.getText();
+        String nCedula = txtCedula.getText();
+        String cantN = txtCantidadN.getText();
+        String estadia =txtTotalEstadia.getText();
+        String total = txtTotalDW.getText();
+        String grooming = txtTotalGrooming.getText();
+        String monto = txtMontoTotal.getText();
+        
+        try {
+            //creamos el archivo 
+              DataOutputStream archivoCliente = new DataOutputStream(new FileOutputStream(nombre + " " + nombreP +".txt"));            
+            
+                
+                archivoCliente.writeUTF("Dueno: " + txtCliente.getText());
+                archivoCliente.writeUTF("Perro: " + txtPerro.getText());
+                archivoCliente.writeUTF("Cedula: " + txtCedula.getText());
+                archivoCliente.writeUTF("Cantidad de noches: " + txtCantidadN.getText());
+                archivoCliente.writeUTF("Estadia: " + txtTotalEstadia.getText());
+                archivoCliente.writeUTF("Dog walking: " + txtTotalDW.getText());
+                archivoCliente.writeUTF("Grooming: " + txtTotalGrooming.getText());
+                archivoCliente.writeUTF("Monto Total: " + txtMontoTotal.getText());
+                
+                
+                JOptionPane.showMessageDialog(null, "Expediente Actualizado", "Crear Archivo",
+                        JOptionPane.OK_OPTION);
+               
+                archivoCliente.close();
+            
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al agregar" + e.getMessage(), "Error al agregar datos",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+}   
     private void jtServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtServiciosMouseClicked
         int filaSeleccionada;
         try {

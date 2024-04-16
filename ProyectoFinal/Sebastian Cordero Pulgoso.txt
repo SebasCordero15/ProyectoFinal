@@ -1,0 +1,17 @@
+
+**********************
+
+Informacion del Dueno
+Nombre=Sebastian
+Apellido=Cordero
+Telefono=34564342
+Cedula=23244565
+Direccion=Cartago
+Correo= uiohdouds
+**Informacion del Perro**
+NombreP=Pulgoso
+EdadP=7
+Raza=Criollo
+Tamannio=Mediano
+Genero=M
+Observaciones=sano

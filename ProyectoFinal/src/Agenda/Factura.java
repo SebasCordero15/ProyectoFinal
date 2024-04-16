@@ -53,6 +53,7 @@ public class Factura extends Servicios {
                 + "\n Subtotal Gromming: " + totalGromming
                 + "\n Monto Total: " + Montototal + "\n";
     }
+    
 
     public int getTotalEstadia() {
         return totalEstadia;
