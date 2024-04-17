@@ -34,7 +34,6 @@ public class Factura extends Servicios {
         this.cantidadDW = cantidadDW;
 
     }
-
     public Factura() {
         this.numfactura = 0;
         this.totalEstadia = 0;
@@ -45,7 +44,7 @@ public class Factura extends Servicios {
         this.cantidadG = 0;
         this.cantidadDW = 0;
     }
-
+    @Override
     public String toString() {
         return super.toString()
                 + "Factura"
@@ -54,7 +53,6 @@ public class Factura extends Servicios {
                 + "\n Subtotal Gromming: " + totalGromming
                 + "\n Monto Total: " + Montototal + "\n";
     }
-    
 
     public int getTotalEstadia() {
         return totalEstadia;

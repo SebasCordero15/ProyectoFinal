@@ -609,14 +609,15 @@ public class Facturacion extends javax.swing.JFrame {
             txtNumeroF.setText(String.valueOf(cantidad));
         }
 
-        limpiar();
+     insertExp();
+     limpiar();
     
     }//GEN-LAST:event_btnCrearFActionPerformed
     public void insertExp() {
         String nombre = txtCliente.getText();
         String nombreP = txtPerro.getText();
-        String nCedula = txtCedula.getText();
-//         
+        String cedula = txtCedula.getText();
+       
     
             java.sql.Date fechaIngreso = new java.sql.Date(jCFechaIngreso.getDate().getTime());
             java.sql.Date fechaSalida = new java.sql.Date(jCFechaSalida.getDate().getTime());
@@ -630,17 +631,19 @@ public class Facturacion extends javax.swing.JFrame {
                 Integer.parseInt(txtMontoTotal.getText()));
 
             try { 
-              DataOutputStream archivoCliente = new DataOutputStream(new FileOutputStream( nombre + " " + nCedula + " " + nombreP +".txt", true));            
-            
-                archivoCliente.writeUTF(f.toString());
-//                archivoCliente.writeUTF("Dueno: " + txtCliente.getText());
-//                archivoCliente.writeUTF("Perro: " + txtPerro.getText());
-//                archivoCliente.writeUTF("Cedula: " + txtCedula.getText());
-//                archivoCliente.writeUTF("Cantidad de noches: " + txtCantidadN.getText());
-//                archivoCliente.writeUTF("Estadia: " + txtTotalEstadia.getText());
-//                archivoCliente.writeUTF("Dog walking: " + txtTotalDW.getText());
-//                archivoCliente.writeUTF("Grooming: " + txtTotalGrooming.getText());
-//                archivoCliente.writeUTF("Monto Total: " + txtMontoTotal.getText());
+              DataOutputStream archivoCliente = new DataOutputStream(new FileOutputStream( nombre + " " + cedula + " " + nombreP +".txt", true));            
+              
+                  archivoCliente.writeUTF("\n*******Estadia****\n");
+              
+//                archivoCliente.writeUTF(f.toString());
+                archivoCliente.writeUTF("\nDueno: " + txtCliente.getText());
+                archivoCliente.writeUTF("\nPerro: " + txtPerro.getText());
+                archivoCliente.writeUTF("\nCedula: " + txtCedula.getText());
+                archivoCliente.writeUTF("\nCantidad de noches: " + txtCantidadN.getText());
+                archivoCliente.writeUTF("\nEstadia: " + txtTotalEstadia.getText());
+                archivoCliente.writeUTF("\nDog walking: " + txtTotalDW.getText());
+                archivoCliente.writeUTF("\nGrooming: " + txtTotalGrooming.getText());
+                archivoCliente.writeUTF("\nMonto Total: " + txtMontoTotal.getText());
                 
                 
                 JOptionPane.showMessageDialog(null, "Expediente Actualizado", "Crear Archivo",

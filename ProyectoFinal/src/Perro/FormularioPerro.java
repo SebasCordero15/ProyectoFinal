@@ -450,9 +450,7 @@ public class FormularioPerro extends javax.swing.JFrame {
         try {
 
             DataOutputStream archivo = new DataOutputStream(new FileOutputStream(nombre + " " + cedula + " " + nombreP +".txt", true));
-            
-            
-                
+
                 archivo.writeUTF(dog.toString());
                 
                 JOptionPane.showMessageDialog(null, "Expediente creado correctamente", "Crear Archivo",
