@@ -4,7 +4,6 @@
  */
 package Tienda;
 
-
 import javax.swing.JOptionPane;
 
 /**
@@ -44,7 +43,7 @@ public class JFMProductos extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         btnAgregarCarrito = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnPagar = new javax.swing.JButton();
         bntRestar1 = new javax.swing.JButton();
         bntSumar1 = new javax.swing.JButton();
         txtCantidad2 = new javax.swing.JTextField();
@@ -120,11 +119,11 @@ public class JFMProductos extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        jButton1.setText("Pagar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnPagar.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnPagar.setText("Pagar");
+        btnPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnPagarActionPerformed(evt);
             }
         });
 
@@ -264,7 +263,7 @@ public class JFMProductos extends javax.swing.JFrame {
                                 .addGap(40, 40, 40)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1)))
+                                    .addComponent(btnPagar)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
@@ -304,34 +303,35 @@ public class JFMProductos extends javax.swing.JFrame {
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtCantidad2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(bntSumar1)
-                                .addComponent(bntRestar1)))))
+                                .addComponent(bntRestar1))
+                            .addComponent(jLabel2))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtCantidad3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(bntSumar2)
-                                .addComponent(bntRestar2)))))
+                                .addComponent(bntRestar2))
+                            .addComponent(jLabel6))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtCantidad4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(bntSumar3)
-                                .addComponent(bntRestar3))))
+                                .addComponent(bntRestar3))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel10)
+                                .addComponent(jLabel9))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(128, 128, 128)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,7 +339,7 @@ public class JFMProductos extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)))))
+                                .addComponent(btnPagar)))))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -347,11 +347,11 @@ public class JFMProductos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bntRestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRestarActionPerformed
-        
+
     }//GEN-LAST:event_bntRestarActionPerformed
 
     private void bntSumarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntSumarMouseClicked
-      int cantidad = 0;
+        int cantidad = 0;
 
         try {
             cantidad = Integer.parseInt(txtCantidad1.getText());
@@ -363,7 +363,7 @@ public class JFMProductos extends javax.swing.JFrame {
             txtCantidad1.setText(String.valueOf(cantidad));
         } else {
             JOptionPane.showMessageDialog(null, "El maximo de este ariculo por cliente es 10 ");
-        }  
+        }
     }//GEN-LAST:event_bntSumarMouseClicked
 
     private void txtCantidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidad1ActionPerformed
@@ -371,19 +371,26 @@ public class JFMProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCantidad1ActionPerformed
 
     private void btnAgregarCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCarritoActionPerformed
-  
+
     }//GEN-LAST:event_btnAgregarCarritoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+        JOptionPane.showMessageDialog(null, "Factura Creada");
+        ////////-----------------------------------------------------------------------------------
+        JOptionPane.showMessageDialog(null, "\n\nFACTURA"
+                + "\nKit Juguetes 1: " + txtCantidad1.getText()
+                + "\nKit Grooming: " + txtCantidad2.getText()
+                + "\nCorrrea: " + txtCantidad3.getText()
+                + "\nKit Juguetes 2: " + txtCantidad4.getText());
+                
+    }//GEN-LAST:event_btnPagarActionPerformed
 
     private void bntSumarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSumarActionPerformed
-     
+
     }//GEN-LAST:event_bntSumarActionPerformed
 
     private void bntRestarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntRestarMouseClicked
-       int cantidad = 0;
+        int cantidad = 0;
 
         try {
             cantidad = Integer.parseInt(txtCantidad1.getText());
@@ -399,7 +406,7 @@ public class JFMProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_bntRestarMouseClicked
 
     private void bntRestar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntRestar1MouseClicked
-     int cantidad2 = 0;
+        int cantidad2 = 0;
 
         try {
             cantidad2 = Integer.parseInt(txtCantidad2.getText());
@@ -410,7 +417,7 @@ public class JFMProductos extends javax.swing.JFrame {
             cantidad2--;
             txtCantidad2.setText(String.valueOf(cantidad2));
         } else {
-           JOptionPane.showMessageDialog(null, "Error: " );
+            JOptionPane.showMessageDialog(null, "Error: ");
         }
     }//GEN-LAST:event_bntRestar1MouseClicked
 
@@ -419,7 +426,7 @@ public class JFMProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_bntRestar1ActionPerformed
 
     private void bntSumar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntSumar1MouseClicked
-      int cantidad2 = 0;
+        int cantidad2 = 0;
 
         try {
             cantidad2 = Integer.parseInt(txtCantidad2.getText());
@@ -443,7 +450,7 @@ public class JFMProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCantidad2ActionPerformed
 
     private void bntRestar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntRestar2MouseClicked
-       int cantidad3 = 0;
+        int cantidad3 = 0;
 
         try {
             cantidad3 = Integer.parseInt(txtCantidad3.getText());
@@ -454,7 +461,7 @@ public class JFMProductos extends javax.swing.JFrame {
             cantidad3--;
             txtCantidad3.setText(String.valueOf(cantidad3));
         } else {
-           JOptionPane.showMessageDialog(null, "Error" );
+            JOptionPane.showMessageDialog(null, "Error");
         }
     }//GEN-LAST:event_bntRestar2MouseClicked
 
@@ -463,7 +470,7 @@ public class JFMProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_bntRestar2ActionPerformed
 
     private void bntSumar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntSumar2MouseClicked
-      int cantidad3 = 0;
+        int cantidad3 = 0;
 
         try {
             cantidad3 = Integer.parseInt(txtCantidad3.getText());
@@ -474,7 +481,7 @@ public class JFMProductos extends javax.swing.JFrame {
             cantidad3++;
             txtCantidad3.setText(String.valueOf(cantidad3));
         } else {
-           JOptionPane.showMessageDialog(null, "El maximo de este ariculo por cliente es 10 ");
+            JOptionPane.showMessageDialog(null, "El maximo de este ariculo por cliente es 10 ");
         }
     }//GEN-LAST:event_bntSumar2MouseClicked
 
@@ -487,7 +494,7 @@ public class JFMProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCantidad3ActionPerformed
 
     private void bntRestar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bntRestar3MouseClicked
-       int cantidad4 = 0;
+        int cantidad4 = 0;
 
         try {
             cantidad4 = Integer.parseInt(txtCantidad4.getText());
@@ -498,7 +505,7 @@ public class JFMProductos extends javax.swing.JFrame {
             cantidad4--;
             txtCantidad4.setText(String.valueOf(cantidad4));
         } else {
-           JOptionPane.showMessageDialog(null, "Error" );
+            JOptionPane.showMessageDialog(null, "Error");
         }
     }//GEN-LAST:event_bntRestar3MouseClicked
 
@@ -518,7 +525,7 @@ public class JFMProductos extends javax.swing.JFrame {
             cantidad4++;
             txtCantidad4.setText(String.valueOf(cantidad4));
         } else {
-           JOptionPane.showMessageDialog(null, "El maximo de este ariculo por cliente es 10 ");
+            JOptionPane.showMessageDialog(null, "El maximo de este ariculo por cliente es 10 ");
         }
     }//GEN-LAST:event_bntSumar3MouseClicked
 
@@ -529,6 +536,30 @@ public class JFMProductos extends javax.swing.JFrame {
     private void txtCantidad4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidad4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidad4ActionPerformed
+
+    private void calcularKitJuguetes(int cantidadKit1) {
+        int precioKit = 2500;
+        int totalkit = cantidadKit1 * precioKit;
+        txtCantidad1.setText(String.valueOf(totalkit));
+    }
+
+    private void calcularKitGrooming(int cantidadKitGrooming) {
+        int precioKit = 2500;
+        int totalkitG = cantidadKitGrooming * precioKit;
+        txtCantidad2.setText(String.valueOf(totalkitG));
+    }
+
+    private void calcularCorrea(int cantidadCorrea) {
+        int precio = 5000;
+        int total = cantidadCorrea * precio;
+        txtCantidad3.setText(String.valueOf(total));
+    }
+
+    private void calcularKitJuguetes2(int cantidadKit2) {
+        int precioKit2 = 2500;
+        int totalkit2 = cantidadKit2 * precioKit2;
+        txtCantidad4.setText(String.valueOf(totalkit2));
+    }
 
     /**
      * @param args the command line arguments
@@ -576,7 +607,7 @@ public class JFMProductos extends javax.swing.JFrame {
     private javax.swing.JButton bntSumar2;
     private javax.swing.JButton bntSumar3;
     private javax.swing.JButton btnAgregarCarrito;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnPagar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
