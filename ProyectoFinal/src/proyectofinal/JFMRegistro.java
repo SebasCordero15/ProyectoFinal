@@ -4,12 +4,10 @@
  */
 package proyectofinal;
 
-
 import Tienda.DatosUsuarios;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
 
 /**
  *
@@ -23,9 +21,9 @@ public class JFMRegistro extends javax.swing.JFrame {
     public JFMRegistro() {
         initComponents();
         this.setVisible(true);
-        
+
         this.setLocationRelativeTo(null);//coloca la ventana en el centro de la pantalla
-    
+
     }
 
     /**
@@ -63,7 +61,7 @@ public class JFMRegistro extends javax.swing.JFrame {
             .addGap(0, 303, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
@@ -181,14 +179,14 @@ public class JFMRegistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    public void Limpiar(){
+    public void Limpiar() {
         txtCorreo2.setText(null);
         txtNombre2.setText(null);
         txtUsuario2.setText(null);
         txtContra2.setText(null);
     }
-     public void cargarDatos() {
+
+    public void cargarDatos() {
 
         DatosUsuarios dUsuarios = new DatosUsuarios();
         ArrayList<Registro> ListaUsuarios = dUsuarios.todosUsuarios();//trae todo los articulos de la bd
@@ -200,49 +198,47 @@ public class JFMRegistro extends javax.swing.JFrame {
             datos[1] = ListaUsuarios.get(i).getNombre();
             datos[2] = ListaUsuarios.get(i).getUsuario();
             datos[3] = ListaUsuarios.get(i).getContraseña();
-            i++; 
+            i++;
         }
- 
-    }
-   
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String correo = txtCorreo2.getText();
-        String nombre = txtNombre2.getText();
-        String usuario = txtUsuario2.getText();
-        String contra=txtContra2.getText();
-        Registro r= new Registro(correo,nombre,usuario,contra);
-        ArrayList Registros = r.Registros;
-        Registros.add(r);
-        Iterator<Registro> nomIt = Registros.iterator();
 
-        while (nomIt.hasNext()) {
-            Registro registro = nomIt.next();
-            System.out.println("Correo: " + registro.getCorreoE());
-            System.out.println("Nombre: " + registro.getNombre());
-            System.out.println("Usuario: " + registro.getUsuario());
-            System.out.println("Contraseña: " + registro.getContraseña());
-            System.out.println("-------------------------");
+    }
+
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        try {
+
+            String nombre = txtNombre2.getText();
+            String usuario = txtUsuario2.getText();
+            String contra = txtContra2.getText();
+
+            if (txtCorreo2.getText().contains("@roof.com")) {
+                String correo = txtCorreo2.getText();
+                DatosUsuarios dUsuario = new DatosUsuarios();
+                Registro regis = new Registro(correo, nombre, usuario, contra);
+                dUsuario.insertarRegistro(regis);
+                Login l = new Login();
+                this.setVisible(false);
+            } else {
+                txtCorreo2.setText(null);
+                txtCorreo2.requestFocus();
+                throw new Exception("Error el correo no valido");
+            }
+
+        } catch (Exception e) {
         }
-        DatosUsuarios dUsuario = new DatosUsuarios();
-        Registro regis = new Registro(txtCorreo2.getText(), txtNombre2.getText(), txtUsuario2.getText(),txtContra2.getText());
-        dUsuario.insertarRegistro(regis);
-        
-        Login l = new Login();
-        this.setVisible(false);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Login l = new Login();
-         this.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    public void buscar(){
-       
-    
-     
+    public void buscar() {
+
     }
-    
+
     /**
      * @param args the command line arguments
      */
