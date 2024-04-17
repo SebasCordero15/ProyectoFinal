@@ -21,7 +21,8 @@ public class Factura extends Servicios {
     private int cantidadDW;
     private int ganancias;
 
-    public Factura(String nombre, String nombreP, String cedula, int cantidadN, String Habitacion, Date fechaIngreso, Date fechaSalida, int dogWalking, String grooming, int numfactura, int totalEstadia, int totalDogWalking, int totalGromming, int Montototal) {
+    public Factura(String nombre, String nombreP, String cedula, int cantidadN, String Habitacion, Date fechaIngreso, Date fechaSalida,
+            int dogWalking, String grooming, int numfactura, int totalEstadia, int totalDogWalking, int totalGromming, int Montototal) {
         super(nombre, nombreP, cedula, cantidadN, Habitacion, fechaIngreso, fechaSalida, dogWalking, grooming);
         this.numfactura = numfactura;
         this.totalEstadia = totalEstadia;

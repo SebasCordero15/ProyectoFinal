@@ -5,6 +5,7 @@
 package Agenda;
 
 import java.io.*;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -615,25 +616,31 @@ public class Facturacion extends javax.swing.JFrame {
         String nombre = txtCliente.getText();
         String nombreP = txtPerro.getText();
         String nCedula = txtCedula.getText();
-        String cantN = txtCantidadN.getText();
-        String estadia =txtTotalEstadia.getText();
-        String total = txtTotalDW.getText();
-        String grooming = txtTotalGrooming.getText();
-        String monto = txtMontoTotal.getText();
-        
-        try {
-            //creamos el archivo 
-              DataOutputStream archivoCliente = new DataOutputStream(new FileOutputStream(nombre + " " + nombreP +".txt"));            
+//         
+    
+            java.sql.Date fechaIngreso = new java.sql.Date(jCFechaIngreso.getDate().getTime());
+            java.sql.Date fechaSalida = new java.sql.Date(jCFechaSalida.getDate().getTime());
+            String grooming = (rbSI.isSelected() ? "SI" : "NO");
+            Factura f = new Factura(txtCliente.getText(), txtPerro.getText(), txtCedula.getText(), Integer.parseInt(txtCantidadN.getText()),
+                txtHabitacion.getText(), fechaIngreso, fechaSalida,
+                Integer.parseInt(txtCantidadDW.getText()), grooming, Integer.parseInt(txtNumeroF.getText()),
+                Integer.parseInt(txtTotalEstadia.getText()),
+                Integer.parseInt(txtTotalDW.getText()),
+                Integer.parseInt(txtTotalGrooming.getText()),
+                Integer.parseInt(txtMontoTotal.getText()));
+
+            try { 
+              DataOutputStream archivoCliente = new DataOutputStream(new FileOutputStream( nombre + " " + nCedula + " " + nombreP +".txt", true));            
             
-                
-                archivoCliente.writeUTF("Dueno: " + txtCliente.getText());
-                archivoCliente.writeUTF("Perro: " + txtPerro.getText());
-                archivoCliente.writeUTF("Cedula: " + txtCedula.getText());
-                archivoCliente.writeUTF("Cantidad de noches: " + txtCantidadN.getText());
-                archivoCliente.writeUTF("Estadia: " + txtTotalEstadia.getText());
-                archivoCliente.writeUTF("Dog walking: " + txtTotalDW.getText());
-                archivoCliente.writeUTF("Grooming: " + txtTotalGrooming.getText());
-                archivoCliente.writeUTF("Monto Total: " + txtMontoTotal.getText());
+                archivoCliente.writeUTF(f.toString());
+//                archivoCliente.writeUTF("Dueno: " + txtCliente.getText());
+//                archivoCliente.writeUTF("Perro: " + txtPerro.getText());
+//                archivoCliente.writeUTF("Cedula: " + txtCedula.getText());
+//                archivoCliente.writeUTF("Cantidad de noches: " + txtCantidadN.getText());
+//                archivoCliente.writeUTF("Estadia: " + txtTotalEstadia.getText());
+//                archivoCliente.writeUTF("Dog walking: " + txtTotalDW.getText());
+//                archivoCliente.writeUTF("Grooming: " + txtTotalGrooming.getText());
+//                archivoCliente.writeUTF("Monto Total: " + txtMontoTotal.getText());
                 
                 
                 JOptionPane.showMessageDialog(null, "Expediente Actualizado", "Crear Archivo",

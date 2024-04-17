@@ -448,8 +448,8 @@ public class FormularioPerro extends javax.swing.JFrame {
         Perro dog = new Perro(nombre, apellido, cedula, telefono, direccion, correo, nombreP, edadP, raza, tamaño, genero, observaciones);
         
         try {
-            //creamos el archivo 
-            DataOutputStream archivo = new DataOutputStream(new FileOutputStream(nombre + " " + apellido+ " " + nombreP +".txt", true));
+
+            DataOutputStream archivo = new DataOutputStream(new FileOutputStream(nombre + " " + cedula + " " + nombreP +".txt", true));
             
             
                 

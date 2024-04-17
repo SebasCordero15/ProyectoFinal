@@ -1,0 +1,18 @@
+
+
+**********************
+
+Informacion del Dueno
+Nombre=Aida
+Apellido=Guzman
+Telefono=88888888
+Cedula=123456789
+Direccion=Cartaguito
+Correo= kjfjfjfdikdjhf
+**Informacion del Perro**
+NombreP=Rosco
+EdadP=3
+Raza=Salchicha
+Tamannio=Pequeño
+Genero=M
+Observaciones=Inquieto
