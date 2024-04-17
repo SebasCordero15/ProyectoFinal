@@ -15,7 +15,8 @@ import java.sql.Statement;
  * @author indir
  */
 public class Conexion {
-     public static final String url = "jdbc:mysql://localhost:3306/hotel";
+
+    public static final String url = "jdbc:mysql://localhost:3306/hotel";
     public static final String user = "root";
     public static final String pass = "";
     public Connection conexion = null;
@@ -24,7 +25,7 @@ public class Conexion {
         com.mysql.jdbc.Connection con = null;
         try {
             conexion = (com.mysql.jdbc.Connection) DriverManager.getConnection(url, user, pass);
-            System.out.println("Conexión con la BD exitosa");
+            System.out.println("Conexión con la Base de Datos exitosa");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

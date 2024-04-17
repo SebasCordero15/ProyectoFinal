@@ -326,6 +326,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtCantidadN">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>

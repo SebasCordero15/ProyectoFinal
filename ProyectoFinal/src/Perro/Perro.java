@@ -118,12 +118,35 @@ public class Perro extends Dueño {
         this.cantidadClientes++;
     }
 
+    public int getCantPequeño() {
+        return cantPequeño;
+    }
+
+    public void setCantPequeño() {
+        this.cantPequeño++;
+    }
+
+    public int getCantMediano() {
+        return cantMediano;
+    }
+
+    public void setCantMediano() {
+        this.cantMediano++;
+    }
+
+    public int getCantGrande() {
+        return cantGrande;
+    }
+
+    public void setCantGrande() {
+        this.cantGrande++;
+    }
+
     @Override
     public String toString() {
         return super.toString() + "\n"
-                + """
-               **Informacion del Perro**
-               NombreP=""" + nombreP
+                + "------Informacion del Perro------" + "\n"
+                + "\nNombreP=" + nombreP
                 + "\nEdadP=" + edadP
                 + "\nRaza=" + raza
                 + "\nTamannio=" + tamaño
@@ -132,9 +155,9 @@ public class Perro extends Dueño {
     }
 
     public String verEstadistica() {
-        return "\nCantidad Clientes: " + this.cantidadClientes+"\n"
-                +"\nCantidad de hembras: " + this.cantHembras  
-                +"\nCantidad de machos: " + this.cantMachos+"\n"
+        return "\nCantidad Clientes: " + this.cantidadClientes + "\n"
+                + "\nCantidad de hembras: " + this.cantHembras
+                + "\nCantidad de machos: " + this.cantMachos + "\n"
                 + "\nCantidad perros pequeños: " + this.cantPequeño
                 + "\nCantidad perros medianos: " + this.cantMediano
                 + "\nCantidad perros grandes: " + this.cantGrande;
@@ -162,30 +185,6 @@ public class Perro extends Dueño {
                 break;
 
         }
-    }
-
-    public int getCantPequeño() {
-        return cantPequeño;
-    }
-
-    public void setCantPequeño() {
-        this.cantPequeño++;
-    }
-
-    public int getCantMediano() {
-        return cantMediano;
-    }
-
-    public void setCantMediano() {
-        this.cantMediano++;
-    }
-
-    public int getCantGrande() {
-        return cantGrande;
-    }
-
-    public void setCantGrande() {
-        this.cantGrande++;
     }
 
 }

@@ -4,27 +4,22 @@
  */
 package Agenda;
 
-import Perro.DatosCliente;
-import Perro.Perro;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class DatosFactura {
 
     public void insertarFactura(Factura fact) {
 
         try {
+
             Conexion con = new Conexion();
-            // //2-creamos el statement\n" +
+
             PreparedStatement misql = con.crearPrepareStatement("INSERT INTO factura VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
             misql.setString(1, fact.getNombre());
@@ -43,10 +38,9 @@ public class DatosFactura {
             misql.setInt(14, fact.getMontototal());
             misql.executeUpdate();
             con.cerrarConexion();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             Logger.getLogger(DatosFactura.class.getName()).log(Level.SEVERE, null, e);
         }
-
     }
 
     public ArrayList<Factura> todasFacturas() {

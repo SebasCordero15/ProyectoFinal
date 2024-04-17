@@ -6,8 +6,6 @@ package Agenda;
 
 import Perro.DatosCliente;
 import Perro.Perro;
-import java.text.SimpleDateFormat;
-
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -333,16 +331,12 @@ public class Agenda extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(txtCantidadN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bntSumar)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(bntRestar)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtCantidadN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bntSumar)
+                            .addComponent(bntRestar))
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,7 +349,7 @@ public class Agenda extends javax.swing.JFrame {
 
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-
+        //Permite extraer la fecha al txtFechaIngreso/Salida
         java.sql.Date fechaIngreso = new java.sql.Date(jCFechaIngreso.getDate().getTime());
         java.sql.Date fechaSalida = new java.sql.Date(jCFechaSalida.getDate().getTime());
 
@@ -379,11 +373,6 @@ public class Agenda extends javax.swing.JFrame {
     }//GEN-LAST:event_txtClienteActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        // TODO add your handling code here:
-        Limpiar();
-    }//GEN-LAST:event_btnLimpiarActionPerformed
-
-    public void Limpiar() {
         txtCliente.setText(null);
         txtPerro.setText(null);
         txtCedula.setText(null);
@@ -392,15 +381,15 @@ public class Agenda extends javax.swing.JFrame {
         jCFechaIngreso.setDate(null);
         jCFechaSalida.setDate(null);
         txtCliente.requestFocus();
-    }
-
+   
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void bntRestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRestarActionPerformed
         int cantidad = 0;
 
         try {
             cantidad = Integer.parseInt(txtCantidadN.getText());
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
         if (cantidad > 1) {
@@ -417,7 +406,7 @@ public class Agenda extends javax.swing.JFrame {
 
         try {
             cantidad = Integer.parseInt(txtCantidadN.getText());
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
         if (cantidad < 7) {

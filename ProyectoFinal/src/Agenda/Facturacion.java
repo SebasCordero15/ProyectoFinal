@@ -5,7 +5,8 @@
 package Agenda;
 
 import java.io.*;
-import java.sql.Date;
+import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -38,7 +39,7 @@ public class Facturacion extends javax.swing.JFrame {
         model.setNumRows(0); // Limpiar filas existentes
 
         DatosServicios dtServicios = new DatosServicios();
-        ArrayList<Servicios> ListaDservicios = dtServicios.todosArticulo(); // Obtener datos
+        ArrayList<Servicios> ListaDservicios = dtServicios.todosServicios(); // Obtener datos
 
         String datos[] = new String[9];
         int i = 0;
@@ -176,6 +177,7 @@ public class Facturacion extends javax.swing.JFrame {
         txtCedula.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         txtCedula.setEnabled(false);
 
+        txtCantidadN.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCantidadN.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         txtCantidadN.setEnabled(false);
         txtCantidadN.addActionListener(new java.awt.event.ActionListener() {
@@ -602,27 +604,26 @@ public class Facturacion extends javax.swing.JFrame {
                 + "\n Subtotal Gromming: " + txtTotalGrooming.getText()
                 + "\n Monto Total: " + txtMontoTotal.getText());
 
-        int cantidad = 1;
-        cantidad = Integer.parseInt(txtNumeroF.getText());
+        int cantidad = Integer.parseInt(txtNumeroF.getText());
+        
         if (cantidad > 0) {
             cantidad++;
             txtNumeroF.setText(String.valueOf(cantidad));
         }
 
-     insertExp();
-     limpiar();
-    
+        insertExp();
+        limpiar();
+
     }//GEN-LAST:event_btnCrearFActionPerformed
     public void insertExp() {
         String nombre = txtCliente.getText();
         String nombreP = txtPerro.getText();
         String cedula = txtCedula.getText();
-       
-    
-            java.sql.Date fechaIngreso = new java.sql.Date(jCFechaIngreso.getDate().getTime());
-            java.sql.Date fechaSalida = new java.sql.Date(jCFechaSalida.getDate().getTime());
-            String grooming = (rbSI.isSelected() ? "SI" : "NO");
-            Factura f = new Factura(txtCliente.getText(), txtPerro.getText(), txtCedula.getText(), Integer.parseInt(txtCantidadN.getText()),
+
+        java.sql.Date fechaIngreso = new java.sql.Date(jCFechaIngreso.getDate().getTime());
+        java.sql.Date fechaSalida = new java.sql.Date(jCFechaSalida.getDate().getTime());
+        String grooming = (rbSI.isSelected() ? "SI" : "NO");
+        Factura f = new Factura(txtCliente.getText(), txtPerro.getText(), txtCedula.getText(), Integer.parseInt(txtCantidadN.getText()),
                 txtHabitacion.getText(), fechaIngreso, fechaSalida,
                 Integer.parseInt(txtCantidadDW.getText()), grooming, Integer.parseInt(txtNumeroF.getText()),
                 Integer.parseInt(txtTotalEstadia.getText()),
@@ -630,32 +631,30 @@ public class Facturacion extends javax.swing.JFrame {
                 Integer.parseInt(txtTotalGrooming.getText()),
                 Integer.parseInt(txtMontoTotal.getText()));
 
-            try { 
-              DataOutputStream archivoCliente = new DataOutputStream(new FileOutputStream( nombre + " " + cedula + " " + nombreP +".txt", true));            
-              
-                  archivoCliente.writeUTF("\n*******Estadia****\n");
-              
-//                archivoCliente.writeUTF(f.toString());
-                archivoCliente.writeUTF("\nDueno: " + txtCliente.getText());
-                archivoCliente.writeUTF("\nPerro: " + txtPerro.getText());
-                archivoCliente.writeUTF("\nCedula: " + txtCedula.getText());
-                archivoCliente.writeUTF("\nCantidad de noches: " + txtCantidadN.getText());
-                archivoCliente.writeUTF("\nEstadia: " + txtTotalEstadia.getText());
-                archivoCliente.writeUTF("\nDog walking: " + txtTotalDW.getText());
-                archivoCliente.writeUTF("\nGrooming: " + txtTotalGrooming.getText());
-                archivoCliente.writeUTF("\nMonto Total: " + txtMontoTotal.getText());
-                
-                
-                JOptionPane.showMessageDialog(null, "Expediente Actualizado", "Crear Archivo",
-                        JOptionPane.OK_OPTION);
-               
-                archivoCliente.close();
-            
-        }catch (Exception e) {
+        try {
+            DataOutputStream archivoCliente = new DataOutputStream(new FileOutputStream(nombre + " " + cedula + " " + nombreP + ".txt", true));
+
+            archivoCliente.writeUTF("\n*******Estadia****\n");
+
+            archivoCliente.writeUTF("\nDueno: " + txtCliente.getText());
+            archivoCliente.writeUTF("\nPerro: " + txtPerro.getText());
+            archivoCliente.writeUTF("\nCedula: " + txtCedula.getText());
+            archivoCliente.writeUTF("\nCantidad de noches: " + txtCantidadN.getText());
+            archivoCliente.writeUTF("\nEstadia: " + txtTotalEstadia.getText());
+            archivoCliente.writeUTF("\nDog walking: " + txtTotalDW.getText());
+            archivoCliente.writeUTF("\nGrooming: " + txtTotalGrooming.getText());
+            archivoCliente.writeUTF("\nMonto Total: " + txtMontoTotal.getText());
+
+            JOptionPane.showMessageDialog(null, "Expediente Actualizado", "Crear Archivo",
+                    JOptionPane.OK_OPTION);
+
+            archivoCliente.close();
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar" + e.getMessage(), "Error al agregar datos",
                     JOptionPane.ERROR_MESSAGE);
         }
-}   
+    }
     private void jtServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtServiciosMouseClicked
         int filaSeleccionada;
         try {
@@ -695,7 +694,7 @@ public class Facturacion extends javax.swing.JFrame {
                 jCFechaIngreso.setDate(fecha);
                 jCFechaSalida.setDate(fechaS);
 
-            } catch (Exception e) {
+            } catch (ParseException e) {
                 JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
             }
 

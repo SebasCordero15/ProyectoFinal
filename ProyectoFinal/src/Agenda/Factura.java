@@ -8,7 +8,7 @@ import java.sql.Date;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class Factura extends Servicios {
 
@@ -44,16 +44,7 @@ public class Factura extends Servicios {
         this.cantidadG = 0;
         this.cantidadDW = 0;
     }
-    @Override
-    public String toString() {
-        return super.toString()
-                + "Factura"
-                + "\n Subtotal Estadia: " + totalEstadia
-                + "\n Subtotal DogWalking: " + totalDogWalking
-                + "\n Subtotal Gromming: " + totalGromming
-                + "\n Monto Total: " + Montototal + "\n";
-    }
-
+   
     public int getTotalEstadia() {
         return totalEstadia;
     }
@@ -116,6 +107,15 @@ public class Factura extends Servicios {
 
     public void setGanancias() {
         this.ganancias++;
+    }
+    @Override
+    public String toString() {
+        return super.toString()
+                + "Factura"
+                + "\n Subtotal Estadia: " + totalEstadia
+                + "\n Subtotal DogWalking: " + totalDogWalking
+                + "\n Subtotal Gromming: " + totalGromming
+                + "\n Monto Total: " + Montototal + "\n";
     }
 
     public void realizarConteo(String g) {

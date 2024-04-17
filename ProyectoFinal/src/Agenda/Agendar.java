@@ -4,12 +4,9 @@
  */
 package Agenda;
 
-import java.util.Date;
-import java.util.logging.Logger;
-
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class Agendar {
 
@@ -31,7 +28,6 @@ public class Agendar {
         this.fechaSalida = fechaSalida;
     }
 
-   
     public Agendar() {
         this.nombre = "";
         this.nombreP = "";
@@ -42,8 +38,6 @@ public class Agendar {
         this.fechaSalida = null;
     }
 
-    
-    
     public String getHabitacion() {
         return Habitacion;
     }
@@ -51,8 +45,6 @@ public class Agendar {
     public void setHabitacion(String Habitacion) {
         this.Habitacion = Habitacion;
     }
-
-  
 
     public String getCedula() {
         return cedula;
@@ -104,16 +96,14 @@ public class Agendar {
 
     @Override
     public String toString() {
-        return "---------Estadia-------------" +
-                "\nNombre=" + nombre + 
-                "\nNombre del Perro=" + nombreP +
-                "\nNumero de cedula=" + cedula +
-                "\ncantidad de noches=" + cantidadN +
-                "\nHabitacion=" + Habitacion +
-                "\nFecha ded Ingreso=" + fechaIngreso +
-                "\nFechaSalida=" + fechaSalida +"\n";
+        return "---------Estadia-------------"
+                + "\nNombre=" + nombre
+                + "\nNombre del Perro=" + nombreP
+                + "\nNumero de cedula=" + cedula
+                + "\ncantidad de noches=" + cantidadN
+                + "\nHabitacion=" + Habitacion
+                + "\nFecha ded Ingreso=" + fechaIngreso
+                + "\nFechaSalida=" + fechaSalida + "\n";
     }
-    
-    
 
 }

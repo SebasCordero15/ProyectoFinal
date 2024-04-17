@@ -77,6 +77,7 @@ public class Dueño {
     }
 
     public String getCorreo() {
+        
         return correo;
     }
 

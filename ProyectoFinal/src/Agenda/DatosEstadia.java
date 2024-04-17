@@ -1,7 +1,6 @@
 package Agenda;
 
 import Perro.DatosCliente;
-import Perro.Perro;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.*;
@@ -15,8 +14,9 @@ public class DatosEstadia {
     public void insertarReserva(Agendar agend) {
 
         try {
+            //1 Conexion
             Conexion con = new Conexion();
-
+            //2 creamos un PreparedStatement y creamos sentencias
             PreparedStatement misql = con.crearPrepareStatement("INSERT INTO reserva VALUES(?,?,?,?,?,?,?)");
 
             misql.setString(1, agend.getNombre());
@@ -57,8 +57,9 @@ public class DatosEstadia {
 
     public void modificarReserva(String nombre, String nombreP, String cedula, int cantidadN, String Habitacion, java.sql.Date fechaIngreso, java.sql.Date fechaSalida) throws SQLException {
         try {
+            //1
             Conexion connection = new Conexion();
-
+            //2
             PreparedStatement misql = connection.crearPrepareStatement("UPDATE reserva SET nombre = ?, nombreP = ?, cantidadN = ?, habitacion = ?,  fechaIngreso = ?, fechaSalida = ? WHERE cedula = ?");
 
             misql.setString(1, nombre);
@@ -75,7 +76,8 @@ public class DatosEstadia {
             Logger.getLogger(DatosEstadia.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-      public ArrayList<Agendar> BuscarReserva(String cedula) {
+
+    public ArrayList<Agendar> BuscarReserva(String cedula) {
         ArrayList<Agendar> ListaReservas = new ArrayList<>();
         try {
             //1- crear la conexion con la bd
@@ -84,11 +86,12 @@ public class DatosEstadia {
             PreparedStatement st = con.crearPrepareStatement("SELECT * FROM reserva WHERE cedula like ?");
             cedula = '%' + cedula + '%';
             st.setString(1, cedula);
+            //3
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Agendar agend = new Agendar(rs.getString("nombre"), rs.getString("nombreP"), rs.getString("cedula"), rs.getInt("cantidadN"),
                         rs.getString("habitacion"), rs.getDate("FechaIngreso"), rs.getDate("FechaSalida"));
-               
+
                 ListaReservas.add(agend);
             }
             rs.close();
@@ -101,7 +104,9 @@ public class DatosEstadia {
 
     public void eliminarReserva(String cedula) throws SQLException {
         try {
+            //1
             Conexion con = new Conexion();
+            //2
             PreparedStatement misql = con.crearPrepareStatement("DELETE FROM reserva WHERE cedula = ?");
             misql.setString(1, cedula);
             misql.executeUpdate();

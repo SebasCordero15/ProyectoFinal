@@ -16,8 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author indir
  */
 public class FormularioPerro extends javax.swing.JFrame {
-
-    private Perro dog;
+//    private Perro dog;
 
     /**
      * Creates new form FormularioPerro
@@ -27,8 +26,7 @@ public class FormularioPerro extends javax.swing.JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         cargarDatos();
-        dog = new Perro();
-
+//        dog = new Perro();
     }
 
     public void cargarDatos() {
@@ -401,37 +399,48 @@ public class FormularioPerro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-        Perro p = new Perro();
-        String nombre = txtNombre.getText();
-        String apellido = txtApellido.getText();
-        String telefono = txtNumero.getText();
-        String cedula = txtCedula.getText();
-        String direccion = txtDireccion.getText();
-        String correo = txtCorreo.getText();
+        try {
+            String nombre = txtNombre.getText();
+            String apellido = txtApellido.getText();
+            String telefono = txtNumero.getText();
 
-        String nombreP = txtNombreP.getText();
-        int edadP = Integer.parseInt(txtEdad.getText());
-        String raza = txtRaza.getText();
-        String tamaño = txtTamaño1.getSelectedItem().toString();
-        String genero = (rbMacho.isSelected() ? "M" : "H");
-        String observaciones = txtObservaciones.getText();
-        Perro dog = new Perro(nombre, apellido, cedula, telefono, direccion, correo, nombreP, edadP, raza, tamaño, genero, observaciones);
-        //System.out.println(dog.toString());
+            String cedula = txtCedula.getText();
+            String direccion = txtDireccion.getText();
 
-        //BD
-        DatosCliente datosC = new DatosCliente();
-        datosC.agregarCliente(dog);
-        datosC.ConteoGenero(dog);
-        datosC.ConteoTamaño(dog);
-        cargarDatos();
-        crearExp();
+            String nombreP = txtNombreP.getText();
+            int edadP = Integer.parseInt(txtEdad.getText());
+            String raza = txtRaza.getText();
+            String tamaño = txtTamaño1.getSelectedItem().toString();
+            String genero = (rbMacho.isSelected() ? "M" : "H");
+            String observaciones = txtObservaciones.getText();
+            if (txtCorreo.getText().contains("@gmail.com") || (txtCorreo.getText().contains("@hotmail.com"))) {
+                String correo = txtCorreo.getText();
+
+                //Guardamos en BD
+                Perro dog = new Perro(nombre, apellido, cedula, telefono, direccion, correo, nombreP, edadP, raza, tamaño, genero, observaciones);
+                DatosCliente datosC = new DatosCliente();
+                datosC.agregarCliente(dog);
+                datosC.ConteoGenero(dog);
+                datosC.ConteoTamaño(dog);
+                cargarDatos();
+                crearExp();
+            } else {
+                txtCorreo.setText(null);
+                txtCorreo.requestFocus();
+                throw new Exception("Error el correo no valido");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
 
     }//GEN-LAST:event_btnAgregarActionPerformed
-    
+
     public void crearExp() {
-        Perro p = new Perro();
+        
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
         String telefono = txtNumero.getText();
@@ -446,24 +455,24 @@ public class FormularioPerro extends javax.swing.JFrame {
         String genero = (rbMacho.isSelected() ? "M" : "H");
         String observaciones = txtObservaciones.getText();
         Perro dog = new Perro(nombre, apellido, cedula, telefono, direccion, correo, nombreP, edadP, raza, tamaño, genero, observaciones);
-        
+
         try {
 
-            DataOutputStream archivo = new DataOutputStream(new FileOutputStream(nombre + " " + cedula + " " + nombreP +".txt", true));
+            DataOutputStream archivo = new DataOutputStream(new FileOutputStream(nombre + " " + cedula + " " + nombreP + ".txt", true));
 
-                archivo.writeUTF(dog.toString());
-                
-                JOptionPane.showMessageDialog(null, "Expediente creado correctamente", "Crear Archivo",
-                        JOptionPane.OK_OPTION);
-               
-                archivo.close();
-            
-        }catch (Exception e) {
+            archivo.writeUTF(dog.toString());
+
+            JOptionPane.showMessageDialog(null, "Expediente creado correctamente", "Crear Archivo",
+                    JOptionPane.OK_OPTION);
+
+            archivo.close();
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al agregar" + e.getMessage(), "Error al agregar datos",
                     JOptionPane.ERROR_MESSAGE);
         }
-}    
-    
+    }
+
     private void txtNombrePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombrePActionPerformed
 
     }//GEN-LAST:event_txtNombrePActionPerformed
