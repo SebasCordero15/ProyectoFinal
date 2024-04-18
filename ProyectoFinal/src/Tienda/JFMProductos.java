@@ -357,7 +357,6 @@ public class JFMProductos extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
@@ -534,11 +533,14 @@ public class JFMProductos extends javax.swing.JFrame {
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         JOptionPane.showMessageDialog(null, "Factura Creada");
         ////////-----------------------------------------------------------------------------------
-        JOptionPane.showMessageDialog(null, "\n\nFACTURA"
+        JOptionPane.showMessageDialog(null, "\n\n-------------FACTURA--------------"
                 + "\nKit Juguetes 1: " + txtCantidad1.getText()
                 + "\nKit Grooming: " + txtCantidad2.getText()
                 + "\nCorrrea: " + txtCantidad3.getText()
-                + "\nKit Juguetes 2: " + txtCantidad4.getText());
+                + "\nKit Juguetes 2: " + txtCantidad4.getText()
+                + "\n\nSubtotal: " + txtTotal.getText()
+                + "\nIVA: " + txtIVA.getText()
+                + "\nMonto Total: " + txtMonto.getText());
 
     }//GEN-LAST:event_btnPagarActionPerformed
 
