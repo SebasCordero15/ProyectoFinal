@@ -4,16 +4,14 @@
  */
 package Perro;
 
-import java.io.DataOutputStream;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 import javax.swing.JOptionPane;
-
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class FormularioPerro extends javax.swing.JFrame {
 //    private Perro dog;
@@ -440,7 +438,6 @@ public class FormularioPerro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     public void crearExp() {
-        
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
         String telefono = txtNumero.getText();
@@ -462,8 +459,8 @@ public class FormularioPerro extends javax.swing.JFrame {
 
             archivo.writeUTF(dog.toString());
 
-            JOptionPane.showMessageDialog(null, "Expediente creado correctamente", "Crear Archivo",
-                    JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(null, "Expediente creado correctamente", "Expediente",
+                    JOptionPane.INFORMATION_MESSAGE);
 
             archivo.close();
 

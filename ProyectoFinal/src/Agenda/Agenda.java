@@ -6,13 +6,14 @@ package Agenda;
 
 import Perro.DatosCliente;
 import Perro.Perro;
+import java.awt.HeadlessException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author indir
+ * @author GRUPO2
  */
 public class Agenda extends javax.swing.JFrame {
 
@@ -381,7 +382,7 @@ public class Agenda extends javax.swing.JFrame {
         jCFechaIngreso.setDate(null);
         jCFechaSalida.setDate(null);
         txtCliente.requestFocus();
-   
+
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void bntRestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRestarActionPerformed
@@ -418,6 +419,7 @@ public class Agenda extends javax.swing.JFrame {
 
     }//GEN-LAST:event_bntSumarMouseClicked
 
+    //USAMOS LA LISTA DE CLIENTES PARA SOLO AGENDAR A CLIENTES REGISTRADOS
     private void jtClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtClientesMouseClicked
         int filaseleccionada;
         try {
@@ -438,13 +440,13 @@ public class Agenda extends javax.swing.JFrame {
                 String genero = (String) jtClientes.getValueAt(filaseleccionada, 10);
                 String observaciones = (String) jtClientes.getValueAt(filaseleccionada, 11);
 
-                //se llenan los campos con la fila seleccionada
+                //se llenan los campos con los datos que necesitamos de  la fila seleccionada
                 txtCliente.setText(nombre);
                 txtCedula.setText(cedula);
                 txtPerro.setText(nombreP);
 
             }
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }//GEN-LAST:event_jtClientesMouseClicked

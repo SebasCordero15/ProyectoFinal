@@ -6,7 +6,7 @@ package Perro;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class Perro extends Dueño {
 

@@ -8,15 +8,16 @@ import proyectofinal.Registro;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class Productos extends Registro {
-    int cantidadKit1;
-      int cantidadKitGrooming;
-        int cantidadCorrea;
-          int cantidadKit2;
 
-    public Productos(String correoE, String nombre, String usuario, String contraseña,int cantidadKit1, int cantidadKitGrooming, int cantidadCorrea, int cantidadKit2) {
+    int cantidadKit1;
+    int cantidadKitGrooming;
+    int cantidadCorrea;
+    int cantidadKit2;
+
+    public Productos(String correoE, String nombre, String usuario, String contraseña, int cantidadKit1, int cantidadKitGrooming, int cantidadCorrea, int cantidadKit2) {
         super(correoE, nombre, usuario, contraseña);
         this.cantidadKit1 = cantidadKit1;
         this.cantidadKitGrooming = cantidadKitGrooming;
@@ -65,20 +66,11 @@ public class Productos extends Registro {
 
     @Override
     public String toString() {
-        return  super.toString()+"Productos" + 
-                "CantidadKit1= " + cantidadKit1 +
-                "CantidadKitGrooming= " + cantidadKitGrooming +
-                "CantidadCorreo= " + cantidadCorrea +
-                "CantidadKit2= " + cantidadKit2 ;
+        return super.toString() + "Productos"
+                + "CantidadKit1= " + cantidadKit1
+                + "CantidadKitGrooming= " + cantidadKitGrooming
+                + "CantidadCorreo= " + cantidadCorrea
+                + "CantidadKit2= " + cantidadKit2;
     }
-    
-    
-    
-    
-          
-          
-    
-    
+
 }
-
-

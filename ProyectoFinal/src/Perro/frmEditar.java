@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class frmEditar extends javax.swing.JFrame {
 
@@ -542,22 +542,19 @@ public class frmEditar extends javax.swing.JFrame {
         String nuevoApellido = txtApellido.getText();
         String nuevoTelefono = txtNumero.getText();
         String nuevaDireccion = txtDireccion.getText();
-        String nuevoCorreo =  txtCorreo.getText();
+        String nuevoCorreo = txtCorreo.getText();
         String nuevoNombreP = txtNombreP.getText();
-        
+
         int nuevoEdadP = Integer.parseInt(txtEdad.getText());
         String nuevaRaza = txtRaza.getText();
         String nuevoTamaño = txtTamaño1.getSelectedItem().toString();
-        String nuevoGenero =(rbMacho.isSelected() ? "M" : "H");
+        String nuevoGenero = (rbMacho.isSelected() ? "M" : "H");
         String nuevaObservacion = txtObservaciones.getText();
-        
-        
-        
-       
+
         DatosCliente datosC = new DatosCliente();
         try {
             datosC.editarCliente(nuevoNombre, nuevoApellido, cedula, nuevoTelefono, nuevaDireccion, nuevoCorreo, nuevoNombreP,
-                   nuevoEdadP , nuevaRaza, nuevoTamaño, nuevoGenero, nuevaObservacion);
+                    nuevoEdadP, nuevaRaza, nuevoTamaño, nuevoGenero, nuevaObservacion);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Promeble: " + e.getMessage());
         }

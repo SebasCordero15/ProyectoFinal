@@ -5,30 +5,26 @@
 package proyectofinal;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class Registro {
-   private String correoE;
-   private String nombre;
-   private String usuario;
-   private String contraseña;
- ArrayList Registros = new ArrayList<String>();
+
+    private String correoE;
+    private String nombre;
+    private String usuario;
+    private String contraseña;
+    ArrayList Registros = new ArrayList<String>();
 
     public Registro(String correoE, String nombre, String usuario, String contraseña) {
         this.correoE = correoE;
         this.nombre = nombre;
         this.usuario = usuario;
         this.contraseña = contraseña;
-        this.Registros= Registros;
+        this.Registros = Registros;
     }
-
-   
 
     public Registro() {
         this.correoE = "";
@@ -36,6 +32,7 @@ public class Registro {
         this.usuario = "";
         this.contraseña = "";
     }
+
     public String getContraseña() {
         return contraseña;
     }
@@ -72,5 +69,5 @@ public class Registro {
     public String toString() {
         return "Registro{" + "correoE=" + correoE + ", nombre=" + nombre + ", usuario=" + usuario + ", contrase\u00f1a=" + contraseña + '}';
     }
-     
+
 }

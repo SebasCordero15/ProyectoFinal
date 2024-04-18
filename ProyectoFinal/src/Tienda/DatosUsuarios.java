@@ -12,16 +12,15 @@ import java.util.logging.*;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class DatosUsuarios {
 
     public void insertarRegistro(Registro regis) {
-
         try {
-            Conexion con = new Conexion();
+            Conexion conexion = new Conexion();
 
-            PreparedStatement misql = con.crearPrepareStatement("INSERT INTO usuarios VALUES(?,?,?,?)");
+            PreparedStatement misql = conexion.crearPrepareStatement("INSERT INTO usuarios VALUES(?,?,?,?)");
 
             misql.setString(1, regis.getCorreoE());
             misql.setString(2, regis.getNombre());
@@ -29,7 +28,7 @@ public class DatosUsuarios {
             misql.setString(4, regis.getContraseña());
 
             misql.executeUpdate();
-            con.cerrarConexion();
+            conexion.cerrarConexion();
         } catch (SQLException e) {
             Logger.getLogger(DatosUsuarios.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -39,9 +38,9 @@ public class DatosUsuarios {
         ArrayList<Registro> ListaUsuarios = new ArrayList<>();
         try {
             //1- crear la conexion con la bd
-            Conexion con = new Conexion();
+            Conexion conexion = new Conexion();
             //2-creamos el statement
-            Statement st = con.crearStatement();
+            Statement st = conexion.crearStatement();
             //3-ejecutar la sentencia
             ResultSet rs = st.executeQuery("SELECT * FROM usuarios");
             while (rs.next()) {
@@ -49,7 +48,7 @@ public class DatosUsuarios {
                 ListaUsuarios.add(regis);
             }
             rs.close();
-            con.cerrarConexion();
+            conexion.cerrarConexion();
         } catch (SQLException e) {
             Logger.getLogger(DatosUsuarios.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -59,10 +58,10 @@ public class DatosUsuarios {
     public boolean Verificar(String usuario, String contraseña) {
 
         try {
-            Conexion con = new Conexion();
-            Statement st = con.crearStatement();
+            Conexion conexion = new Conexion();
+            Statement st = conexion.crearStatement();
 
-            PreparedStatement msql = con.crearPrepareStatement("SELECT * FROM usuarios WHERE usuario=? AND contraseña = ?");
+            PreparedStatement msql = conexion.crearPrepareStatement("SELECT * FROM usuarios WHERE usuario=? AND contraseña = ?");
             msql.setString(1, usuario);
             msql.setString(2, contraseña);
             ResultSet rs = msql.executeQuery();

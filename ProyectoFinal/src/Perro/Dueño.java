@@ -6,7 +6,7 @@ package Perro;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class Dueño {
 
@@ -77,7 +77,7 @@ public class Dueño {
     }
 
     public String getCorreo() {
-        
+
         return correo;
     }
 

@@ -5,8 +5,6 @@
 package Agenda;
 
 import java.io.*;
-import java.text.ParseException;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -14,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author sebas
+ * @author GRUPO2
  */
 public class Facturacion extends javax.swing.JFrame {
 
@@ -26,7 +24,6 @@ public class Facturacion extends javax.swing.JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         cargarDatos();
-
     }
 
     /**
@@ -578,14 +575,13 @@ public class Facturacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearFActionPerformed
-        // TODO add your handling code here:
-
-        //-----------------------------------------------------------------------------------
+        //Permite extraer la fecha al txtFechaIngreso/Salida
         java.sql.Date fechaIngreso = new java.sql.Date(jCFechaIngreso.getDate().getTime());
         java.sql.Date fechaSalida = new java.sql.Date(jCFechaSalida.getDate().getTime());
         String grooming = (rbSI.isSelected() ? "SI" : "NO");
 
         DatosFactura dtFactura = new DatosFactura();
+        //CREAMOS FACTURA
         Factura f = new Factura(txtCliente.getText(), txtPerro.getText(), txtCedula.getText(), Integer.parseInt(txtCantidadN.getText()),
                 txtHabitacion.getText(), fechaIngreso, fechaSalida,
                 Integer.parseInt(txtCantidadDW.getText()), grooming, Integer.parseInt(txtNumeroF.getText()),
@@ -593,11 +589,11 @@ public class Facturacion extends javax.swing.JFrame {
                 Integer.parseInt(txtTotalDW.getText()),
                 Integer.parseInt(txtTotalGrooming.getText()),
                 Integer.parseInt(txtMontoTotal.getText()));
-
+        //INSERTAMOS LA FACTURA
         dtFactura.insertarFactura(f);
 
         JOptionPane.showMessageDialog(null, "Factura Creada");
-        ////////-----------------------------------------------------------------------------------
+        //IMPRIMIMOS LA FACTURA , COMO SI FUERA EL TIOQUETE
         JOptionPane.showMessageDialog(null, "\n\nFACTURA"
                 + "\nCliente: " + txtCliente.getText()
                 + "\nPerro: " + txtPerro.getText()
@@ -608,25 +604,31 @@ public class Facturacion extends javax.swing.JFrame {
                 + "\n Subtotal Gromming: " + txtTotalGrooming.getText()
                 + "\n Monto Total: " + txtMontoTotal.getText());
 
+        //INCREMENTA EL NUMERO DE FACTURA
         int cantidad = Integer.parseInt(txtNumeroF.getText());
-        
         if (cantidad > 0) {
             cantidad++;
             txtNumeroF.setText(String.valueOf(cantidad));
         }
-
+        //INSERTAMOS EXPEDIENTE
         insertExp();
+        //LIMPIAMOS
         limpiar();
 
     }//GEN-LAST:event_btnCrearFActionPerformed
     public void insertExp() {
+        //EXTRAEMOS LA INFO
         String nombre = txtCliente.getText();
         String nombreP = txtPerro.getText();
         String cedula = txtCedula.getText();
 
+        // EXTRAEMOS LA FECHA
         java.sql.Date fechaIngreso = new java.sql.Date(jCFechaIngreso.getDate().getTime());
         java.sql.Date fechaSalida = new java.sql.Date(jCFechaSalida.getDate().getTime());
+        //Y LA SELECCION DEL GROOMING
         String grooming = (rbSI.isSelected() ? "SI" : "NO");
+        //CREAMOS LA FACTURA
+
         Factura f = new Factura(txtCliente.getText(), txtPerro.getText(), txtCedula.getText(), Integer.parseInt(txtCantidadN.getText()),
                 txtHabitacion.getText(), fechaIngreso, fechaSalida,
                 Integer.parseInt(txtCantidadDW.getText()), grooming, Integer.parseInt(txtNumeroF.getText()),
@@ -634,7 +636,7 @@ public class Facturacion extends javax.swing.JFrame {
                 Integer.parseInt(txtTotalDW.getText()),
                 Integer.parseInt(txtTotalGrooming.getText()),
                 Integer.parseInt(txtMontoTotal.getText()));
-
+        //AGREGAMOS LO DATOS AL EXPEDIENYTE
         try {
             DataOutputStream archivoCliente = new DataOutputStream(new FileOutputStream(nombre + " " + cedula + " " + nombreP + ".txt", true));
 
@@ -649,8 +651,8 @@ public class Facturacion extends javax.swing.JFrame {
             archivoCliente.writeUTF("\nGrooming: " + txtTotalGrooming.getText());
             archivoCliente.writeUTF("\nMonto Total: " + txtMontoTotal.getText());
 
-            JOptionPane.showMessageDialog(null, "Expediente Actualizado", "Crear Archivo",
-                    JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(null, "Expediente Actualizado", "Expediente",
+                    JOptionPane.INFORMATION_MESSAGE);
 
             archivoCliente.close();
 
@@ -659,6 +661,7 @@ public class Facturacion extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
     }
+
     private void jtServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtServiciosMouseClicked
         int filaSeleccionada;
         try {
@@ -667,10 +670,7 @@ public class Facturacion extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
                 return;
             }
-
-            SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
-
-            // 1. Obtener valores de la fila seleccionada
+            // A. Obtener valores de la fila seleccionada
             String nombre = (String) jtServicios.getValueAt(filaSeleccionada, 0);
             String nombreP = (String) jtServicios.getValueAt(filaSeleccionada, 1);
             String cedula = (String) jtServicios.getValueAt(filaSeleccionada, 2);
@@ -681,28 +681,21 @@ public class Facturacion extends javax.swing.JFrame {
             String dogWalking = (String) jtServicios.getValueAt(filaSeleccionada, 7);
             String grooming = (String) jtServicios.getValueAt(filaSeleccionada, 8);
 
-            calcularPrecioEstadia(Integer.parseInt(cantidadN));
-            calcularPrecioDW(Integer.parseInt(dogWalking));
-            calcularGromming(grooming);
-
-            // 2.damos el formato
+            // 1.damos el formato
             SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
 
-            //3. creamos variables
+            //2. creamos variables fecha y fechaS
             java.util.Date fecha;
             java.util.Date fechaS;
             //4.convertimos
-            try {
-                fecha = (java.util.Date) s.parse(fechaIngreso);
-                fechaS = (java.util.Date) s.parse(fechaSalida);
-                jCFechaIngreso.setDate(fecha);
-                jCFechaSalida.setDate(fechaS);
 
-            } catch (ParseException e) {
-                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-            }
+            fecha = (java.util.Date) s.parse(fechaIngreso);
+            fechaS = (java.util.Date) s.parse(fechaSalida);
 
-            // Llenar campos con la fila seleccionada
+            jCFechaIngreso.setDate(fecha);
+            jCFechaSalida.setDate(fechaS);
+
+            //B Llenar campos con la fila seleccionada
             txtCliente.setText(nombre);
             txtPerro.setText(nombreP);
             txtCedula.setText(cedula);
@@ -711,14 +704,6 @@ public class Facturacion extends javax.swing.JFrame {
             txtHabitacion.setText(habitacion);
             txtCantidadDW.setText(dogWalking);
             txtCantidadDW1.setText(dogWalking);
-
-            ///Se calcula el monto total
-            int totalEstadia = Integer.parseInt(txtTotalEstadia.getText());
-            int totalDW = Integer.parseInt(txtTotalDW.getText());
-            int totalGrooming = Integer.parseInt(txtTotalGrooming.getText());
-            int montoTotal = totalEstadia + totalDW + totalGrooming;
-            txtMontoTotal.setText(String.valueOf(montoTotal));
-
             if (grooming.equals("SI")) {
                 rbSI.setSelected(true);
             } else if (grooming.equals("NO")) {
@@ -729,7 +714,17 @@ public class Facturacion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
 
         }
+        ///Se calcula montos
+        calcularPrecioEstadia();
+        calcularPrecioDW();
+        calcularGromming();
 
+        //monto final
+        int totalEstadia = Integer.parseInt(txtTotalEstadia.getText());
+        int totalDW = Integer.parseInt(txtTotalDW.getText());
+        int totalGrooming = Integer.parseInt(txtTotalGrooming.getText());
+        int montoTotal = totalEstadia + totalDW + totalGrooming;
+        txtMontoTotal.setText(String.valueOf(montoTotal));
 
     }//GEN-LAST:event_jtServiciosMouseClicked
     public void limpiar() {
@@ -746,29 +741,32 @@ public class Facturacion extends javax.swing.JFrame {
         txtTotalGrooming.setText(null);
         txtMontoTotal.setText(null);
         rbSI.setSelected(false);
-          rbNO.setSelected(false);
+        rbNO.setSelected(false);
 
     }
 
-    private void calcularPrecioEstadia(int cantidadN) {
+    //Metodos para calcular valores
+    private void calcularPrecioEstadia() {
+        int cantidadN = Integer.parseInt(txtCantidadN.getText());
         int precioEstadia = 5000;
         int totalEstadia = cantidadN * precioEstadia;
         txtTotalEstadia.setText(String.valueOf(totalEstadia));
     }
 
-    private void calcularPrecioDW(int dogWalking) {
+    private void calcularPrecioDW() {
+        int dogWalking = Integer.parseInt(txtCantidadDW.getText());
         int precioDW = 5000;
         int totalDogWalking = dogWalking * precioDW;
         txtTotalDW.setText(String.valueOf(totalDogWalking));
     }
 
-    private void calcularGromming(String grooming) {
+    private void calcularGromming() {
         int precioG = 3000;
 
-        if (grooming.equals("SI")) {
+        if (rbSI.equals("SI")) {
             txtTotalGrooming.setText(String.valueOf(precioG));
 
-        } else if (grooming.equals("NO")) {
+        } else if (rbNO.equals("NO")) {
             txtTotalGrooming.setText(String.valueOf(0));
         }
     }

@@ -11,7 +11,7 @@ import java.util.logging.*;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class DatosCliente {
 
@@ -94,8 +94,9 @@ public class DatosCliente {
     public void editarCliente(String nombre, String apellido, String cedula, String telefono, String direccion, String correo, String nombreP, int edadP, String raza,
             String tamaño, String genero, String observaciones) {
         try {
+            //1
             Conexion con = new Conexion();
-
+            //2
             PreparedStatement misql = con.crearPrepareStatement("UPDATE cliente SET nombre = ?, apellido = ?, telefono = ?, direccion = ?, correo = ?, nombreP = ?,  edadP = ?, raza = ?, tamaño = ?, genero = ?, observaciones = ? WHERE cedula = ?");
 
             misql.setString(1, nombre);
@@ -118,11 +119,13 @@ public class DatosCliente {
 
     public void eliminarCliente(String cedula) {
         try {
+            //1
             Conexion con = new Conexion();
-
+            //2
             PreparedStatement misql = con.crearPrepareStatement(" DELETE FROM cliente  WHERE cedula = ?");
             misql.setString(1, cedula);
             misql.executeUpdate();
+            
         } catch (SQLException e) {
             Logger.getLogger(DatosCliente.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -130,8 +133,10 @@ public class DatosCliente {
 
     public void ConteoGenero(Perro p) {
         try {
+            //1
             Conexion con = new Conexion();
             Statement st = con.crearStatement(); //para consultar en la base de datos
+            
             ResultSet rs = st.executeQuery("SELECT genero FROM cliente");
             while (rs.next()) {
                 String genero = rs.getString("genero");
@@ -144,7 +149,9 @@ public class DatosCliente {
 
     public void ConteoTamaño(Perro p) {
         try {
+            //1
             Conexion con = new Conexion();
+            //2
             Statement st = con.crearStatement(); //para consultar en la base de datos
             ResultSet rs = st.executeQuery("SELECT tamaño FROM cliente");
             while (rs.next()) {

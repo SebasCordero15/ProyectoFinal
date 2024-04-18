@@ -17,7 +17,6 @@ public class DatosFactura {
     public void insertarFactura(Factura fact) {
 
         try {
-
             Conexion con = new Conexion();
 
             PreparedStatement misql = con.crearPrepareStatement("INSERT INTO factura VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");

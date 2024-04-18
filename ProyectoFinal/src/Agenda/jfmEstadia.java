@@ -13,12 +13,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author indir
  */
-public class jfmEstadias extends javax.swing.JFrame {
+public class jfmEstadia extends javax.swing.JFrame {
 
     /**
      * Creates new form jfmEstadias
      */
-    public jfmEstadias() {
+    public jfmEstadia() {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -231,23 +231,17 @@ public class jfmEstadias extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila ");
             return;
         }
-
+        DatosEstadia dtEstadia = new DatosEstadia();
+        //cedula pk
         String cedula = (String) jtSemana.getValueAt(filaseleccionada, 2);
-        int confirmation = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar  la reserva de " + cedula + JOptionPane.YES_NO_OPTION);
-        if (confirmation == JOptionPane.YES_OPTION) {
-            DatosEstadia dtEstadia = new DatosEstadia();
-            try {
-                // Llamar al método eliminarArticulo de DatosArticulo
+            
+            try { 
                 dtEstadia.eliminarReserva(cedula);
-
-                // Recargar los datos de la tabla
                 cargarDatos();
                 JOptionPane.showMessageDialog(null, "Artículo eliminado exitosamente");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
             }
-        }
-
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 
@@ -276,20 +270,21 @@ public class jfmEstadias extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(jfmEstadias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jfmEstadia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(jfmEstadias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jfmEstadia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(jfmEstadias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jfmEstadia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(jfmEstadias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jfmEstadia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new jfmEstadias().setVisible(true);
+                new jfmEstadia().setVisible(true);
             }
         });
     }

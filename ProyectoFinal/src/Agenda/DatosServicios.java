@@ -10,14 +10,16 @@ import java.util.logging.*;
 
 /**
  *
- * @author indir
+ * @author GRUPO2
  */
 public class DatosServicios {
 
     public void insertarServicios(Servicios serv) {
 
         try {
+            //1
             Conexion conexion = new Conexion();
+            //2
             PreparedStatement misql = conexion.crearPrepareStatement("INSERT INTO servicio VALUES(?,?,?,?,?,?,?,?,?)");
 
             misql.setString(1, serv.getNombre());
@@ -29,8 +31,11 @@ public class DatosServicios {
             misql.setDate(7, serv.getFechaSalida());
             misql.setInt(8, serv.getDogWalking());
             misql.setString(9, serv.getGrooming());
+
             misql.executeUpdate();
+
             conexion.cerrarConexion();
+
         } catch (SQLException e) {
             Logger.getLogger(DatosServicios.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -57,47 +62,6 @@ public class DatosServicios {
             Logger.getLogger(DatosServicios.class.getName()).log(Level.SEVERE, null, e);
         }
         return ListaDservicios;
-    }
-
-    public void modificarServicio(String nombre, String nombreP, String cedula, int cantidadN, String Habitacion, java.sql.Date fechaIngreso, java.sql.Date fechaSalida, int cantidadDW, String grooming) throws SQLException {
-        try {
-            //1
-            Conexion conexion = new Conexion();
-            //2
-            PreparedStatement misql = conexion.crearPrepareStatement("UPDATE servicio SET nombre = ?, nombreP = ?, cantidadN = ?, habitacion = ?,  fechaIngreso = ?, fechaSalida = ?, dogWalking=?, grooming=? WHERE cedula = ?");
-
-            misql.setString(1, nombre);
-            misql.setString(2, nombreP);
-            misql.setString(9, cedula);
-            misql.setInt(3, cantidadN);
-            misql.setString(4, Habitacion);
-            misql.setDate(5, new java.sql.Date(fechaIngreso.getTime()));
-            misql.setDate(6, new java.sql.Date(fechaSalida.getTime()));
-            misql.setInt(7, cantidadDW);
-            misql.setString(8, grooming);
-
-            misql.executeUpdate();
-
-        } catch (SQLException e) {
-
-            Logger.getLogger(DatosServicios.class.getName()).log(Level.SEVERE, null, e);
-
-        }
-    }
-
-    public void eliminarReserva(String cedula) throws SQLException {
-
-        try {
-            //1
-            Conexion conexion = new Conexion();
-            //2
-            PreparedStatement misql = conexion.crearPrepareStatement("DELETE FROM servicio WHERE cedula = ?");
-                misql.setString(1, cedula);
-                
-                misql.executeUpdate();
-        } catch (SQLException e) {
-            Logger.getLogger(DatosServicios.class.getName()).log(Level.SEVERE, null, e);
-        }
     }
 
 }

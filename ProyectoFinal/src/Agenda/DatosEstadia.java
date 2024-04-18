@@ -7,7 +7,7 @@ import java.util.logging.*;
 
 /**
  *
- * @author Indira
+ * @author GRUPO2
  */
 public class DatosEstadia {
 

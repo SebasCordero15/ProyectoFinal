@@ -6,7 +6,7 @@ package Tienda;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class Galeria extends javax.swing.JFrame {
 

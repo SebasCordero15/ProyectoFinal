@@ -4,14 +4,16 @@
  */
 package Agenda;
 
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import java.util.*;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class JfmEditarR extends javax.swing.JFrame {
 
@@ -298,6 +300,29 @@ public class JfmEditarR extends javax.swing.JFrame {
         // TODO add your handling code here:
         Limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
+    public void cargarDatos() {
+        DefaultTableModel model = (DefaultTableModel) jtSemana.getModel();
+        model.setNumRows(0); // Limpiar filas existentes
+
+        DatosEstadia estad = new DatosEstadia();
+        ArrayList<Agendar> reservaciones = estad.todasEstadias(); // Obtener datos
+
+        String datos[] = new String[7];
+        int i = 0;
+        for (Agendar agend : reservaciones) {
+            datos[0] = reservaciones.get(i).getNombre();
+            datos[1] = reservaciones.get(i).getNombreP();
+            datos[2] = reservaciones.get(i).getCedula();
+            datos[3] = String.valueOf(reservaciones.get(i).getCantidadN());
+            datos[4] = reservaciones.get(i).getHabitacion();
+            datos[5] = String.valueOf(reservaciones.get(i).getFechaIngreso());
+            datos[6] = String.valueOf(reservaciones.get(i).getFechaSalida());
+            i++;
+            model.addRow(datos);
+        }
+        jtSemana.setModel(model);
+    }
+    //LIMPIAR TXT
 
     public void Limpiar() {
         txtCliente.setText(null);
@@ -309,14 +334,17 @@ public class JfmEditarR extends javax.swing.JFrame {
         jCFechaSalida.setDate(null);
         txtCliente.requestFocus();
     }
+
+    //BOTON RESTAR
     private void bntRestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntRestarActionPerformed
         int cantidad = 0;
 
         try {
             cantidad = Integer.parseInt(txtCantidadN.getText());
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
+
         if (cantidad > 1) {
             cantidad--;
             txtCantidadN.setText(String.valueOf(cantidad));
@@ -330,9 +358,10 @@ public class JfmEditarR extends javax.swing.JFrame {
 
         try {
             cantidad = Integer.parseInt(txtCantidadN.getText());
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
+
         if (cantidad < 7) {
             cantidad++;
             txtCantidadN.setText(String.valueOf(cantidad));
@@ -379,10 +408,11 @@ public class JfmEditarR extends javax.swing.JFrame {
 
         //3. creamos variables fechas
         DatosEstadia dtEstadia = new DatosEstadia();
+        //4. Modificamos en base de datos
         try {
             dtEstadia.modificarReserva(nombre, nuevonombreP, nuevacedula, nuevocantidadN, nuevohabitacion,
-                fechaIngresoN, fechaSalidaN);
-        } catch (Exception e) {
+                    fechaIngresoN, fechaSalidaN);
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
         cargarDatos();
@@ -390,7 +420,7 @@ public class JfmEditarR extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void jtSemanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtSemanaMouseClicked
-       
+
         int filaSeleccionada;
         try {
             filaSeleccionada = jtSemana.getSelectedRow();
@@ -398,8 +428,6 @@ public class JfmEditarR extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
                 return;
             }
-
-            SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
 
             // 1. Obtener valores de la fila seleccionada
             String nombre = (String) jtSemana.getValueAt(filaSeleccionada, 0);
@@ -417,16 +445,13 @@ public class JfmEditarR extends javax.swing.JFrame {
             java.util.Date fecha;
             java.util.Date fechaS;
             //4.convertimos
-            try {
-                fecha = (java.util.Date) s.parse(fechaIngreso);
-                fechaS = (java.util.Date) s.parse(fechaSalida);
-                jCFechaIngreso.setDate(fecha);
-                jCFechaSalida.setDate(fechaS);
 
-            } catch (Exception e) {
-            }
+            fecha = (java.util.Date) s.parse(fechaIngreso);
+            fechaS = (java.util.Date) s.parse(fechaSalida);
+            jCFechaIngreso.setDate(fecha);
+            jCFechaSalida.setDate(fechaS);
 
-            // Llenar campos con la fila seleccionada
+            //5. Llenar campos con la fila seleccionada
             txtCliente.setText(nombre);
             txtPerro.setText(nombreP);
             txtCedula.setText(cedula);
@@ -438,28 +463,7 @@ public class JfmEditarR extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jtSemanaMouseClicked
- public void cargarDatos() {
-        DefaultTableModel model = (DefaultTableModel) jtSemana.getModel();
-        model.setNumRows(0); // Limpiar filas existentes
 
-        DatosEstadia estad = new DatosEstadia();
-        ArrayList<Agendar> reservaciones = estad.todasEstadias(); // Obtener datos
-
-        String datos[] = new String[7];
-        int i = 0;
-        for (Agendar agend : reservaciones) {
-            datos[0] = reservaciones.get(i).getNombre();
-            datos[1] = reservaciones.get(i).getNombreP();
-            datos[2] = reservaciones.get(i).getCedula();
-            datos[3] = String.valueOf(reservaciones.get(i).getCantidadN());
-            datos[4] = reservaciones.get(i).getHabitacion();
-            datos[5] = String.valueOf(reservaciones.get(i).getFechaIngreso());
-            datos[6] = String.valueOf(reservaciones.get(i).getFechaSalida());
-            i++;
-            model.addRow(datos);
-        }
-        jtSemana.setModel(model);
-    }
     /**
      * @param args the command line arguments
      */

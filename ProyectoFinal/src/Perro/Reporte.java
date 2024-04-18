@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author sebas
+ * @author grupo2
  */
 public class Reporte extends javax.swing.JFrame {
 

@@ -4,12 +4,9 @@
  */
 package Tienda;
 
-import javax.swing.JOptionPane;
-import proyectofinal.MenuPrincipal;
-
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class InfoDogWalking extends javax.swing.JFrame {
 
@@ -134,10 +131,10 @@ public class InfoDogWalking extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtGaleriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGaleriaActionPerformed
-         Galeria g = new  Galeria();
-            g.setVisible(true);
-            g.setLocationRelativeTo(null);
-           this.setVisible(false);
+        Galeria g = new Galeria();
+        g.setVisible(true);
+        g.setLocationRelativeTo(null);
+        this.setVisible(false);
     }//GEN-LAST:event_txtGaleriaActionPerformed
 
     /**

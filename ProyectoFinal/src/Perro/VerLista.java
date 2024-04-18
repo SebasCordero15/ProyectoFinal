@@ -4,6 +4,7 @@
  */
 package Perro;
 
+import java.awt.HeadlessException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,38 +22,36 @@ public class VerLista extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-         cargarDatos();
+        cargarDatos();
     }
 
-    
+    //cargamos datos de la lista de clientes
     public void cargarDatos() {
         DefaultTableModel model = (DefaultTableModel) jtClientes.getModel();
         model.setNumRows(0);
 
         DatosCliente datosC = new DatosCliente();
         ArrayList<Perro> Listclientes = datosC.todosClientes();//trae todo los articulos de la bd
-        
-       if (txtBuscar.getText().contentEquals("")) {
+        //para buscar clientes
+        if (txtBuscar.getText().contentEquals("")) {
             Listclientes = datosC.todosClientes();
         } else {
             Listclientes = datosC.BuscarCliente(txtBuscar.getText());
-        } 
-        
-        
-        
+        }
+
         String datos[] = new String[12];
         int i = 0;
         for (Perro dog : Listclientes) {
             datos[0] = Listclientes.get(i).getNombre();
             datos[1] = Listclientes.get(i).getApellido();
             datos[2] = Listclientes.get(i).getCedula();
-             datos[3] = Listclientes.get(i).getTelefono();
+            datos[3] = Listclientes.get(i).getTelefono();
             datos[4] = Listclientes.get(i).getDireccion();
             datos[5] = Listclientes.get(i).getCorreo();
-             datos[6] = Listclientes.get(i).getNombreP();
+            datos[6] = Listclientes.get(i).getNombreP();
             datos[7] = String.valueOf(Listclientes.get(i).getEdadP());
             datos[8] = Listclientes.get(i).getRaza();
-             datos[9] = Listclientes.get(i).getTamaño();
+            datos[9] = Listclientes.get(i).getTamaño();
             datos[10] = Listclientes.get(i).getGenero();
             datos[11] = Listclientes.get(i).getObservaciones();
             i++;
@@ -60,7 +59,7 @@ public class VerLista extends javax.swing.JFrame {
         }
         jtClientes.setModel(model);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -217,37 +216,29 @@ public class VerLista extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void BtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditarActionPerformed
-    this.setVisible(false);
-        frmEditar edit= new frmEditar();
+        this.setVisible(false);
+        frmEditar edit = new frmEditar();
     }//GEN-LAST:event_BtnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-         int elegida;
-        elegida = jtClientes.getSelectedRow();
-         if (elegida== -1 ){
-             JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
-             return;
-             
-         }
+        int elegida= jtClientes.getSelectedRow();
         
-         String cedula = (String) jtClientes.getValueAt(elegida, 2);
-          int conf= JOptionPane.showConfirmDialog(null, "Desea eliminar al cliente con la cedula "+ cedula+JOptionPane.YES_NO_OPTION);
-           if (conf == JOptionPane.YES_OPTION){
-               DatosCliente datosC = new DatosCliente(); 
-               try{
-                   datosC.eliminarCliente(cedula);
-                   
-                   cargarDatos();
-                   JOptionPane.showMessageDialog(null, "Los datos se eliminaron correctamente");
-               
-               } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-            }
-               
-           }
-        
-        
-    
+        if (elegida == -1) {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+            return;
+        }
+        //cedula es el PK
+        String cedula = (String) jtClientes.getValueAt(elegida, 2);
+        DatosCliente datosC = new DatosCliente();
+        try {
+            datosC.eliminarCliente(cedula);
+            cargarDatos();
+            JOptionPane.showMessageDialog(null, "Datos del cliente eliminado");
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**

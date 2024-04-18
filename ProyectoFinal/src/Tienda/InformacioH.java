@@ -4,11 +4,9 @@
  */
 package Tienda;
 
-import proyectofinal.MenuPrincipal;
-
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class InformacioH extends javax.swing.JFrame {
 
@@ -17,7 +15,7 @@ public class InformacioH extends javax.swing.JFrame {
      */
     public InformacioH() {
         initComponents();
-       
+
         this.setVisible(true);//hace visible el formulario
         this.setLocationRelativeTo(null);//coloca la ventana en el centro de la pantalla
     }

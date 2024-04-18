@@ -3,10 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Tienda;
-import javax.swing.JOptionPane;
+
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class InfoGrooming extends javax.swing.JFrame {
 
@@ -16,7 +16,6 @@ public class InfoGrooming extends javax.swing.JFrame {
     public InfoGrooming() {
         initComponents();
         this.setVisible(true);
-        
         this.setLocationRelativeTo(null);//coloca la ventana en el centro de la pantalla
     }
 

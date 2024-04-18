@@ -11,12 +11,11 @@ import java.sql.Date;
  * @author indir
  */
 public class Servicios extends Agendar {
-    
-    
-    private int dogWalking ;
+
+    private int dogWalking;
     private String grooming;
 
-    public Servicios( String nombre, String nombreP, String cedula, int cantidadN, String Habitacion, Date fechaIngreso, Date fechaSalida, int dogWalking, String grooming) {
+    public Servicios(String nombre, String nombreP, String cedula, int cantidadN, String Habitacion, Date fechaIngreso, Date fechaSalida, int dogWalking, String grooming) {
         super(nombre, nombreP, cedula, cantidadN, Habitacion, fechaIngreso, fechaSalida);
         this.dogWalking = dogWalking;
         this.grooming = grooming;
@@ -31,7 +30,7 @@ public class Servicios extends Agendar {
         return dogWalking;
     }
 
-    public void setDogWalking() {
+    public void setDogWalking(int dogWalking) {
         this.dogWalking = dogWalking;
     }
 
@@ -45,20 +44,10 @@ public class Servicios extends Agendar {
 
     @Override
     public String toString() {
-         return super.toString()+
-                 
-         "Servicios:" +
-                 "\n    Cantidad de DogWalking:" + dogWalking +
-                 "\n    Servicio de Grooming: " + grooming +"\n";
+        return super.toString()
+                + "Servicios:"
+                + "\nCantidad de DogWalking:" + dogWalking
+                + "\nServicio de Grooming: " + grooming + "\n";
     }
-    
-    
-    
-    
-    
 
-   
-    
-    
-    
 }

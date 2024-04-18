@@ -16,6 +16,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="itemHotel">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/informacion-logotype-inside-a-square.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Informacion"/>
               </Properties>
               <Events>
@@ -64,6 +67,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mitCrearExpediente">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/users-alt.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Crear expediente"/>
               </Properties>
               <Events>
@@ -72,6 +78,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mitVerLista">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/admin-alt.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Lista Clientes"/>
               </Properties>
               <Events>
@@ -87,6 +96,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mitAgendar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/calendar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Agendar"/>
               </Properties>
               <Events>
@@ -95,6 +107,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mitEstadias">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/stats.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ver registro de estadias"/>
               </Properties>
               <Events>
@@ -110,6 +125,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/responsible.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Servicio"/>
               </Properties>
               <Events>
@@ -125,6 +143,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mitRegistroFactura">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/bill (1).png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Crear Factura"/>
               </Properties>
               <Events>
@@ -140,6 +161,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem10">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/report.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ver reportes"/>
               </Properties>
               <Events>

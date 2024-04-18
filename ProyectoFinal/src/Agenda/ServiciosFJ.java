@@ -70,6 +70,7 @@ public class ServiciosFJ extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar-contacto.png"))); // NOI18N
@@ -466,9 +467,8 @@ public class ServiciosFJ extends javax.swing.JFrame {
         Servicios serv = new Servicios(txtCliente.getText(), txtPerro.getText(), txtCedula.getText(), Integer.parseInt(txtCantidadN.getText()),
                 txtHabitacion.getText(), fechaIngreso, fechaSalida, Integer.parseInt(txtCantidadDW.getText()), grooming);
         dtServicios.insertarServicios(serv);
-        //informacion();
-
-        JOptionPane.showMessageDialog(null, "Estadia agendada");
+        
+        JOptionPane.showMessageDialog(null, "Servicios agregados");
         Limpiar();
 
 

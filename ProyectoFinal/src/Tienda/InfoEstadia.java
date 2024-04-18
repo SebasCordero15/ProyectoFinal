@@ -6,7 +6,7 @@ package Tienda;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class InfoEstadia extends javax.swing.JFrame {
 
@@ -15,8 +15,7 @@ public class InfoEstadia extends javax.swing.JFrame {
      */
     public InfoEstadia() {
         initComponents();
-         this.setVisible(true);
-        
+        this.setVisible(true);
         this.setLocationRelativeTo(null);//coloca la ventana en el centro de la pantalla
     }
 

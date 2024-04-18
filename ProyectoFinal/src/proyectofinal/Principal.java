@@ -6,7 +6,7 @@ package proyectofinal;
 
 /**
  *
- * @author sebas
+ * @author grupo2
  */
 public class Principal {
 

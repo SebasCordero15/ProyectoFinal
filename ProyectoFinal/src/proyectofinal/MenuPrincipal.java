@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyectofinal;
+
 import Tienda.InformacioH;
 import Agenda.Facturacion;
 import Tienda.InfoDogWalking;
@@ -14,7 +15,6 @@ import Perro.Reporte;
 import Tienda.InfoEstadia;
 import Tienda.InfoGrooming;
 import Tienda.JFMProductos;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -82,6 +82,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         Hotel.setText("Hotel");
 
+        itemHotel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/informacion-logotype-inside-a-square.png"))); // NOI18N
         itemHotel.setText("Informacion");
         itemHotel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +122,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Clientes");
 
+        mitCrearExpediente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/users-alt.png"))); // NOI18N
         mitCrearExpediente.setText("Crear expediente");
         mitCrearExpediente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +131,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(mitCrearExpediente);
 
+        mitVerLista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/admin-alt.png"))); // NOI18N
         mitVerLista.setText("Lista Clientes");
         mitVerLista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +144,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu5.setText("Agenda");
 
+        mitAgendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/calendar.png"))); // NOI18N
         mitAgendar.setText("Agendar");
         mitAgendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +153,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu5.add(mitAgendar);
 
+        mitEstadias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/stats.png"))); // NOI18N
         mitEstadias.setText("Ver registro de estadias");
         mitEstadias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +166,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu3.setText("Añadir Servicio");
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/responsible.png"))); // NOI18N
         jMenuItem2.setText("Servicio");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,6 +179,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu4.setText("Factura");
 
+        mitRegistroFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bill (1).png"))); // NOI18N
         mitRegistroFactura.setText("Crear Factura");
         mitRegistroFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +192,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         mitVerReporte.setText("Reportes");
 
+        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/report.png"))); // NOI18N
         jMenuItem10.setText("Ver reportes");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,47 +245,47 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Login l =new Login();
-       this.setVisible(false);
+        Login l = new Login();
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void mitAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitAgendarActionPerformed
-       Agenda dias= new Agenda();
+        Agenda dias = new Agenda();
     }//GEN-LAST:event_mitAgendarActionPerformed
 
     private void mitCrearExpedienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitCrearExpedienteActionPerformed
-      FormularioPerro fp= new FormularioPerro(); 
-        
+        FormularioPerro fp = new FormularioPerro();
+
     }//GEN-LAST:event_mitCrearExpedienteActionPerformed
 
     private void mitVerListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitVerListaActionPerformed
-        VerLista vl= new VerLista();
+        VerLista vl = new VerLista();
     }//GEN-LAST:event_mitVerListaActionPerformed
 
     private void mitRegistroFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitRegistroFacturaActionPerformed
         // TODO add your handling code here:
-        Facturacion f= new Facturacion();
+        Facturacion f = new Facturacion();
     }//GEN-LAST:event_mitRegistroFacturaActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-      ServiciosFJ  servicioss= new ServiciosFJ();
+        ServiciosFJ servicioss = new ServiciosFJ();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
-        Reporte r=new Reporte();
+        Reporte r = new Reporte();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void mitEstadiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitEstadiasActionPerformed
-       jfmEstadias ver= new jfmEstadias();
+        jfmEstadia ver = new jfmEstadia();
     }//GEN-LAST:event_mitEstadiasActionPerformed
 
     private void itemHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHotelActionPerformed
-        InformacioH s=new InformacioH();
+        InformacioH s = new InformacioH();
     }//GEN-LAST:event_itemHotelActionPerformed
 
     private void mitEstadiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitEstadiaActionPerformed
-        InfoEstadia  Ie= new InfoEstadia();
+        InfoEstadia Ie = new InfoEstadia();
     }//GEN-LAST:event_mitEstadiaActionPerformed
 
     private void mitGroomingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitGroomingActionPerformed
@@ -290,7 +298,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mitDogWalkingActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-       JFMProductos productos = new JFMProductos();
+        JFMProductos productos = new JFMProductos();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**

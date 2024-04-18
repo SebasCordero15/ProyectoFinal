@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class JFMProductos extends javax.swing.JFrame {
 
@@ -68,10 +68,10 @@ public class JFMProductos extends javax.swing.JFrame {
         txtIVA = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         txtMonto = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnCrearFactura = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(850, 620));
+        setResizable(false);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/correa-de-perro (4).png"))); // NOI18N
@@ -391,12 +391,12 @@ public class JFMProductos extends javax.swing.JFrame {
                         .addGap(164, 164, 164))))
         );
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar-contacto.png"))); // NOI18N
-        jButton1.setText("Crear Factura");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearFactura.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCrearFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar-contacto.png"))); // NOI18N
+        btnCrearFactura.setText("Crear Factura");
+        btnCrearFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCrearFacturaActionPerformed(evt);
             }
         });
 
@@ -442,7 +442,7 @@ public class JFMProductos extends javax.swing.JFrame {
                                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1)
+                                    .addComponent(btnCrearFactura)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -492,7 +492,7 @@ public class JFMProductos extends javax.swing.JFrame {
                             .addComponent(txtCantidad4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bntRestar3))
                         .addGap(65, 65, 65)
-                        .addComponent(jButton1))
+                        .addComponent(btnCrearFactura))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -534,10 +534,10 @@ public class JFMProductos extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Factura Creada");
         ////////-----------------------------------------------------------------------------------
         JOptionPane.showMessageDialog(null, "\n\n-------------FACTURA--------------"
-                + "\nKit Juguetes 1: " + txtCantidad1.getText()
-                + "\nKit Grooming: " + txtCantidad2.getText()
-                + "\nCorrrea: " + txtCantidad3.getText()
-                + "\nKit Juguetes 2: " + txtCantidad4.getText()
+                + "\nKit Juguetes 1: " + txtJuguetes.getText()
+                + "\nKit Grooming: " + txtMonto.getText()
+                + "\nCorrrea: " + txtMontoC.getText()
+                + "\nKit Juguetes 2: " + txtMontoJ2.getText()
                 + "\n\nSubtotal: " + txtTotal.getText()
                 + "\nIVA: " + txtIVA.getText()
                 + "\nMonto Total: " + txtMonto.getText());
@@ -553,7 +553,7 @@ public class JFMProductos extends javax.swing.JFrame {
 
         try {
             cantidad = Integer.parseInt(txtCantidad1.getText());
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
         if (cantidad > 0) {
@@ -589,7 +589,7 @@ public class JFMProductos extends javax.swing.JFrame {
 
         try {
             cantidad2 = Integer.parseInt(txtCantidad2.getText());
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
         if (cantidad2 < 10) {
@@ -696,19 +696,21 @@ public class JFMProductos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidad4ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    //creamos factura
+
+    private void btnCrearFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearFacturaActionPerformed
         calcularKitJuguetes();
         calcularKitGrooming();
         calcularCorrea();
         calcularKitJuguetes2();
         calcularMon();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCrearFacturaActionPerformed
 
+    //metodos para los montos
     public void calcularKitJuguetes() {
         int cantidadKit1 = Integer.parseInt(txtCantidad1.getText());
         int precioKit = 2500;
         int totalkit = cantidadKit1 * precioKit;
-        txtCantidad1.setText(String.valueOf(totalkit));
         txtJuguetes.setText(String.valueOf(totalkit));
     }
 
@@ -716,8 +718,6 @@ public class JFMProductos extends javax.swing.JFrame {
         int cantidadKitGrooming = Integer.parseInt(txtCantidad2.getText());
         int precioKit = 2500;
         int totalkitG = cantidadKitGrooming * precioKit;
-
-        txtCantidad2.setText(String.valueOf(totalkitG));
         txtMontoG.setText(String.valueOf(totalkitG));
     }
 
@@ -725,7 +725,6 @@ public class JFMProductos extends javax.swing.JFrame {
         int cantidadCorrea = Integer.parseInt(txtCantidad3.getText());
         int precio = 5000;
         int total = cantidadCorrea * precio;
-        txtCantidad3.setText(String.valueOf(total));
         txtMontoC.setText(String.valueOf(total));
     }
 
@@ -733,7 +732,7 @@ public class JFMProductos extends javax.swing.JFrame {
         int cantidadKit2 = Integer.parseInt(txtCantidad4.getText());
         int precioKit2 = 2500;
         int totalkit2 = cantidadKit2 * precioKit2;
-        txtCantidad4.setText(String.valueOf(totalkit2));
+
         txtMontoJ2.setText(String.valueOf(totalkit2));
     }
 
@@ -796,8 +795,8 @@ public class JFMProductos extends javax.swing.JFrame {
     private javax.swing.JButton bntSumar1;
     private javax.swing.JButton bntSumar2;
     private javax.swing.JButton bntSumar3;
+    private javax.swing.JButton btnCrearFactura;
     private javax.swing.JButton btnPagar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

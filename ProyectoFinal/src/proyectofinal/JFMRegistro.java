@@ -5,13 +5,11 @@
 package proyectofinal;
 
 import Tienda.DatosUsuarios;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *
- * @author indir
+ * @author grupo2
  */
 public class JFMRegistro extends javax.swing.JFrame {
 
@@ -21,7 +19,6 @@ public class JFMRegistro extends javax.swing.JFrame {
     public JFMRegistro() {
         initComponents();
         this.setVisible(true);
-
         this.setLocationRelativeTo(null);//coloca la ventana en el centro de la pantalla
 
     }
@@ -45,8 +42,8 @@ public class JFMRegistro extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         txtCorreo2 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnRegistro = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -94,20 +91,20 @@ public class JFMRegistro extends javax.swing.JFrame {
         txtCorreo2.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         txtCorreo2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jButton3.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButton3.setText("Registrar");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistro.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btnRegistro.setText("Registrar");
+        btnRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton4.setText("Login");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -121,9 +118,9 @@ public class JFMRegistro extends javax.swing.JFrame {
                     .addGap(25, 25, 25)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jButton4)
+                            .addComponent(btnLogin)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3))
+                            .addComponent(btnRegistro))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(36, 36, 36)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -171,8 +168,8 @@ public class JFMRegistro extends javax.swing.JFrame {
                         .addComponent(txtContra2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(21, 21, 21)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton3)
-                        .addComponent(jButton4))
+                        .addComponent(btnRegistro)
+                        .addComponent(btnLogin))
                     .addContainerGap(18, Short.MAX_VALUE)))
         );
 
@@ -203,7 +200,7 @@ public class JFMRegistro extends javax.swing.JFrame {
 
     }
 
-
+//btn Registro no se por que no se cambio el nombre
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
@@ -230,14 +227,11 @@ public class JFMRegistro extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         Login l = new Login();
         this.setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnLoginActionPerformed
 
-    public void buscar() {
-
-    }
 
     /**
      * @param args the command line arguments
@@ -276,8 +270,8 @@ public class JFMRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnRegistro;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

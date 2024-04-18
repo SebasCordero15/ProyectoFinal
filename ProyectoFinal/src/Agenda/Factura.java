@@ -34,6 +34,7 @@ public class Factura extends Servicios {
         this.cantidadDW = cantidadDW;
 
     }
+
     public Factura() {
         this.numfactura = 0;
         this.totalEstadia = 0;
@@ -44,7 +45,7 @@ public class Factura extends Servicios {
         this.cantidadG = 0;
         this.cantidadDW = 0;
     }
-   
+
     public int getTotalEstadia() {
         return totalEstadia;
     }
@@ -108,6 +109,7 @@ public class Factura extends Servicios {
     public void setGanancias() {
         this.ganancias++;
     }
+
     @Override
     public String toString() {
         return super.toString()
