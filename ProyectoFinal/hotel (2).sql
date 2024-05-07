@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-04-2024 a las 05:36:55
+-- Tiempo de generación: 18-04-2024 a las 09:15:10
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -47,7 +47,9 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`nombre`, `apellido`, `cedula`, `telefono`, `direccion`, `correo`, `nombreP`, `edadP`, `raza`, `tamaño`, `genero`, `observaciones`) VALUES
-('Jimena', 'Ramirez', '232323', '8989987', 'taras', 'asdas@gmail.com', 'sd', 2, 'asd', 'Pequeño', 'M', 'asd');
+('Indira', 'Ramirez', '1194000349', '6402620', 'Taras', 'indiraguz@gmail.com', 'Rosco', 4, 'Salchicha', 'Pequeño', 'H', 'Inquieto'),
+('Keylor', 'Badilla', '123456789', '64589635', 'Tres Rios', 'k@gmail.com', 'Loky', 1, 'Pastor aleman', 'Grande', 'M', 'Entrenado'),
+('Diego', 'Benavides', '156985632', '8986556', 'Tibas', 'd@hotmail.com', 'Rocky', 10, 'Labrador', 'Mediano', 'M', 'Sano');
 
 -- --------------------------------------------------------
 
@@ -77,8 +79,8 @@ CREATE TABLE `factura` (
 --
 
 INSERT INTO `factura` (`nombre`, `nombreP`, `cedula`, `cantidadN`, `habitacion`, `fechaIngreso`, `fechaSalida`, `dogWalking`, `grooming`, `numFactura`, `totalEstadia`, `totalDogWalking`, `totalGromming`, `MontTotal`) VALUES
-('Sebas', 'Loki', '123', 1, 'H1', '2024-04-18', '2024-04-19', 1, 'SI', 1, 5000, 5000, 3000, 13000),
-('Jimena', 'sd', '232323', 1, 'H 3', '2024-04-18', '2024-04-20', 2, 'SI', 2, 5000, 10000, 3000, 18000);
+('Keylor', 'Loky', '123456789', 2, 'H2', '2024-04-21', '2024-04-24', 2, 'SI', 1, 10000, 10000, 3000, 23000),
+('Diego', 'Rocky', '156985632', 1, 'H 3', '2024-04-19', '2024-04-20', 2, 'SI', 2, 5000, 10000, 3000, 18000);
 
 -- --------------------------------------------------------
 
@@ -101,8 +103,8 @@ CREATE TABLE `reserva` (
 --
 
 INSERT INTO `reserva` (`nombre`, `nombreP`, `cedula`, `cantidadN`, `habitacion`, `fechaIngreso`, `fechaSalida`) VALUES
-('Sebas', 'Loki', '123', 1, 'H1', '2024-04-18', '2024-04-19'),
-('Jimena', 'sd', '232323', 1, 'H 3', '2024-04-18', '2024-04-20');
+('Keylor', 'Loky', '123456789', 2, 'H2', '2024-04-21', '2024-04-24'),
+('Diego', 'Rocky', '156985632', 1, 'H 3', '2024-04-19', '2024-04-20');
 
 -- --------------------------------------------------------
 
@@ -127,8 +129,8 @@ CREATE TABLE `servicio` (
 --
 
 INSERT INTO `servicio` (`nombre`, `nombreP`, `cedula`, `cantidadN`, `habitacion`, `fechaIngreso`, `fechaSalida`, `dogWalking`, `grooming`) VALUES
-('Sebas', 'Loki', '123', 1, 'H1', '2024-04-18', '2024-04-19', 1, 'SI'),
-('Jimena', 'sd', '232323', 1, 'H 3', '2024-04-18', '2024-04-20', 2, 'SI');
+('Keylor', 'Loky', '123456789', 2, 'H2', '2024-04-21', '2024-04-24', 2, 'SI'),
+('Diego', 'Rocky', '156985632', 1, 'H 3', '2024-04-19', '2024-04-20', 2, 'SI');
 
 -- --------------------------------------------------------
 

@@ -1,0 +1,18 @@
+
+**********************
+
+Informacion del Dueno
+Nombre=Indira 
+Apellido=Ramirez
+Telefono=8888
+Cedula=123456
+Direccion=Taras
+Correo= indira@gmail.com
+------Informacion del Perro------
+
+NombreP=Luky
+EdadP=3
+Raza=Labrador
+Tamannio=Mediano
+Genero=H
+Observaciones=Sano

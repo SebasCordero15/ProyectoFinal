@@ -77,6 +77,7 @@ public class DatosFactura {
         return ListaDfacturas;
     }
 
+    
     public void ConteoGrooming(Factura f) {
         try {
             Conexion con = new Conexion();

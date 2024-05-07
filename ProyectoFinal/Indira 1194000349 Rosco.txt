@@ -1,0 +1,18 @@
+
+**********************
+
+Informacion del Dueno
+Nombre=Indira
+Apellido=Ramirez
+Telefono=6402620
+Cedula=1194000349
+Direccion=Taras
+Correo= indiraguz@gmail.com
+------Informacion del Perro------
+
+NombreP=Rosco
+EdadP=3
+Raza=Salchicha
+Tamannio=Pequeño
+Genero=H
+Observaciones=Inquieto

@@ -709,22 +709,22 @@ public class Facturacion extends javax.swing.JFrame {
             } else if (grooming.equals("NO")) {
                 rbNO.setSelected(true);
             }
+///Se calcula montos
+            calcularPrecioEstadia();
+            calcularPrecioDW();
+            calcularGromming(grooming);
 
+            //monto final
+            int totalEstadia = Integer.parseInt(txtTotalEstadia.getText());
+            int totalDW = Integer.parseInt(txtTotalDW.getText());
+            int totalGrooming = Integer.parseInt(txtTotalGrooming.getText());
+            int montoTotal = totalEstadia + totalDW + totalGrooming;
+            txtMontoTotal.setText(String.valueOf(montoTotal));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
 
         }
-        ///Se calcula montos
-        calcularPrecioEstadia();
-        calcularPrecioDW();
-        calcularGromming();
 
-        //monto final
-        int totalEstadia = Integer.parseInt(txtTotalEstadia.getText());
-        int totalDW = Integer.parseInt(txtTotalDW.getText());
-        int totalGrooming = Integer.parseInt(txtTotalGrooming.getText());
-        int montoTotal = totalEstadia + totalDW + totalGrooming;
-        txtMontoTotal.setText(String.valueOf(montoTotal));
 
     }//GEN-LAST:event_jtServiciosMouseClicked
     public void limpiar() {
@@ -760,13 +760,13 @@ public class Facturacion extends javax.swing.JFrame {
         txtTotalDW.setText(String.valueOf(totalDogWalking));
     }
 
-    private void calcularGromming() {
+    private void calcularGromming(String grooming) {
         int precioG = 3000;
 
-        if (rbSI.equals("SI")) {
+        if (grooming.equals("SI")) {
             txtTotalGrooming.setText(String.valueOf(precioG));
 
-        } else if (rbNO.equals("NO")) {
+        } else if (grooming.equals("NO")) {
             txtTotalGrooming.setText(String.valueOf(0));
         }
     }

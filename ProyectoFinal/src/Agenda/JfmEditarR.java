@@ -5,7 +5,6 @@
 package Agenda;
 
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.*;
@@ -384,7 +383,7 @@ public class JfmEditarR extends javax.swing.JFrame {
         Seleccionada = jtSemana.getSelectedRow();
 
         if (Seleccionada == -1) {
-            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila (No row selected)");
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
             return;
         }
 
